@@ -10,7 +10,7 @@
     "modules-right": ["mpd", "idle_inhibitor","backlight", "pulseaudio", "network", "cpu", "memory", "temperature", "backlight", "keyboard-state", "sway/language", "battery", "battery#bat2", "clock", "tray"],
     // Modules configuration
     "wlr/workspaces": {
-        "disable-scroll": true,
+        "disable-scroll": false,
         "all-outputs": true,
         "warp-on-scroll": false,
         "format": "{name}: {icon}",
