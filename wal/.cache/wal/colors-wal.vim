@@ -1,0 +1,23 @@
+" Special
+let wallpaper  = "/home/spy/.dotfiles/wallpapers/a.png"
+let background = "#000203"
+let foreground = "#bfbfc0"
+let cursor     = "#bfbfc0"
+
+" Colors
+let color0  = "#000203"
+let color1  = "#6C8A5D"
+let color2  = "#7F9C6F"
+let color3  = "#699494"
+let color4  = "#58B9C7"
+let color5  = "#93B3AB"
+let color6  = "#AEC8B5"
+let color7  = "#bfbfc0"
+let color8  = "#3f4142"
+let color9  = "#6C8A5D"
+let color10 = "#7F9C6F"
+let color11 = "#699494"
+let color12 = "#58B9C7"
+let color13 = "#93B3AB"
+let color14 = "#AEC8B5"
+let color15 = "#bfbfc0"

@@ -1,0 +1,21 @@
+set $wallpaper /home/spy/.dotfiles/wallpapers/a.png
+
+set $background #000203
+set $foreground #bfbfc0
+
+set $color0 #000203
+set $color1 #6C8A5D
+set $color2 #7F9C6F
+set $color3 #699494
+set $color4 #58B9C7
+set $color5 #93B3AB
+set $color6 #AEC8B5
+set $color7 #bfbfc0
+set $color8 #3f4142
+set $color9 #6C8A5D
+set $color10 #7F9C6F
+set $color11 #699494
+set $color12 #58B9C7
+set $color13 #93B3AB
+set $color14 #AEC8B5
+set $color15 #bfbfc0

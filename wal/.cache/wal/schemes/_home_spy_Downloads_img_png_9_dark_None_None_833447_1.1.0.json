@@ -1,0 +1,27 @@
+{
+    "wallpaper": "/home/spy/Downloads/img.png",
+    "alpha": "100",
+    "special": {
+        "background": "#050405",
+        "foreground": "#c0c0c0",
+        "cursor": "#c0c0c0"
+    },
+    "colors": {
+        "color0": "#050405",
+        "color1": "#700D6F",
+        "color2": "#651668",
+        "color3": "#10465A",
+        "color4": "#265766",
+        "color5": "#743486",
+        "color6": "#6A6E87",
+        "color7": "#c0c0c0",
+        "color8": "#434243",
+        "color9": "#700D6F",
+        "color10": "#651668",
+        "color11": "#10465A",
+        "color12": "#265766",
+        "color13": "#743486",
+        "color14": "#6A6E87",
+        "color15": "#c0c0c0"
+    }
+}
