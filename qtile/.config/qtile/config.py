@@ -35,6 +35,17 @@ terminal = os.environ.get("TERM", "kitty") #guess_terminal()
 browser = os.environ.get("BROWSER")
 fileexplorer = os.environ.get("GUI_FILE_EXPLORER")
 
+os.system("wal -i .dotfiles/wallpapers/a.png -a 80")
+
+colors = []
+cache='/home/spy/.cache/wal/colors'
+def load_colors(cache):
+    with open(cache, 'r') as file:
+        for i in range(8):
+            colors.append(file.readline().strip())
+    colors.append('#ffffff')
+    lazy.reload()
+load_colors(cache)
 
 @lazy.function
 def increase_gaps(qtile):
@@ -87,8 +98,8 @@ keys = ([
     Key([mod],"o", increase_gaps() ,desc="increase_gaps"),
     Key([mod, "shift"],"o", dincrease_gaps() ,desc="increase_gaps"),
 
-    #dmenu
-    Key([mod],"d", lazy.spawn("dmenu_extended_run") ,desc="open dmenu_extended"),
+    #rofi
+    Key([mod],"d", lazy.spawn("/home/spy/dotfiles2/rofi/.config/rofi/launchers/type-3/launcher.sh") ,desc="open rofi"),
 
     Key([mod],"f", lazy.window.toggle_fullscreen() ,desc="open dmenu_extended"),
 
@@ -97,6 +108,7 @@ keys = ([
     # keboard controll
     Key(["control","shift"],"k", lazy.spawn("setxkbmap us") ,desc="set keyboard to us"),
     Key(["control","shift"],"l", lazy.spawn("setxkbmap se") ,desc="set keyboard to se"),
+    Key([mod],"s", lazy.spawn("scrot -s -e 'xclip -selection clipboard -t image/png -i $f'") ,desc="set keyboard to se"),
 ])
 
 
@@ -132,7 +144,7 @@ for i in groups:
     )
 
 layouts = [
-    layout.Columns(border_focus_stack=["#d75f5f", "#8f3d3d"], border_width=4,margi=5,
+    layout.Columns(border_focus_stack=[colors[1],colors[2]], border_width=4,margin=25,
                    ),
     layout.Max(),
     # Try more layouts by unleashing below layouts.
@@ -140,15 +152,11 @@ layouts = [
     # layout.Bsp(),
     # layout.Matrix(),
     layout.Floating(),
-    layout.MonadTall(
-        margin=5
-    ),
     # layout.MonadWide(),
     # layout.RatioTile(),
     # layout.Tile(),
-    layout.TreeTab(),
     # layout.VerticalTile(),
-    # layout.Zoomy(),
+    #layout.Zoomy(),
 ]
 
 widget_defaults = dict(
@@ -168,7 +176,7 @@ screens = [
                 widget.WindowName(),
                 widget.Chord(
                     chords_colors={
-                        "launch": ("#ff0000", "#ffffff"),
+                        "launch": (colors[0], colors[1]),
                     },
                     name_transform=lambda name: name.upper(),
                 ),
@@ -178,16 +186,16 @@ screens = [
                 widget.PulseVolume(),
                 widget.Sep(),
                 # widget.Battery(charge_char="🔋",discharge_char=" "),
-                widget.CPU(background="#500050"),
-                widget.Memory(background="#505050"),
-                widget.TextBox("Net:",background="#104032"),
-                widget.NetGraph(background="#104032"),
+                widget.CPU(background=colors[0]),
+                widget.Memory(background=colors[1]),
+                widget.TextBox("Net:",background=colors[2]),
+                widget.NetGraph(background=colors[3]),
                 widget.Systray(),
                 widget.Clock(format="%Y-%m-%d %a %I:%M %p"),
                 widget.QuickExit(),
             ],
             32,
-                background="#000000bb",
+                background="#000000aa",
             # border_width=[2, 0, 2, 0],  # Draw top and bottom borders
             # border_color=["ff00ff", "000000", "ff00ff", "000000"]  # Borders are magenta
         ),
@@ -238,3 +246,4 @@ wl_input_rules = None
 # We choose LG3D to maximize irony: it is a 3D non-reparenting WM written in
 # java that happens to be on java's whitelist.
 wmname = "LG3D"
+
