@@ -12,6 +12,7 @@ return {
   'nvim-tree/nvim-tree.lua',
   'ojroques/nvim-buildme',
   'mg979/vim-visual-multi',
+  'AlphaTechnolog/pywal.nvim',
   {'akinsho/toggleterm.nvim', version = "*", opts = {--[[ things you want to change go here]]}},
   {
       "kdheepak/lazygit.nvim",

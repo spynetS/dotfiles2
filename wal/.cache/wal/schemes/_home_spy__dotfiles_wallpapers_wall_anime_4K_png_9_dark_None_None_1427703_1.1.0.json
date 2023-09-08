@@ -1,0 +1,27 @@
+{
+    "wallpaper": "/home/spy/.dotfiles/wallpapers/wall_anime_4K.png",
+    "alpha": "100",
+    "special": {
+        "background": "#050505",
+        "foreground": "#c0c0c0",
+        "cursor": "#c0c0c0"
+    },
+    "colors": {
+        "color0": "#050505",
+        "color1": "#53B2A5",
+        "color2": "#5BB6CA",
+        "color3": "#72C8D1",
+        "color4": "#72DAEB",
+        "color5": "#D5A4A5",
+        "color6": "#90DBDD",
+        "color7": "#c0c0c0",
+        "color8": "#434343",
+        "color9": "#53B2A5",
+        "color10": "#5BB6CA",
+        "color11": "#72C8D1",
+        "color12": "#72DAEB",
+        "color13": "#D5A4A5",
+        "color14": "#90DBDD",
+        "color15": "#c0c0c0"
+    }
+}

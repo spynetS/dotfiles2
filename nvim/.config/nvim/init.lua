@@ -104,6 +104,9 @@ require'cmp'.setup {
   }
 }
 
+local pywal = require('pywal')
+
+pywal.setup()
 
 vim.opt.termguicolors = true
 

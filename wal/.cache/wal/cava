@@ -125,12 +125,12 @@ background = default
 # You can define as many as 8 different colors. They range from bottom to top of screen
 gradient = 1
 gradient_count = 6
-gradient_color_1 = '#6C8A5D'
-gradient_color_2 = '#7F9C6F'
-gradient_color_3 = '#699494'
-gradient_color_4 = '#58B9C7'
-gradient_color_5 = '#93B3AB'
-gradient_color_6 = '#AEC8B5'
+gradient_color_1 = '#518CDC'
+gradient_color_2 = '#5494E4'
+gradient_color_3 = '#659FE1'
+gradient_color_4 = '#6FB0F0'
+gradient_color_5 = '#7CBDF4'
+gradient_color_6 = '#88B6E3'
 
 
 
