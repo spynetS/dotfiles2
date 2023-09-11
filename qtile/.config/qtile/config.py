@@ -50,8 +50,8 @@ outerGap = 15
 
 def widgets() : 
     return [
-        widget.CurrentLayout(),
-        widget.GroupBox(),
+        widget.CurrentLayout(background=colors[3]),
+        widget.GroupBox(highlight_method='line',background=colors[2],highlight_color=colors[5]),
         widget.Prompt(),
         widget.WindowName(),
         widget.Chord(
@@ -62,17 +62,20 @@ def widgets() :
         ),
         # NB Systray is incompatible with Wayland, consider using StatusNotifier instead
         # widget.StatusNotifier(),
+        widget.KeyboardLayout(background=colors[1]),
+        widget.PulseVolume(background=colors[2]),
+        widget.Sep(),
         widget.TextBox("🔉:"),
         widget.PulseVolume(),
         widget.Sep(),
         # widget.Battery(charge_char="🔋",discharge_char=" "),
-        widget.CPU(background=colors[0]),
-        widget.Memory(background=colors[1]),
-        widget.TextBox("Net:",background=colors[2]),
-        widget.NetGraph(background=colors[3]),
-        widget.Systray(),
+        widget.CPU(background=colors[3]),
+        widget.Memory(background=colors[4]),
+        widget.TextBox("Net:",background=colors[5]),
+        widget.NetGraph(background=colors[6]),
+        widget.Systray(background=colors[7]),
         widget.Clock(format="%Y-%m-%d %a %I:%M %p"),
-        widget.QuickExit(),
+        widget.QuickExit(background=colors[8],foreground=colors[0]),
     ]
 
 @lazy.function
@@ -157,8 +160,9 @@ keys = ([
     Key([mod],"F3", lazy.spawn(fileexplorer) ,desc=f"open ${fileexplorer}"),
 
     # keboard controll
-    Key(["control","shift"],"k", lazy.spawn("setxkbmap us") ,desc="set keyboard to us"),
-    Key(["control","shift"],"l", lazy.spawn("setxkbmap se") ,desc="set keyboard to se"),
+    # Key(["control","shift"],"k", lazy.spawn("setxkbmap us") ,desc="set keyboard to us"),
+    # Key(["control","shift"],"l", lazy.spawn("setxkbmap se") ,desc="set keyboard to se")
+    Key([mod],"l", lazy.spawn("/home/spy/.config/qtile/switchkeyboard.sh") ,desc="set keyboard to se"),
     Key([mod],"s", lazy.spawn("scrot -s -e 'xclip -selection clipboard -t image/png -i $f'") ,desc="set keyboard to se"),
 ])
 
@@ -227,7 +231,7 @@ screens = [
         top= bar.Bar(
             widgets(),
             32,
-            background=colors[0],
+            background="#222222cc",
             margin=[0,0,outerGap,0],
             # border_width=[2, 0, 2, 0],  # Draw top and bottom borders
             # border_color=["ff00ff", "000000", "ff00ff", "000000"]  # Borders are magenta
