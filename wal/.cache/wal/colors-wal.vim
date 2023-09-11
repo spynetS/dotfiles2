@@ -1,0 +1,23 @@
+" Special
+let wallpaper  = "/home/spy/dotfiles2/wallpaper/mounten-2mon.jpg"
+let background = "#020304"
+let foreground = "#bfc0c0"
+let cursor     = "#bfc0c0"
+
+" Colors
+let color0  = "#020304"
+let color1  = "#518CDC"
+let color2  = "#5494E4"
+let color3  = "#659FE1"
+let color4  = "#6FB0F0"
+let color5  = "#7CBDF4"
+let color6  = "#88B6E3"
+let color7  = "#bfc0c0"
+let color8  = "#414242"
+let color9  = "#518CDC"
+let color10 = "#5494E4"
+let color11 = "#659FE1"
+let color12 = "#6FB0F0"
+let color13 = "#7CBDF4"
+let color14 = "#88B6E3"
+let color15 = "#bfc0c0"

@@ -35,8 +35,6 @@ terminal = os.environ.get("TERM", "kitty") #guess_terminal()
 browser = os.environ.get("BROWSER")
 fileexplorer = os.environ.get("GUI_FILE_EXPLORER")
 
-os.system("wal -i .dotfiles/wallpapers/a.png -a 80")
-
 colors = []
 cache='/home/spy/.cache/wal/colors'
 def load_colors(cache):
@@ -47,14 +45,67 @@ def load_colors(cache):
     lazy.reload()
 load_colors(cache)
 
+
+outerGap = 15
+
+def widgets() : 
+    return [
+        widget.CurrentLayout(),
+        widget.GroupBox(),
+        widget.Prompt(),
+        widget.WindowName(),
+        widget.Chord(
+            chords_colors={
+                "launch": (colors[0], colors[1]),
+            },
+            name_transform=lambda name: name.upper(),
+        ),
+        # NB Systray is incompatible with Wayland, consider using StatusNotifier instead
+        # widget.StatusNotifier(),
+        widget.TextBox("🔉:"),
+        widget.PulseVolume(),
+        widget.Sep(),
+        # widget.Battery(charge_char="🔋",discharge_char=" "),
+        widget.CPU(background=colors[0]),
+        widget.Memory(background=colors[1]),
+        widget.TextBox("Net:",background=colors[2]),
+        widget.NetGraph(background=colors[3]),
+        widget.Systray(),
+        widget.Clock(format="%Y-%m-%d %a %I:%M %p"),
+        widget.QuickExit(),
+    ]
+
 @lazy.function
-def increase_gaps(qtile):
+def increase_inner_gaps(qtile):
     qtile.current_layout.margin += 2
     qtile.current_group.layout_all()
 
 @lazy.function
-def dincrease_gaps(qtile):
+def dincrease_inner_gaps(qtile):
     qtile.current_layout.margin -= 2
+    qtile.current_group.layout_all()
+
+
+@lazy.function
+def increase_gaps(qtile):
+    global outerGap
+    outerGap += 2
+    for screen in screens:
+        screen.right = bar.Gap(outerGap)
+        screen.left = bar.Gap(outerGap)
+        screen.bottom = bar.Gap(outerGap)
+        screen.top = bar.Gap(outerGap+32)
+    qtile.current_group.layout_all()
+
+@lazy.function
+def dincrease_gaps(qtile):
+    global outerGap
+    outerGap -= 2
+    for screen in screens:
+        screen.right = bar.Gap(outerGap)
+        screen.left = bar.Gap(outerGap)
+        screen.bottom = bar.Gap(outerGap)
+        screen.top = bar.Gap(outerGap+32)
     qtile.current_group.layout_all()
     
 keys = ([
@@ -144,7 +195,11 @@ for i in groups:
     )
 
 layouts = [
-    layout.Columns(border_focus_stack=[colors[1],colors[2]], border_width=4,margin=25,
+    layout.Columns(border_focus=colors[2],
+                   border_normal=colors[0],
+                   border_width=4,
+                   margin=5,
+                   grow_amount=2,
                    ),
     layout.Max(),
     # Try more layouts by unleashing below layouts.
@@ -166,47 +221,41 @@ widget_defaults = dict(
 )
 extension_defaults = widget_defaults.copy()
 
+
 screens = [
     Screen(
-        top=bar.Bar(
-            [
-                widget.CurrentLayout(),
-                widget.GroupBox(),
-                widget.Prompt(),
-                widget.WindowName(),
-                widget.Chord(
-                    chords_colors={
-                        "launch": (colors[0], colors[1]),
-                    },
-                    name_transform=lambda name: name.upper(),
-                ),
-                # NB Systray is incompatible with Wayland, consider using StatusNotifier instead
-                # widget.StatusNotifier(),
-                widget.TextBox("🔉:"),
-                widget.PulseVolume(),
-                widget.Sep(),
-                # widget.Battery(charge_char="🔋",discharge_char=" "),
-                widget.CPU(background=colors[0]),
-                widget.Memory(background=colors[1]),
-                widget.TextBox("Net:",background=colors[2]),
-                widget.NetGraph(background=colors[3]),
-                widget.Systray(),
-                widget.Clock(format="%Y-%m-%d %a %I:%M %p"),
-                widget.QuickExit(),
-            ],
+        top= bar.Bar(
+            widgets(),
             32,
-                background="#000000aa",
+            background=colors[0],
+            margin=[0,0,outerGap,0],
             # border_width=[2, 0, 2, 0],  # Draw top and bottom borders
             # border_color=["ff00ff", "000000", "ff00ff", "000000"]  # Borders are magenta
         ),
+        right=bar.Gap(outerGap),
+        left=bar.Gap(outerGap),
+        bottom=bar.Gap(outerGap),
+    ),
+    Screen(
+        top= bar.Bar(
+            widgets(),
+            32,
+            background=colors[0],
+            margin=[0,0,outerGap,0],
+            # border_width=[2, 0, 2, 0],  # Draw top and bottom borders
+            # border_color=["ff00ff", "000000", "ff00ff", "000000"]  # Borders are magenta
+        ),
+        right=bar.Gap(outerGap),
+        left=bar.Gap(outerGap),
+        bottom=bar.Gap(outerGap),
     ),
 ]
 
 # Drag floating layouts.
 mouse = [
-    Drag([mod], "Button1", lazy.window.set_position_floating(), start=lazy.window.get_position()),
-    Drag([mod], "Button3", lazy.window.set_size_floating(), start=lazy.window.get_size()),
-    Click([mod], "Button2", lazy.window.bring_to_front()),
+     Drag([mod], "Button1", lazy.window.set_position_floating(), start=lazy.window.get_position()),
+     Drag([mod], "Button3", lazy.window.set_size_floating(), start=lazy.window.get_size()),
+     Click([mod], "Button2", lazy.window.bring_to_front()),
 ]
 
 dgroups_key_binder = None
