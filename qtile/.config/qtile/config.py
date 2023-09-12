@@ -65,7 +65,12 @@ def widgets() :
         widget.TextBox("🔉:"),
         widget.PulseVolume(),
         widget.Sep(),
-        # widget.Battery(charge_char="🔋",discharge_char=" "),
+        widget.Backlight(
+            brightness_file="/sys/class/backlight/amdgpu_bl1/brightness",
+            max_brightness_file="/sys/class/backlight/amdgpu_bl1/brightness",
+            change_command = "brightnessctl {0}",
+                         ),
+        widget.Battery(charge_char="🔋",discharge_char=" "),
         widget.CPU(background=colors[0]),
         widget.Memory(background=colors[1]),
         widget.TextBox("Net:",background=colors[2]),
