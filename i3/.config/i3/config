@@ -11,6 +11,7 @@ bindsym $mod+Shift+Tab nop kitti3
 # bindsym Ctrl+Shift+l exec setxkbmap se
 # bindsym Ctrl+Shift+k exec setxkbmap us
 
+
  i3 config file (v4)
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 # Set mod key (Mod1=<Alt>, Mod4=<Super>)
@@ -403,7 +404,7 @@ client.background       $bg
 
 # Set inner/outer gaps
 gaps inner 10
-gaps outer 5
+gaps outer 10
 # Additionally, you can issue commands with the following syntax. This is useful to bind keys to changing the gap size.
 # gaps inner|outer current|all set|plus|minus <px>
 # gaps inner all set 10
