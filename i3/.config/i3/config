@@ -416,10 +416,10 @@ smart_borders on
 
 # change the gaps with two key presses
 bindsym $mod+o gaps outer current plus 5
-bindsym $mod+shift+o gaps outer current minus 5                     #
+bindsym $mod+Shift+o gaps outer current minus 5
 
 bindsym $mod+i gaps inner current plus 5
-bindsym $mod+shift+i gaps inner current minus 5
+bindsym $mod+Shift+i gaps inner current minus 5
 
 
 ## Press $mod+Shift+g to enter the gap mode. Choose o or i for modifying outer/inner gaps. Press one of + / - (in-/decrement for current workspace) or 0 (remove gaps for current workspace). If you also press Shift with these keys, the change will be global for all workspaces.
