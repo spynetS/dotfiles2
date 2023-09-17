@@ -1,0 +1,118 @@
+colors:
+    statusbar:
+        caret:
+            bg: "#7CBDF4"
+            fg: "#bfc0c0"
+        command:
+            bg: "#88B6E3"
+            fg: "#020304"
+            private:
+                bg: "black"
+        insert:
+            bg: "#5494E4"
+            fg: "#bfc0c0"
+        normal:
+            bg: "#020304"
+            fg: "#bfc0c0"
+        private:
+            bg: "#020304"
+            fg: "#bfc0c0"
+        progress:
+            bg: "#bfc0c0"
+        url:
+            fg: "#bfc0c0"
+            error:
+                fg: "#518CDC"
+            hover:
+                fg: "#6FB0F0"
+            success:
+                http:
+                    fg: "#bfc0c0"
+                https:
+                    fg: "#5494E4"
+            warn:
+                fg: "#659FE1"
+    tabs:
+        bar:
+            bg: "#020304"
+        even:
+            fg: "#bfc0c0"
+            bg: "#020304"
+        odd:
+            fg: "#bfc0c0"
+            bg: "#020304"
+        selected:
+            even:
+                fg: "#020304"
+                bg: "#bfc0c0"
+            odd:
+                fg: "#020304"
+                bg: "#bfc0c0"
+    completion:
+        category:
+            bg: "#88B6E3"
+            fg: "#020304"
+            border:
+                bottom: "#020304"
+                top: "#88B6E3"
+        even:
+            bg: "#020304"
+        odd:
+            bg: "#020304"
+        item:
+            selected:
+                bg: "#6FB0F0"
+                fg: "#bfc0c0"
+                border:
+                    bottom: "#6FB0F0"
+                    top: "#6FB0F0"
+        match:
+            fg: "#5494E4"
+        scrollbar:
+            bg: "#bfc0c0"
+            fg: "#020304"
+    downloads:
+        bar:
+            bg: "#020304"
+        error:
+            fg: "#bfc0c0"
+            bg: "#518CDC"
+        start:
+            fg: "#bfc0c0"
+            bg: "#7CBDF4"
+        stop:
+            fg: "#bfc0c0"
+            bg: "#5494E4"
+    hints:
+        fg: "#bfc0c0"
+        bg: "#020304"
+        match:
+            fg: "#659FE1"
+    keyhint:
+        fg: "#bfc0c0"
+        bg: "#020304"
+        suffix:
+            fg: "#659FE1"
+    messages:
+        error:
+            fg: "#bfc0c0"
+            bg: "#518CDC"
+            border: "#518CDC"
+        info:
+            fg: "#bfc0c0"
+            bg: "#5494E4"
+            border: "#5494E4"
+        warning:
+            fg: "#bfc0c0"
+            bg: "#659FE1"
+            border: "#659FE1"
+    prompts:
+        fg: "#bfc0c0"
+        bg: "#020304"
+        border: "#020304"
+        selected:
+            bg: "#659FE1"
+    webpage:
+        bg: "#bfc0c0"
+hints:
+    border: "1px solid #bfc0c0"
