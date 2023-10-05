@@ -165,9 +165,9 @@ keys = ([
     Key([mod],"F3", lazy.spawn(fileexplorer) ,desc=f"open ${fileexplorer}"),
 
     # keboard controll
-    # Key(["control","shift"],"k", lazy.spawn("setxkbmap us") ,desc="set keyboard to us"),
-    # Key(["control","shift"],"l", lazy.spawn("setxkbmap se") ,desc="set keyboard to se")
-    Key([mod],"l", lazy.spawn("/home/spy/.config/qtile/switchkeyboard.sh") ,desc="set keyboard to se"),
+     Key(["control","shift"],"k", lazy.spawn("setxkbmap us") ,desc="set keyboard to us"),
+     Key(["control","shift"],"l", lazy.spawn("setxkbmap se") ,desc="set keyboard to se"),
+    #Key([mod],"l", lazy.spawn("/home/spy/.config/qtile/switchkeyboard.sh") ,desc="set keyboard to se"),
     Key([mod],"s", lazy.spawn("scrot -s -e 'xclip -selection clipboard -t image/png -i $f'") ,desc="set keyboard to se"),
 ])
 
