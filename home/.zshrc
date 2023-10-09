@@ -25,7 +25,6 @@ export PATH="$HOME/.config/emacs/bin:$PATH"
 HISTFILE=~/.cashe/zsh/history
 TERM="kitty"
 alias sshswed="ssh -i ./.ssh/authorized_keys/Sm4rtcsh_bp.pem ubuntu@ec2-16-171-40-64.eu-north-1.compute.amazonaws.com"
-alias vim="nvim"
 alias tab="$TERM . &"
 alias code="vscodium"
 alias fetch="archey3"
@@ -64,8 +63,10 @@ fi
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
+bindkey "^[[3~" delete-char
+
 alias python3="python"
-source ~/.zsh/zsh-vim.zsh
+#source ~/.zsh/zsh-vim.zsh
 source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
