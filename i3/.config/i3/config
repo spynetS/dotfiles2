@@ -2,12 +2,20 @@
 exec wal -R -a 75
 #exec ~/.config/polybar/launch.sh
 
+# defining movement keys
+set $left   h
+set $down   j
+set $up     k
+set $right  l
+
+set $resize_delta 2
+
 exec_always --no-startup-id kitti3
 bindsym $mod+Shift+Tab nop kitti3
 
 # bindsym Ctrl+Shift+l exec setxkbmap se
 # bindsym Ctrl+Shift+k exec setxkbmap us
-
+#
 
 # i3 config file (v4)
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
@@ -121,7 +129,7 @@ bindsym $mod+b workspace back_and_forth
 bindsym $mod+Shift+b move container to workspace back_and_forth; workspace back_and_forth
 
 # split orientation
-bindsym $mod+Ctrl+h split h;exec notify-send 'tile horizontally'
+#bindsym $mod+Ctrl+h split h;exec notify-send 'tile horizontally'
 bindsym $mod+v split v;exec notify-send 'tile vertically'
 bindsym $mod+q split toggle
 
@@ -266,41 +274,17 @@ mode "$mode_system" {
 }
 
 # Resize window (you can also use the mouse for that)
-bindsym $mod+r mode "resize"
-mode "resize" {
-        # These bindings trigger as soon as you enter the resize mode
-        # Pressing left will shrink the window’s width.
-        # Pressing right will grow the window’s width.
-        # Pressing up will shrink the window’s height.
-        # Pressing down will grow the window’s height.
-        bindsym h resize shrink width 5 px or 5 ppt
-        bindsym k resize grow height 5 px or 5 ppt
-        bindsym j resize shrink height 5 px or 5 ppt
-        bindsym l resize grow width 5 px or 5 ppt
-
-        # same bindings, but for the arrow keys
-        bindsym Left resize shrink width 10 px or 10 ppt
-        bindsym Down resize grow height 10 px or 10 ppt
-        bindsym Up resize shrink height 10 px or 10 ppt
-        bindsym Right resize grow width 10 px or 10 ppt
-
-        # exit resize mode: Enter or Escape
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
-}
+##############################################
+#################   resize   #################
+##############################################
+bindsym $mod+control+$left  resize shrink   width   $resize_delta px or $resize_delta ppt
+bindsym $mod+control+$down  resize shrink   height  $resize_delta px or $resize_delta ppt
+bindsym $mod+control+$up    resize grow     height  $resize_delta px or $resize_delta ppt
+bindsym $mod+control+$right resize grow     width   $resize_delta px or $resize_delta ppt
 
 # Lock screen
 bindsym $mod+9 exec --no-startup-id blurlock
 
-# Autostart applications
-# exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
-# exec --no-startup-id nm-applet
-# exec --no-startup-id blueman-applet
-# exec_always --no-startup-id sbxkb
-# exec --no-startup-id start_conky_maia
-# exec --no-startup-id start_conky_green
-#exec --no-startup-id xautolock -time 10 -locker blurlock
-# exec_always --no-startup-id ff-theme-util
 exec_always --no-startup-id fix_xcursor
 
 # Color palette used for the terminal ( ~/.Xresources file )
@@ -342,11 +326,11 @@ bindsym $mod+SHIFT+w exec rofi -show window -theme /home/spy/.config/rofi/launch
 
 # Start i3bar to display a workspace bar (plus the system information i3status if available)
 bar {
- 	i3bar_command i3bar
- 	status_command i3status
- 	position bottom
-     mode dock
-     modifier none 
+	i3bar_command i3bar
+	status_command i3status
+	position bottom
+	mode dock
+     	modifier none 
  ## please set your primary output first. Example: 'xrandr --output eDP1 --primary'
  #	tray_output primary
  #	tray_output eDP1
@@ -356,18 +340,18 @@ bar {
  #   font xft:URWGothic-Book 11
  	strip_workspace_numbers yes
 
-     colors {
-         background $bg 
-         statusline $color0
-         separator  $fg
+	colors {
+		background $bg 
+		statusline $color0
+		separator  $fg
 
- #                           border  backgr. text
-         focused_workspace  #222D31 #010101 #ffffff
-         active_workspace   #595B5B #353836 #FDF6E3
-         inactive_workspace #595B5B #222D31 #EEE8D5
-         binding_mode       #16a085 #2C2C2C #F9FAF9
-         urgent_workspace   #16a085 #FDF6E3 #E5201D
-     }
+	 #                          border  backgr. text
+		focused_workspace  #222D31 #010101 #ffffff
+		active_workspace   #595B5B #353836 #FDF6E3
+		inactive_workspace #595B5B #222D31 #EEE8D5
+		binding_mode       #16a085 #2C2C2C #F9FAF9
+		urgent_workspace   #16a085 #FDF6E3 #E5201D
+	}
  }
 
 # hide/unhide i3status bar
@@ -386,15 +370,6 @@ bar {
 set_from_resource $fg i3wm.color7 #f0f0f0
 set_from_resource $bg i3wm.color2 #f0f0f0
 
-# class                 border  backgr. text indicator child_border
-# client.focused          $fg     $bg     $fg  $bg       $bg
-client.focused          $color4 $color7 $color0        $color1
-client.focused_inactive $bg     $bg     $fg  $bg       $bg
-client.unfocused        $bg     $bg     $fg  $bg       $bg
-client.urgent           $bg     $bg     $fg  $bg       $bg
-client.placeholder      $bg     $bg     $fg  $bg       $bg
-#222D31
-client.background       $bg
 #############################
 ### settings for i3-gaps: ###
 #############################
@@ -421,43 +396,3 @@ bindsym $mod+Shift+o gaps outer current minus 5
 bindsym $mod+i gaps inner current plus 5
 bindsym $mod+Shift+i gaps inner current minus 5
 
-
-## Press $mod+Shift+g to enter the gap mode. Choose o or i for modifying outer/inner gaps. Press one of + / - (in-/decrement for current workspace) or 0 (remove gaps for current workspace). If you also press Shift with these keys, the change will be global for all workspaces.
-#set $mode_gaps Gaps: (o) outer, (i) inner
-#set $mode_gaps_outer Outer Gaps: +|-|0 (local), Shift + +|-|0 (global)
-#set $mode_gaps_inner Inner Gaps: +|-|0 (local), Shift + +|-|0 (global)
-#
-##Old outer and inner gaps handeling
-
-#bindsym $mod+Shift+g mode "$mode_gaps"
-
-#mode "$mode_gaps" {
-#        bindsym o      mode "$mode_gaps_outer"
-#        bindsym i      mode "$mode_gaps_inner"
-#        bindsym Return mode "default"
-#        bindsym Escape mode "default"
-#}
-#mode "$mode_gaps_inner" {
-#        bindsym plus  gaps inner current plus 5
-#        bindsym minus gaps inner current minus 5
-#        bindsym 0     gaps inner current set 0
-#
-#        bindsym Shift+plus  gaps inner all plus 5
-#        bindsym Shift+minus gaps inner all minus 5
-#        bindsym Shift+0     gaps inner all set 0
-#
-#        bindsym Return mode "default"
-#        bindsym Escape mode "default"
-#}
-#mode "$mode_gaps_outer" {
-#        bindsym plus  gaps outer current plus 5
-#        bindsym minus gaps outer current minus 5
-#        bindsym 0     gaps outer current set 0
-#
-#        bindsym Shift+plus  gaps outer all plus 5
-#        bindsym Shift+minus gaps outer all minus 5
-#        bindsym Shift+0     gaps outer all set 0
-#
-#        bindsym Return mode "default"
-#        bindsym Escape mode "default"
-#}
