@@ -1,6 +1,6 @@
 #startup commands
 exec wal -R -a 75
-#exec ~/.config/polybar/launch.sh
+exec ~/.profile
 
 # defining movement keys
 set $left   h
@@ -50,7 +50,7 @@ font xft:URWGothic-Book 11
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec kitty
+bindsym $mod+Return exec alacritty 
 
 # kill focused window
 bindsym $mod+c kill
