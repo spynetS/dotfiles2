@@ -1,5 +1,6 @@
 #startup commands
 exec wal -R -a 75
+exec ~/.profile
 #exec ~/.config/polybar/launch.sh
 
 # defining movement keys
@@ -51,6 +52,7 @@ floating_modifier $mod
 
 # start a terminal
 bindsym $mod+Return exec kitty
+bindsym $mod+Shift+Return exec alacritty
 
 # kill focused window
 bindsym $mod+c kill
@@ -83,7 +85,7 @@ bindsym Ctrl+Shift+k exec setxkbmap us
 # Start Applications
 bindsym $mod+Ctrl+b exec terminal -e 'bmenu'
 bindsym $mod+w exec $BROWSER 
-bindsym $mod+F3 exec dolphin
+bindsym $mod+F3 exec thunar
 # bindsym $mod+F4 exec github-desktop
 #bindsym $mod+F3 exec terminal -e 'ranger'
 bindsym $mod+Shift+F3 exec pcmanfm_pkexec
@@ -215,6 +217,7 @@ bindsym $mod+Shift+8 move container to workspace $ws8; workspace $ws8
 
 # Open specific applications in floating mode
 
+for_window [title="Alacritty"] floating enable border pixel 1
 for_window [title="calcer"] floating enable border pixel 1
 for_window [class="calamares"] floating enable border normal
 for_window [class="Clipgrab"] floating enable

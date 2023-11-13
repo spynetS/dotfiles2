@@ -20,11 +20,13 @@ zmodload zsh/complist
 compinit
 
 export PATH="$HOME/.config/emacs/bin:$PATH"
-
+export EDITOR=vim
 
 HISTFILE=~/.cashe/zsh/history
 TERM="kitty"
-alias sshswed="ssh -i ./.ssh/authorized_keys/Sm4rtcsh_bp.pem ubuntu@ec2-16-171-40-64.eu-north-1.compute.amazonaws.com"
+alias clip="xclip -sel c "
+alias sshswed="ssh -i ./.ssh/authorized_keys/Sm4rtcsh_bp.pem ubuntu@ec2-16-171-138-156.eu-north-1.compute.amazonaws.com"
+alias getdb="scp -i ./.ssh/authorized_keys/Sm4rtcsh_bp.pem ubuntu@ec2-16-171-138-156.eu-north-1.compute.amazonaws.com:servers/Brinto_pay_backend/db.sqlite3 ./dev/Brinto_pay_2022/backend"
 alias tab="$TERM . &"
 alias code="vscodium"
 alias fetch="archey3"
