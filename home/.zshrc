@@ -23,11 +23,11 @@ export PATH="$HOME/.config/emacs/bin:$PATH"
 export EDITOR=vim
 
 HISTFILE=~/.cashe/zsh/history
-TERM="kitty"
+TERM="alacritty"
 alias clip="xclip -sel c "
 alias sshswed="ssh -i ./.ssh/authorized_keys/Sm4rtcsh_bp.pem ubuntu@ec2-16-171-138-156.eu-north-1.compute.amazonaws.com"
 alias getdb="scp -i ./.ssh/authorized_keys/Sm4rtcsh_bp.pem ubuntu@ec2-16-171-138-156.eu-north-1.compute.amazonaws.com:servers/Brinto_pay_backend/db.sqlite3 ./dev/Brinto_pay_2022/backend"
-alias tab="$TERM . &"
+alias tab="$TERM &"
 alias code="vscodium"
 alias fetch="archey3"
 alias home="cd ~" 
@@ -44,6 +44,10 @@ alias tor="ranger /mnt/nvme/Torrents"
 alias mnt="sudo mount /dev/nvme0n1p1 /mnt/nvme/"
 
 archey3
+# fix bad keybiding
+bindkey  "^[[H"   beginning-of-line
+bindkey  "^[[F"   end-of-line
+bindkey  "^[[3~"  delete-char
 
 #exit line in vim
 autoload edit-command-line; zle -N edit-command-line
@@ -65,7 +69,6 @@ fi
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-bindkey "^[[3~" delete-char
 
 alias python3="python"
 #source ~/.zsh/zsh-vim.zsh

@@ -51,7 +51,7 @@ font xft:URWGothic-Book 11
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec kitty
+bindsym $mod+Return exec alacritty
 bindsym $mod+Shift+Return exec alacritty
 
 # kill focused window
@@ -217,7 +217,7 @@ bindsym $mod+Shift+8 move container to workspace $ws8; workspace $ws8
 
 # Open specific applications in floating mode
 
-for_window [title="Alacritty"] floating enable border pixel 1
+#for_window [title="Alacritty"] floating enable border pixel 1
 for_window [title="calcer"] floating enable border pixel 1
 for_window [class="calamares"] floating enable border normal
 for_window [class="Clipgrab"] floating enable
