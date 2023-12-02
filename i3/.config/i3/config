@@ -38,6 +38,9 @@ bindsym XF86AudioRaiseVolume exec pactl -- set-sink-volume 0 +5%
 bindsym XF86AudioLowerVolume exec pactl -- set-sink-volume 0 -5%
 bindsym XF86AudioMute exec pactl -- set-sink-volume 0 -100%
 
+bindsym XF86AudioPlay exec playerctl play-pause
+
+
 # change borders
 bindsym $mod+u border none
 bindsym $mod+y border pixel 4
