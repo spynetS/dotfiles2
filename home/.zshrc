@@ -24,6 +24,8 @@ export EDITOR=vim
 
 HISTFILE=~/.cashe/zsh/history
 TERM="alacritty"
+alias mnt='sudo mount /dev/nvme0n1p1 /media/drive1'
+alias dj="python manage.py"
 alias clip="xclip -sel c "
 alias sshswed="ssh -i ./.ssh/authorized_keys/Sm4rtcsh_bp.pem ubuntu@ec2-16-171-138-156.eu-north-1.compute.amazonaws.com"
 alias getdb="scp -i ./.ssh/authorized_keys/Sm4rtcsh_bp.pem ubuntu@ec2-16-171-138-156.eu-north-1.compute.amazonaws.com:servers/Brinto_pay_backend/db.sqlite3 ./dev/Brinto_pay_2022/backend"

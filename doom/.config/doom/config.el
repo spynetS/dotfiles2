@@ -21,8 +21,8 @@
 ;; See 'C-h v doom-font' for documentation and more examples of what they
 ;; accept. For example:
 ;;
-(setq doom-font (font-spec :family "JetBrainsMono Nerd Font Mono" :size 20 :weight 'semi-light)
-     doom-variable-pitch-font (font-spec :family "JetBrainsMono Nerd Font Mono" :size 13))
+(setq doom-font (font-spec :family "Cascadia Mono PL" :size 20 :weight 'semi-light)
+   doom-variable-pitch-font (font-spec :family "Cascadia Mono PL" :size 13 :weight 'semi-light))
 ;;
 ;; If you or Emacs can't find your font, use 'M-x describe-font' to look them
 ;; up, `M-x eval-region' to execute elisp code, and 'M-x doom/reload-font' to
@@ -74,13 +74,6 @@
 
 (remove-hook 'doom-first-input-hook #'evil-snipe-mode)
 
-  (push '(css-mode . css-ts-mode) major-mode-remap-alist)
-  (push '(python-mode . python-ts-mode) major-mode-remap-alist)
-  (push '(javascript-mode . js-ts-mode) major-mode-remap-alist)
-  (push '(js-json-mode . json-ts-mode) major-mode-remap-alist)
-  (push '(typescript-mode . typescript-ts-mode) major-mode-remap-alist)
-  (push '(c-mode . c-ts-mode) major-mode-remap-alist)
-  (push '(c++-mode . c++-ts-mode) major-mode-remap-alist)
 
 ;; To get information about any of these functions/macros, move the cursor over
 ;; the highlighted symbol at press 'K' (non-evil users must press 'C-c c k').
