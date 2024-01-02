@@ -20,10 +20,13 @@ zmodload zsh/complist
 compinit
 
 export PATH="$HOME/.config/emacs/bin:$PATH"
-export EDITOR=vim
+export EDITOR=nvim
+export MANPAGER="nvim +Man!"
 
 HISTFILE=~/.cashe/zsh/history
 TERM="alacritty"
+alias shut="shutdown -h now"
+alias vps="ssh spy@193.181.23.24"
 alias mnt='sudo mount /dev/nvme0n1p1 /media/drive1'
 alias dj="python manage.py"
 alias clip="xclip -sel c "
