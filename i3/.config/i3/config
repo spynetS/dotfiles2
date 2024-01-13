@@ -1,13 +1,16 @@
 #startup commands
 exec wal -R -a 75
-exec ~/.profile
 #exec ~/.config/polybar/launch.sh
+exec source ~/.profile
 
 # defining movement keys
 set $left   h
 set $down   j
 set $up     k
 set $right  l
+
+set $TERM alacritty
+set $FILE_EXPLORER dolphin
 
 set $resize_delta 2
 
@@ -53,7 +56,7 @@ font xft:URWGothic-Book 11
 # Use Mouse+$mod to drag floating windows
 floating_modifier $mod
 
-# start a terminal
+# start a $TERM
 bindsym $mod+Return exec alacritty
 bindsym $mod+Shift+Return exec alacritty
 
@@ -72,7 +75,7 @@ bindsym $mod+g exec carc
 ################################################################################################
 
 exec --no-startup-id volumeicon
-#bindsym $mod+Ctrl+m exec terminal -e 'alsamixer'
+#bindsym $mod+Ctrl+m exec $TERM -e 'alsamixer'
 #exec --no-startup-id pulseaudio
 #exec --no-startup-id pa-applet
 bindsym $mod+Ctrl+m exec pavucontrol
@@ -86,13 +89,13 @@ bindsym Ctrl+Shift+k exec setxkbmap us
 # bindsym XF86MonBrightnessDown exec "xbacklight -dec 10; notify-send 'brightness down'"
 
 # Start Applications
-bindsym $mod+Ctrl+b exec terminal -e 'bmenu'
+bindsym $mod+Ctrl+b exec $TERM -e 'bmenu'
 bindsym $mod+w exec $BROWSER 
-bindsym $mod+F3 exec thunar
+bindsym $mod+F3 exec $FILE_EXPLORER
 # bindsym $mod+F4 exec github-desktop
-#bindsym $mod+F3 exec terminal -e 'ranger'
-bindsym $mod+Shift+F3 exec pcmanfm_pkexec
-bindsym $mod+F5 exec terminal -e 'mocp'
+bindsym $mod+Shift+F3 exec $TERM -e 'ranger'
+#bindsym $mod+Shift+F3 exec pcmanfm_pkexec
+bindsym $mod+F5 exec $TERM -e 'mocp'
 bindsym $mod+t exec --no-startup-id pkill picom
 bindsym $mod+Ctrl+t exec --no-startup-id picom -b
 bindsym $mod+Shift+d --release exec "killall dunst; exec notify-send 'restart dunst'"
@@ -248,7 +251,7 @@ for_window [class="Skype"] floating enable border normal
 for_window [class="Timeset-gui"] floating enable border normal
 for_window [class="(?i)virtualbox"] floating enable border normal
 for_window [class="Xfburn"] floating enable
-
+for_window [title="Picture-in-Picture"] sticky enable
 
 # switch to workspace with urgent window automatically
 for_window [urgent=latest] focus
@@ -293,14 +296,14 @@ bindsym $mod+9 exec --no-startup-id blurlock
 
 exec_always --no-startup-id fix_xcursor
 
-# Color palette used for the terminal ( ~/.Xresources file )
+# Color palette used for the $TERM ( ~/.Xresources file )
 # Colors are gathered based on the documentation:
 # https://i3wm.org/docs/userguide.html#xresources
 # Change the variable name at the place you want to match the color
-# of your terminal like this:
+# of your $TERM like this:
 # [example]
 # If you want your bar to have the same background color as your 
-# terminal background change the line 362 from:
+# $TERM background change the line 362 from:
 # background #14191D
 # to:
 # background $term_background
@@ -382,8 +385,8 @@ set_from_resource $bg i3wm.color2 #f0f0f0
 #############################
 
 # Set inner/outer gaps
-gaps inner 5
-gaps outer 10
+gaps inner 10
+gaps outer 15
 # Additionally, you can issue commands with the following syntax. This is useful to bind keys to changing the gap size.
 # gaps inner|outer current|all set|plus|minus <px>
 # gaps inner all set 10
