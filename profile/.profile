@@ -6,6 +6,7 @@ export jgazm="/usr/bin/jgazm"
 export BROWSER=/usr/bin/firefox
 setxkbmap us
 export TERM=alacritty
+export FILE_EXPLORER=dolphin
 
 ./.screenlayout/main.sh
 

@@ -22,9 +22,11 @@ compinit
 export PATH="$HOME/.config/emacs/bin:$PATH"
 export EDITOR=nvim
 export MANPAGER="nvim +Man!"
+export FILE_EXPLORER=dolphin
 
 HISTFILE=~/.cashe/zsh/history
 TERM="alacritty"
+alias lgrep="ll | grep"
 alias shut="shutdown -h now"
 alias vps="ssh spy@193.181.23.24"
 alias mnt='sudo mount /dev/nvme0n1p1 /media/drive1'
@@ -34,7 +36,7 @@ alias sshswed="ssh -i ./.ssh/authorized_keys/Sm4rtcsh_bp.pem ubuntu@ec2-16-171-1
 alias getdb="scp -i ./.ssh/authorized_keys/Sm4rtcsh_bp.pem ubuntu@ec2-16-171-138-156.eu-north-1.compute.amazonaws.com:servers/Brinto_pay_backend/db.sqlite3 ./dev/Brinto_pay_2022/backend"
 alias tab="$TERM &"
 alias code="vscodium"
-alias fetch="archey3"
+alias fetch="neofetch"
 alias home="cd ~" 
 alias ll="ls -alch"
 alias i3reload="i3-msg reload"
@@ -48,7 +50,7 @@ alias fresh="clear;fetch"
 alias tor="ranger /mnt/nvme/Torrents"
 alias mnt="sudo mount /dev/nvme0n1p1 /mnt/nvme/"
 
-archey3
+fetch
 # fix bad keybiding
 bindkey  "^[[H"   beginning-of-line
 bindkey  "^[[F"   end-of-line
