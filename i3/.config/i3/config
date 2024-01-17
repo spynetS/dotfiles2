@@ -328,7 +328,8 @@ set_from_resource $color14    color14
 set_from_resource $color15    color15
 
 bindsym $mod+Shift+c exec calcer
-bindsym $mod+d exec /home/spy/.config/rofi/launchers/type-3/launcher.sh
+# bindsym $mod+d exec /home/spy/.config/rofi/launchers/type-3/launcher.sh
+bindsym $mod+d exec dmenu_run
 
 #/home/spy/.config/rofi/scripts/launcher_t6  #rofi -show run
 bindsym $mod+SHIFT+w exec rofi -show window -theme /home/spy/.config/rofi/launchers/type-3/style-3.rasi
