@@ -31,9 +31,9 @@ from libqtile.utils import guess_terminal
 import os
 
 mod = "mod4"
-terminal = os.environ.get("TERM", "kitty") #guess_terminal()
+terminal = "alacritty"#os.environ.get("TERM", "kitty") #guess_terminal()
 browser = os.environ.get("BROWSER")
-fileexplorer = os.environ.get("GUI_FILE_EXPLORER")
+fileexplorer = "dolphin"#os.environ.get("FILE_EXPLORER")
 
 colors = []
 cache='/home/spy/.cache/wal/colors'
@@ -165,9 +165,9 @@ keys = ([
     Key([mod],"F3", lazy.spawn(fileexplorer) ,desc=f"open ${fileexplorer}"),
 
     # keboard controll
-    # Key(["control","shift"],"k", lazy.spawn("setxkbmap us") ,desc="set keyboard to us"),
-    # Key(["control","shift"],"l", lazy.spawn("setxkbmap se") ,desc="set keyboard to se")
-    Key([mod],"l", lazy.spawn("/home/spy/.config/qtile/switchkeyboard.sh") ,desc="set keyboard to se"),
+    Key(["control","shift"],"k", lazy.spawn("setxkbmap us") ,desc="set keyboard to us"),
+    Key(["control","shift"],"l", lazy.spawn("setxkbmap se") ,desc="set keyboard to se"),
+    #Key([mod],"l", lazy.spawn("/home/spy/.config/qtile/switchkeyboard.sh") ,desc="set keyboard to se"),
     Key([mod],"s", lazy.spawn("scrot -s -e 'xclip -selection clipboard -t image/png -i $f'") ,desc="set keyboard to se"),
 ])
 
@@ -204,6 +204,7 @@ for i in groups:
     )
 
 layouts = [
+    layout.Bsp(),
     layout.Columns(border_focus=colors[2],
                    border_normal=colors[0],
                    border_width=4,
@@ -213,7 +214,6 @@ layouts = [
     layout.Max(),
     # Try more layouts by unleashing below layouts.
     # layout.Stack(num_stacks=2),
-    # layout.Bsp(),
     # layout.Matrix(),
     layout.Floating(),
     # layout.MonadWide(),

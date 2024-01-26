@@ -5,10 +5,11 @@ export jgazm="/usr/bin/jgazm"
 # fix "xdg-open fork-bomb" export your preferred browser from here
 export BROWSER=/usr/bin/firefox
 setxkbmap us
-export TERM=alacritty
+export TERM=kitty
 export FILE_EXPLORER=dolphin
 
 ./.screenlayout/main.sh
+./.config/polybar/launch.sh --cuts
 
 wal -R -a 75
 
