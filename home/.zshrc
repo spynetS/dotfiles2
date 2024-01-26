@@ -25,7 +25,10 @@ export MANPAGER="nvim +Man!"
 export FILE_EXPLORER=dolphin
 
 HISTFILE=~/.cashe/zsh/history
-TERM="alacritty"
+TERM="kitty"
+#alias neofetch="neofetch --backend kitty --source ~/Pictures/richard_stallman.webp"
+alias neofetch="neofetch --source ~/Pictures/richard_stallman.webp"
+alias screenshot="scrot -s -e 'xclip -selection clipboard -t image/png -i $f"
 alias lgrep="ll | grep"
 alias shut="shutdown -h now"
 alias vps="ssh spy@193.181.23.24"
