@@ -17,6 +17,8 @@ set $resize_delta 2
 exec_always --no-startup-id kitti3
 bindsym $mod+Shift+Tab nop kitti3
 
+exec --no-startup-id autotiling
+
 # bindsym Ctrl+Shift+l exec setxkbmap se
 # bindsym Ctrl+Shift+k exec setxkbmap us
 #
