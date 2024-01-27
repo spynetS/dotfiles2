@@ -1,0 +1,20 @@
+<h1>README</h1>
+<h1>Dipendencis</h1>
+<ul>
+<li>
+<p>yay</p>
+</li>
+<li>
+<p>exa , ls with icons</p>
+</li>
+<li>neofetch</li>
+<li>pywall</li>
+<li>nordic-wallpapers</li>
+<li>ncmpcpp</li>
+<li>mpd</li>
+<li>zsh</li>
+<li>kitty</li>
+<li>chafa</li>
+</ul>
+<h4>yay install</h4>
+<p><code>yay -S exa neofetch pywall nordic-wallpapers ncmpcpp mpd zsh kitty chafa</code></p>
