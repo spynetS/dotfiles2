@@ -709,7 +709,7 @@ image_backend="chafa"
 #       In ascii mode, distro ascii art will be used and in an image mode, your
 #       wallpaper will be used.
 
-source="/home/spy/Pictures/davve.png"
+source="./ove.png"
 #image_source="~/Pictures/richard_stallman.webp"
 
 size = 50%
