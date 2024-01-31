@@ -26,6 +26,7 @@ export FILE_EXPLORER=dolphin
 
 HISTFILE=~/.cashe/zsh/history
 TERM="kitty"
+alias mechvibes="mechvibes --in-process-gpu"
 alias ls="exa --icons "
 alias neofetch="neofetch --source ~/Pictures/ove.jpg"
 alias screenshot="scrot -s -e 'xclip -selection clipboard -t image/png -i $f"

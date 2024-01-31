@@ -3,19 +3,7 @@
 
 # Dipendencis
 
-- yay
-
-- exa , ls with icons
-- neofetch
-- pywall
-- nordic-wallpapers
-- ncmpcpp
-- mpd
-- zsh
-- kitty
-- chafa
-
 #### yay install
-`yay -S exa neofetch pywall nordic-wallpapers ncmpcpp mpd zsh kitty chafa`
+`yay -S i3-gaps polybar picom-arian8j2-git exa rofi cava neofetch pywal zscroll autotiling nordic-wallpapers ncmpcpp mpd zsh kitty chafa`
 
 
