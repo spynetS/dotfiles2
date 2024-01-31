@@ -66,13 +66,51 @@
 ;;   `require' or `use-package'.
 ;; - `map!' for binding new keys
 
-    (map! :leader :desc "Description" :n "C-c" #'dosomething)
 
-(set-frame-parameter (selected-frame) 'alpha '( 92 100))
+
+
+:(set-frame-parameter (selected-frame) 'alpha '( 92 100))
 
 (add-to-list 'default-frame-alist '(alpha 92 100))
 
 (remove-hook 'doom-first-input-hook #'evil-snipe-mode)
+
+
+;; move windows with vim key
+(map! "M-h" #'windmove-left
+      "M-l" #'windmove-right
+      "M-k" #'windmove-up
+      "M-j" #'windmove-down)
+
+;; move windows size with vim key
+(map! "M-C-h" #'evil-window-decrease-width
+      "M-C-l" #'evil-window-increase-width
+      "M-C-j" #'evil-window-decrease-height
+      "M-C-k" #'evil-window-increase-height)
+
+
+;; spawning shell
+
+(defun spawn-term-down()
+  (interactive)
+  (+evil/window-split-and-follow)
+  (evil-window-set-height 10)
+  (eshell)
+)
+(defun spawn-term-tab()
+  (interactive)
+  (tab-new)
+  (eshell)
+)
+
+(map! "M-s RET" #'spawn-term-down)
+(map! "M-t RET" #'spawn-term-tab)
+(map! "M-RET" #'eshell)
+
+
+
+(map! "C-c t" #'tab-close)
+
 
 
 ;; To get information about any of these functions/macros, move the cursor over
