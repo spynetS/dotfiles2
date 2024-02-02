@@ -296,7 +296,7 @@ bindsym $mod+control+$up    resize grow     height  $resize_delta px or $resize_
 bindsym $mod+control+$right resize grow     width   $resize_delta px or $resize_delta ppt
 
 # Lock screen
-bindsym $mod+9 exec --no-startup-id blurlock
+bindsym $mod+9 exec --no-startup-id blurlocker
 
 exec_always --no-startup-id fix_xcursor
 
