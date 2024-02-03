@@ -9,7 +9,8 @@ export TERM=kitty
 export FILE_EXPLORER=dolphin
 
 ./.screenlayout/main.sh
-./.config/polybar/launch.sh --cuts
+#./.config/polybar/launch.sh --cuts
 
 wal -R -a 75
 
+emacs --daemon
