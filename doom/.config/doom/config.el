@@ -32,7 +32,7 @@
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
-(setq doom-theme 'doom-nord)
+(setq doom-theme 'doom-snazzy)
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
@@ -72,6 +72,13 @@
 :(set-frame-parameter (selected-frame) 'alpha '( 92 100))
 
 (add-to-list 'default-frame-alist '(alpha 92 100))
+;(add-to-list 'load-path "~/develop/emacs/emacs-libvterm")
+
+(add-to-list 'load-path ".config/doom/emacs-libvterm")
+
+(add-to-list 'load-path "~/.config/doom/emacs-application-framework/")
+(require 'eaf)
+(require 'eaf-music-player)
 
 (remove-hook 'doom-first-input-hook #'evil-snipe-mode)
 
@@ -97,6 +104,7 @@
   (evil-window-set-height 10)
   (eshell)
 )
+
 (defun spawn-term-tab()
   (interactive)
   (tab-new)
@@ -112,6 +120,11 @@
 (map! "C-c t" #'tab-close)
 
 
+;; Remap dired a bit
+(evil-define-key 'normal dired-mode-map
+  (kbd "h") 'dired-up-directory
+  (kbd "l") 'dired-find-file
+  )
 
 ;; To get information about any of these functions/macros, move the cursor over
 ;; the highlighted symbol at press 'K' (non-evil users must press 'C-c c k').
