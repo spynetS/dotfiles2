@@ -16,8 +16,10 @@ require("awful.hotkeys_popup.keys")
 
 
 function audioController()
-    local volume_widget = require("widgets-pack.volume-widget.volume-2")
-    return volume_widget
+    local volume_widget = require('widgets-pack.volume-widget.volume')
+    return volume_widget{
+        widget_type = 'arc',
+    }
 end
 
 function wifi()
