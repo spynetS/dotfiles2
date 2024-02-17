@@ -76,9 +76,9 @@
 
 (add-to-list 'load-path ".config/doom/emacs-libvterm")
 
-(add-to-list 'load-path "~/.config/doom/emacs-application-framework/")
-(require 'eaf)
-(require 'eaf-music-player)
+;; (add-to-list 'load-path "~/.config/doom/emacs-application-framework/")
+;; (require 'eaf)
+;; (require 'eaf-music-player)
 
 (remove-hook 'doom-first-input-hook #'evil-snipe-mode)
 
