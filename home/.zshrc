@@ -23,6 +23,7 @@ export PATH="$HOME/.config/emacs/bin:$PATH"
 export EDITOR=nvim
 export MANPAGER="nvim +Man!"
 export FILE_EXPLORER=dolphin
+export XDG_CONFIG_HOME="$HOME/.config"
 
 HISTFILE=~/.cashe/zsh/history
 TERM="kitty"
@@ -41,18 +42,21 @@ alias getdb="scp -i ./.ssh/authorized_keys/Sm4rtcsh_bp.pem ubuntu@ec2-16-171-138
 alias tab="$TERM &"
 alias code="vscodium"
 alias fetch="neofetch"
-alias home="cd ~" 
 alias ll="ls -alh"
 alias i3reload="i3-msg reload"
 alias i3="vim ~/.config/i3/config"
 alias poly="vim ~/.config/polybar/forest/"
-alias dot="cd ~/.dotfiles/"
+alias dot="cd ~/dotfiles2/"
 alias ..="cd .."
-alias zsc="vim ~/.zshrc"
+alias rc="$EDITOR ~/.zshrc"
 alias pacman="sudo pacman"
 alias fresh="clear;fetch"
-alias tor="ranger /mnt/nvme/Torrents"
 alias mnt="sudo mount /dev/nvme0n1p1 /mnt/nvme/"
+
+alias vf='cd $(find $($HOME) -type d | fzf) && tmux'
+
+eval "$(zoxide init zsh)"
+alias cd="z"
 
 fetch
 # fix bad keybiding
