@@ -51,7 +51,6 @@ alias ..="cd .."
 alias rc="$EDITOR ~/.zshrc"
 alias pacman="sudo pacman"
 alias fresh="clear;fetch"
-alias mnt="sudo mount /dev/nvme0n1p1 /mnt/nvme/"
 
 alias vf='cd $(find $($HOME) -type d | fzf) && tmux'
 

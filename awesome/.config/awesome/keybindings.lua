@@ -101,6 +101,8 @@ function global_keys(gears, awful)
 
     awful.key({ modkey,"Shift"}, "s",function() awful.spawn.with_shell("maim -s --format=png /dev/stdout | xclip -selection clipboard -t image/png -i")  end ,
     {description = "go back", group = "tag"}),
+    awful.key({ modkey,"Shift"}, "w",function() awful.spawn.with_shell("rofi -show window")  end ,
+    {description = "go back", group = "tag"}),
 
     awful.key({ modkey,           }, "j",
         function ()
@@ -188,7 +190,7 @@ function global_keys(gears, awful)
               {description = "open a terminal", group = "launcher"}),
     awful.key({ modkey, "Control" }, "r", awesome.restart,
               {description = "reload awesome", group = "awesome"}),
-    awful.key({ modkey, "Shift"   }, "q", awesome.quit,
+    awful.key({ modkey, "Control"   }, "q", awesome.quit,
               {description = "quit awesome", group = "awesome"}),
 
     awful.key({ modkey, "Control" }, "l",     function () awful.tag.incmwfact( 0.05)          end,
@@ -201,7 +203,7 @@ function global_keys(gears, awful)
     awful.key({ modkey, "Shift"   }, "l",     function () awful.tag.incnmaster(-1, nil, true) end,
               {description = "decrease the number of master clients", group = "layout"}),
 
-    awful.key({ modkey,           }, "space", function () awful.layout.inc( 1)                end,
+    awful.key({ modkey,"Shift"}, "q", function () awful.layout.inc( 1)                end,
               {description = "select next", group = "layout"}),
     awful.key({ modkey,    }, "q", function () awful.layout.inc(-1)                end,
               {description = "select previous", group = "layout"}),
