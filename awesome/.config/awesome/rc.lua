@@ -70,15 +70,15 @@ modkey = "Mod4"
 awful.layout.layouts = {
     awful.layout.suit.tile,
     awful.layout.suit.tile.left,
-    awful.layout.suit.tile.bottom,
+    -- awful.layout.suit.tile.bottom,
     awful.layout.suit.tile.top,
-    awful.layout.suit.fair,
-    awful.layout.suit.floating,
-    awful.layout.suit.fair.horizontal,
-    awful.layout.suit.spiral,
+    -- awful.layout.suit.fair,
+    -- awful.layout.suit.floating,
+    -- awful.layout.suit.fair.horizontal,
+    -- awful.layout.suit.spiral,
     awful.layout.suit.spiral.dwindle,
     awful.layout.suit.max,
-    awful.layout.suit.max.fullscreen,
+    -- awful.layout.suit.max.fullscreen,
     awful.layout.suit.magnifier,
     awful.layout.suit.corner.nw,
     -- awful.layout.suit.corner.ne,
@@ -367,8 +367,10 @@ awful.rules.rules = {
     },
 
     -- Set Firefox to always map on the tag named "2" on screen 1.
-    -- { rule = { class = "Firefox" },
-    --   properties = { screen = 1, tag = "2" } },
+    { rule = { class = "discord" },
+      properties = { screen = 1, tag = "4" } },
+    { rule = { class = "steam" },
+      properties = { screen = 1, tag = "8" } },
 }
 -- }}}
 client.connect_signal("property::floating", function(c)
@@ -412,9 +414,9 @@ awful.spawn.with_shell("~/.profile")
 awful.spawn.with_shell("export QT_QPA_PLATFORMTHEME=qt5ct")
 
 -- awful.spawn.with_shell("~/.screenlayout/main.sh")
--- awful.spawn.with_shell("picom")
+awful.spawn.with_shell("picom")
 -- awful.spawn.with_shell("setxkbmap us")
 awful.spawn.with_shell("wal -R -a 75")
 -- awful.spawn.with_shell("nitrogen --restore")
--- awful.spawn.with_shell("mpd")
+awful.spawn.with_shell("mpd")
 -- awful.spawn.with_shell(".config/conky/Sirius/start.sh")
