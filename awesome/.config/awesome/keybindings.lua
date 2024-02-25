@@ -182,6 +182,8 @@ function global_keys(gears, awful)
               {description="sets kayboard to se", group="awesome"}),
     awful.key({ modkey,           }, "w", function () awful.spawn(browser) end,
               {description = "open broweser", group = "launcher"}),
+    awful.key({ modkey,      "Shift"}, "e", function () awful.spawn("alacritty -e oec") end,
+              {description = "open broweser", group = "launcher"}),
     awful.key({ modkey,           }, "e", function () awful.spawn(fm) end,
               {description = "open fm", group = "launcher"}),
 
