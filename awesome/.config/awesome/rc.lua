@@ -48,7 +48,7 @@ end
 
 beautiful.init(gears.filesystem.get_themes_dir() .. "xresources/theme.lua")
 
-beautiful.useless_gap = 1
+beautiful.useless_gap = 5
 beautiful.font = "hack 11"
 -- This is used later as the default terminal and editor to run.
 terminal   = "kitty"
