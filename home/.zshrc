@@ -52,6 +52,10 @@ alias rc="$EDITOR ~/.zshrc"
 alias pacman="sudo pacman"
 alias fresh="clear;fetch"
 
+
+## pdfs
+alias inl="cd ~/Documents/linjär/in$1"
+
 alias vf='cd $(find $($HOME) -type d | fzf) && tmux'
 
 eval "$(zoxide init zsh)"
