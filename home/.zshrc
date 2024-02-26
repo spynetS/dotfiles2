@@ -51,6 +51,8 @@ alias ..="cd .."
 alias rc="$EDITOR ~/.zshrc"
 alias pacman="sudo pacman"
 alias fresh="clear;fetch"
+alias ec="emacsclient"
+alias nvim="ec"
 
 
 ## pdfs
