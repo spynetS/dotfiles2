@@ -130,6 +130,18 @@ function global_keys(gears, awful)
         {description = "focus previous by index", group = "client"}
     ),
 
+    awful.key({}, "XF86AudioPlay",
+        function () awful.spawn("playerctl play-pause") end,
+        {description = "play-pause playerctl", group = "client"}
+    ),
+    awful.key({}, "XF86AudioRaiseVolume",
+        function () awful.spawn("playerctl volume 0.05+") end,
+        {description = "raise playerctl volume", group = "client"}
+    ),
+    awful.key({}, "XF86AudioLowerVolume",
+        function () awful.spawn("playerctl volume 0.05-") end,
+        {description = "lower playerctl volume", group = "client"}
+    ),
     -- Layout manipulation
     awful.key({ modkey, "Shift"   }, "j", function () awful.client.swap.byidx(  1)    end,
               {description = "swap with next client by index", group = "client"}),
