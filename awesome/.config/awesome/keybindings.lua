@@ -168,9 +168,9 @@ function global_keys(gears, awful)
     awful.key({ modkey,           }, "d", function () awful.spawn.with_shell("~/.config/rofi/launchers/type-6/launcher.sh") end,
               {description = "open rofi", group = "rofi"}),
 
-    awful.key({ modkey }, "o",function() require("awful").screen.focused().selected_tag.gap = require("awful").screen.focused().selected_tag.gap+10 end,
+    awful.key({ modkey }, "o",function() require("awful").screen.focused().selected_tag.gap = require("awful").screen.focused().selected_tag.gap+1 end,
               {description="sets kayboard to us", group="awesome"}),
-    awful.key({ modkey,"Shift"}, "o",function() require("awful").screen.focused().selected_tag.gap = require("awful").screen.focused().selected_tag.gap-10 end,
+    awful.key({ modkey,"Shift"}, "o",function() require("awful").screen.focused().selected_tag.gap = require("awful").screen.focused().selected_tag.gap-1 end,
               {description="sets kayboard to us", group="awesome"}),
 
     awful.key({ modkey,"Shift"}, "c",function() awful.spawn("kitty --class calcer calcer -s ")  end,
