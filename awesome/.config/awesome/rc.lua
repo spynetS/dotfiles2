@@ -410,13 +410,8 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 -- s.mywibox.height = 30
 
 ---- AutoStart --
-awful.spawn.with_shell("~/.profile")
-awful.spawn.with_shell("export QT_QPA_PLATFORMTHEME=qt5ct")
+--awful.spawn.with_shell("export QT_QPA_PLATFORMTHEME=qt5ct")
 
--- awful.spawn.with_shell("~/.screenlayout/main.sh")
+awful.spawn.with_shell("/home/spy/.profile")
 awful.spawn.with_shell("picom")
--- awful.spawn.with_shell("setxkbmap us")
 awful.spawn.with_shell("wal -R -a 75")
--- awful.spawn.with_shell("nitrogen --restore")
-awful.spawn.with_shell("mpd")
--- awful.spawn.with_shell(".config/conky/Sirius/start.sh")

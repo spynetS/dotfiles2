@@ -1,7 +1,7 @@
 #!/usr/bin/zsh
 
 cd ~/dev
-P=$(fzf --algo=v1)
+P=$(fd . "/home/spy" | fzf --algo=v1)
 if [ $P != "" ]; then
-emacsclient -c $P
+emacsclient -c -nw $P
 fi

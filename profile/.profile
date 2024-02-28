@@ -11,6 +11,9 @@ export FILE_EXPLORER=dolphin
 ./.screenlayout/main.sh
 #./.config/polybar/launch.sh --cuts
 
+mpd
+mpDris2 &
+
 wal -R -a 75
 
 emacs --daemon
