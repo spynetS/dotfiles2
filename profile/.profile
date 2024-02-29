@@ -14,6 +14,7 @@ export FILE_EXPLORER=dolphin
 mpd
 mpDris2 &
 
-wal -R -a 75
+wal -R -n -a 75
+nitrogen --restore
 
 emacs --daemon
