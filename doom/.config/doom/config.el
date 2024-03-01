@@ -71,7 +71,7 @@
 
 :(set-frame-parameter (selected-frame) 'alpha '( 88 80))
 
-(add-to-list 'default-frame-alist '(alpha 92 100))
+(add-to-list 'default-frame-alist '(alpha 88 80))
 ;(add-to-list 'load-path "~/develop/emacs/emacs-libvterm")
 
 (add-to-list 'load-path ".config/doom/emacs-libvterm")
