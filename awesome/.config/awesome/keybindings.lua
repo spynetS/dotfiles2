@@ -92,10 +92,12 @@ function global_keys(gears, awful)
   return gears.table.join(
     awful.key({ modkey,           }, "s",      hotkeys_popup.show_help,
               {description="show help", group="awesome"}),
-    awful.key({ modkey,           }, "Left",   awful.tag.viewprev,
-              {description = "view previous", group = "tag"}),
-    awful.key({ modkey,           }, "Right",  awful.tag.viewnext,
-              {description = "view next", group = "tag"}),
+
+    awful.key({ modkey,  }, "Left", function () awful.screen.focus_relative( 1) end,
+              {description = "focus the next screen", group = "screen"}),
+    awful.key({ modkey,  }, "Right", function () awful.screen.focus_relative(-1) end,
+              {description = "focus the previous screen", group = "screen"}),
+
     awful.key({ modkey,           }, "Escape", awful.tag.history.restore,
               {description = "go back", group = "tag"}),
 
@@ -147,10 +149,8 @@ function global_keys(gears, awful)
               {description = "swap with next client by index", group = "client"}),
     awful.key({ modkey, "Shift"   }, "k", function () awful.client.swap.byidx( -1)    end,
               {description = "swap with previous client by index", group = "client"}),
-    awful.key({ modkey, "Control" }, "j", function () awful.screen.focus_relative( 1) end,
-              {description = "focus the next screen", group = "screen"}),
-    awful.key({ modkey, "Control" }, "k", function () awful.screen.focus_relative(-1) end,
-              {description = "focus the previous screen", group = "screen"}),
+
+
     awful.key({ modkey,           }, "u", awful.client.urgent.jumpto,
               {description = "jump to urgent client", group = "client"}),
     awful.key({ modkey,           }, "Tab",
@@ -177,29 +177,39 @@ function global_keys(gears, awful)
               {description="rofi powermenu", group="rofi"}),
     awful.key({ modkey,           }, "a", function () awful.spawn.with_shell("~/.config/rofi/applets/bin/apps.sh") end,
               {description="rofi apps", group="rofi"}),
+
     awful.key({ modkey,           }, "d", function () awful.spawn.with_shell("~/.config/rofi/launchers/type-6/launcher.sh") end,
               {description = "open rofi", group = "rofi"}),
+    --- end rofi
 
     awful.key({ modkey }, "o",function() require("awful").screen.focused().selected_tag.gap = require("awful").screen.focused().selected_tag.gap+1 end,
-              {description="sets kayboard to us", group="awesome"}),
-    awful.key({ modkey,"Shift"}, "o",function() require("awful").screen.focused().selected_tag.gap = require("awful").screen.focused().selected_tag.gap-1 end,
-              {description="sets kayboard to us", group="awesome"}),
+              {description="increase gaps", group="awesome"}),
 
-    awful.key({ modkey,"Shift"}, "c",function() awful.spawn("kitty --class calcer calcer -s ")  end,
+    awful.key({ modkey,"Shift"}, "o",function() require("awful").screen.focused().selected_tag.gap = require("awful").screen.focused().selected_tag.gap-1 end,
+              {description="decrease gaps", group="awesome"}),
+
+    awful.key({ modkey,"Shift"}, "c",function() awful.spawn("kitty --class calcer calc ")  end,
               {description="spawn calculatro", group="apps"}),
 
     awful.key({"Control", "Shift"          }, "k",      function() awful.spawn.with_shell("setxkbmap us") end,
               {description="sets kayboard to us", group="awesome"}),
     awful.key({"Control", "Shift"           }, "l",      function() awful.spawn.with_shell("setxkbmap se") end,
               {description="sets kayboard to se", group="awesome"}),
+    -- Standard program
+
+
     awful.key({ modkey,           }, "w", function () awful.spawn(browser) end,
               {description = "open broweser", group = "launcher"}),
+    awful.key({ modkey, "Control"}, "w", function () awful.spawn.with_shell("kitty --class calcer /home/spy/dotfiles2/opener/opener.sh") end,
+              {description = "open opener which will open browser", group = "launcher"}),
+
+
     awful.key({ modkey,      "Shift"}, "e", function () awful.spawn("alacritty -e oec") end,
-              {description = "open broweser", group = "launcher"}),
+              {description = "open emacs client fzf", group = "launcher"}),
     awful.key({ modkey,           }, "e", function () awful.spawn(fm) end,
               {description = "open fm", group = "launcher"}),
 
-    -- Standard program
+
     awful.key({ modkey,           }, "Return", function () awful.spawn(terminal) end,
               {description = "open a terminal", group = "launcher"}),
     awful.key({ modkey, "Control" }, "r", awesome.restart,
@@ -211,6 +221,7 @@ function global_keys(gears, awful)
               {description = "increase master width factor", group = "layout"}),
     awful.key({ modkey,  "Control"}, "h",     function () awful.tag.incmwfact(-0.01)          end,
               {description = "decrease master width factor", group = "layout"}),
+
 
     awful.key({ modkey, "Shift"   }, "h",     function () awful.tag.incnmaster( 1, nil, true) end,
               {description = "increase the number of master clients", group = "layout"}),
