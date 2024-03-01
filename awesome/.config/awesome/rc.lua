@@ -69,6 +69,7 @@ modkey = "Mod4"
 -- Table of layouts to cover with awful.layout.inc, order matters.
 awful.layout.layouts = {
     awful.layout.suit.tile,
+    awful.layout.stack,
     awful.layout.suit.tile.left,
     -- awful.layout.suit.tile.bottom,
     awful.layout.suit.tile.top,
@@ -412,6 +413,6 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 ---- AutoStart --
 --awful.spawn.with_shell("export QT_QPA_PLATFORMTHEME=qt5ct")
 
-awful.spawn.with_shell("/home/spy/.profile")
+awful.spawn.with_shell(". /home/spy/.profile")
 awful.spawn.with_shell("picom")
 awful.spawn.with_shell("wal -R -a 75")
