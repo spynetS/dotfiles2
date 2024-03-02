@@ -26,16 +26,18 @@ end
 
 function clientkeys(gears, awful)
     return gears.table.join(
-awful.key({modkey,"Control" }, "s", function()
-    print_awesome_memory_stats("Precollect")
-    collectgarbage("collect")
-    collectgarbage("collect")
-    gears.timer.start_new(20, function()
-        print_awesome_memory_stats("Postcollect")
-        return false
-    end)
-end, {description = "print awesome wm memory statistics", group="awesome"}),
-    awful.key({ modkey,"Shift"}, "Tab",      function (c) c:move_to_screen()               end,
+        awful.key({modkey,"Control" }, "s", function()
+        print_awesome_memory_stats("Precollect")
+        collectgarbage("collect")
+        collectgarbage("collect")
+        gears.timer.start_new(20, function()
+            print_awesome_memory_stats("Postcollect")
+            return false
+        end)
+        end,
+    {description = "print awesome wm memory statistics", group="awesome"}),
+
+    awful.key({ modkey,"Shift"}, "Tab",      function (c) c:move_to_screen() end,
               {description = "move to screen", group = "client"}),
 
     awful.key({ modkey, 'Control' }, 't',awful.titlebar.toggle,
@@ -73,6 +75,7 @@ end, {description = "print awesome wm memory statistics", group="awesome"}),
             c:raise()
         end ,
         {description = "(un)maximize", group = "client"}),
+
     awful.key({ modkey, "Control" }, "m",
         function (c)
             c.maximized_vertical = not c.maximized_vertical
@@ -175,8 +178,8 @@ function global_keys(gears, awful)
               {description="rofi brightness", group="rofi"}),
     awful.key({ modkey,           }, "p", function () awful.spawn.with_shell("~/.config/rofi/applets/bin/powermenu.sh") end,
               {description="rofi powermenu", group="rofi"}),
-    awful.key({ modkey,           }, "a", function () awful.spawn.with_shell("~/.config/rofi/applets/bin/apps.sh") end,
-              {description="rofi apps", group="rofi"}),
+    -- awful.key({ modkey,           }, "a", function () awful.spawn.with_shell("~/.config/rofi/applets/bin/apps.sh") end,
+    --           {description="rofi apps", group="rofi"}),
 
     awful.key({ modkey,           }, "d", function () awful.spawn.with_shell("~/.config/rofi/launchers/type-6/launcher.sh") end,
               {description = "open rofi", group = "rofi"}),
@@ -203,6 +206,8 @@ function global_keys(gears, awful)
     awful.key({ modkey, "Control"}, "w", function () awful.spawn.with_shell("kitty --class calcer /home/spy/dotfiles2/opener/opener.sh") end,
               {description = "open opener which will open browser", group = "launcher"}),
 
+    awful.key({ modkey, ""}, "a", function () awful.spawn.with_shell("kitty --class ncmpcpp ncmpcpp") end,
+              {description = "oppens ncmpcpp", group = "launcher"}),
 
     awful.key({ modkey,      "Shift"}, "e", function () awful.spawn("alacritty -e oec") end,
               {description = "open emacs client fzf", group = "launcher"}),
