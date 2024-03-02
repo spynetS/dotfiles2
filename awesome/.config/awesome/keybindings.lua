@@ -203,7 +203,7 @@ function global_keys(gears, awful)
 
     awful.key({ modkey,           }, "w", function () awful.spawn(browser) end,
               {description = "open broweser", group = "launcher"}),
-    awful.key({ modkey, "Control"}, "w", function () awful.spawn.with_shell("kitty --class calcer /home/spy/dotfiles2/opener/opener.sh") end,
+    awful.key({ modkey, "Control"}, "w", function () awful.spawn.with_shell("kitty /home/spy/dotfiles2/opener/opener.sh") end,
               {description = "open opener which will open browser", group = "launcher"}),
 
     awful.key({ modkey, ""}, "a", function () awful.spawn.with_shell("kitty --class ncmpcpp ncmpcpp") end,
