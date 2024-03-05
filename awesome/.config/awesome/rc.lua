@@ -46,6 +46,8 @@ end
 -- {{{ Variable definitions
 -- Themes define colours, icons, font and wallpapers.
 
+awful.spawn.with_shell(". /home/spy/.profile")
+
 beautiful.init(gears.filesystem.get_themes_dir() .. "xresources/theme.lua")
 
 beautiful.useless_gap = 5
@@ -166,7 +168,7 @@ awful.screen.connect_for_each_screen(function(s)
     -- awful.tag({ "1", "2", "3", "4", "5", "6", "7", "8", "9" }, s, awful.layout.layouts[1])
     layouts = awful.layout.layouts
         tags = {
-            names  = { " 1 ", " 2 ", " 3 ", "discord", " 5 ", "mail", "game", "muic", " 9 "},
+            names  = { " 1 ", " 2 ", " 3 ", "discord", " 5 ", "mail", "game", "music", " 9 "},
             layout = { layouts[1], layouts[1], layouts[1], layouts[1], layouts[1],
                        layouts[1], layouts[1], layouts[1], layouts[1]
     }}
@@ -374,15 +376,15 @@ awful.rules.rules = {
 
     -- Map clients to tahs
     { rule = { class = "discord" },
-      properties = { screen = 1, tag = "4" } },
+      properties = { screen = 1, tag = "discord" } },
     { rule = { class = "steam" },
-      properties = { screen = 1, tag = "7" } },
+      properties = { screen = 1, tag = "game" } },
 
     { rule = { class = "ncmpcpp" },
-      properties = { screen = 1, tag = "8" } },
+      properties = { screen = 1, tag = "music" } },
 
     { rule = { class = "thunderbird" },
-      properties = { screen = 1, tag = "6" } },
+      properties = { screen = 1, tag = "mail" } },
 }
 -- }}}
 client.connect_signal("property::floating", function(c)
@@ -424,6 +426,5 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 ---- AutoStart --
 --awful.spawn.with_shell("export QT_QPA_PLATFORMTHEME=qt5ct")
 
-awful.spawn.with_shell(". /home/spy/.profile")
 awful.spawn.with_shell("picom")
 awful.spawn.with_shell("wal -R -a 75")

@@ -26,16 +26,16 @@ end
 
 function clientkeys(gears, awful)
     return gears.table.join(
-        awful.key({modkey,"Control" }, "s", function()
-        print_awesome_memory_stats("Precollect")
-        collectgarbage("collect")
-        collectgarbage("collect")
-        gears.timer.start_new(20, function()
-            print_awesome_memory_stats("Postcollect")
-            return false
-        end)
-        end,
-    {description = "print awesome wm memory statistics", group="awesome"}),
+    --     awful.key({modkey,"Control" }, "s", function()
+    --     print_awesome_memory_stats("Precollect")
+    --     collectgarbage("collect")
+    --     collectgarbage("collect")
+    --     gears.timer.start_new(20, function()
+    --         print_awesome_memory_stats("Postcollect")
+    --         return false
+    --     end)
+    --     end,
+    -- {description = "print awesome wm memory statistics", group="awesome"}),
 
     awful.key({ modkey,"Shift"}, "Tab",      function (c) c:move_to_screen() end,
               {description = "move to screen", group = "client"}),
@@ -104,8 +104,12 @@ function global_keys(gears, awful)
     awful.key({ modkey,           }, "Escape", awful.tag.history.restore,
               {description = "go back", group = "tag"}),
 
-    awful.key({ modkey,"Shift"}, "s",function() awful.spawn.with_shell("maim -s --format=png /dev/stdout | xclip -selection clipboard -t image/png -i")  end ,
+    awful.key({ modkey,"shift"}, "s",function() awful.spawn.with_shell("maim -s --format=png /dev/stdout | xclip -selection clipboard -t image/png -i")  end ,
     {description = "go back", group = "tag"}),
+
+    awful.key({ modkey,"Control"}, "s",function() awful.spawn.with_shell("maim -s ~/Pictures/Screenshots/$(date +%s).png")  end ,
+    {description = "go back", group = "tag"}),
+
     awful.key({ modkey,"Shift"}, "w",function() awful.spawn.with_shell("rofi -show window")  end ,
     {description = "go back", group = "tag"}),
 
