@@ -226,9 +226,13 @@ function global_keys(gears, awful)
     awful.key({ modkey, "Control"   }, "q", awesome.quit,
               {description = "quit awesome", group = "awesome"}),
 
-    awful.key({ modkey, "Control" }, "l",     function () awful.tag.incmwfact( 0.01)          end,
+    awful.key({ modkey, "Control" }, "l",     function () awful.tag.incmwfact( 0.02)          end,
               {description = "increase master width factor", group = "layout"}),
-    awful.key({ modkey,  "Control"}, "h",     function () awful.tag.incmwfact(-0.01)          end,
+    awful.key({ modkey,  "Control"}, "h",     function () awful.tag.incmwfact(-0.02)          end,
+              {description = "decrease master width factor", group = "layout"}),
+    awful.key({ modkey, "Control" }, "j",     function () awful.client.incwfact( 0.08)          end,
+              {description = "increase master width factor", group = "layout"}),
+    awful.key({ modkey,  "Control"}, "k",     function () awful.client.incwfact(-0.08)          end,
               {description = "decrease master width factor", group = "layout"}),
 
 
