@@ -26,7 +26,6 @@ export FILE_EXPLORER=dolphin
 export XDG_CONFIG_HOME="$HOME/.config"
 
 HISTFILE=~/.cashe/zsh/history
-TERM="kitty"
 alias mechvibes="mechvibes --in-process-gpu"
 alias ls="exa --icons "
 alias neofetch="neofetch --source ~/Pictures/ove.jpg"
@@ -52,12 +51,10 @@ alias rc="$EDITOR ~/.zshrc"
 alias pacman="sudo pacman"
 alias fresh="clear;fetch"
 alias ec="emacsclient"
-alias nvim="ec"
 
 
 ## pdfs
 alias inl="cd ~/Documents/linjär/in$1"
-
 alias vf='cd $(find $($HOME) -type d | fzf) && tmux'
 
 eval "$(zoxide init zsh)"
@@ -94,5 +91,5 @@ alias python3="python"
 #source ~/.zsh/zsh-vim.zsh
 source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
 #source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+# source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
