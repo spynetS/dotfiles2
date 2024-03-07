@@ -46,14 +46,12 @@ end
 -- {{{ Variable definitions
 -- Themes define colours, icons, font and wallpapers.
 
-awful.spawn.with_shell(". /home/spy/.profile")
-
 beautiful.init(gears.filesystem.get_themes_dir() .. "xresources/theme.lua")
 
 beautiful.useless_gap = 5
 beautiful.font = "hack 11"
 -- This is used later as the default terminal and editor to run.
-terminal   = "kitty"
+terminal   = "alacritty"
 browser    = "firefox"
 fm         = 'dolphin'
 editor     = os.getenv("EDITOR") or "vim"
@@ -215,10 +213,7 @@ awful.screen.connect_for_each_screen(function(s)
             s.mypromptbox,
             mpc_widget(),
         },
-        -- memory_widget,
-        {
-            layout = wibox.layout.fixed.horizontal,
-        },
+        s.mytasklist,
         { -- Right widgets
             layout = wibox.layout.fixed.horizontal,
             -- pacman_widget(),
@@ -227,6 +222,7 @@ awful.screen.connect_for_each_screen(function(s)
             wifi(),
             memory_widget(),
             cpu_widget(),
+            wibox.widget.systray(),
             mykeyboardlayout,
             text_clock(),
             s.mylayoutbox,
@@ -424,7 +420,15 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 -- s.mywibox.height = 30
 
 ---- AutoStart --
---awful.spawn.with_shell("export QT_QPA_PLATFORMTHEME=qt5ct")
+awful.spawn.with_shell("export QT_QPA_PLATFORMTHEME=qt6ct")
+awful.spawn.with_shell("export TERM=" .. terminal)
+awful.spawn.with_shell("touch /home/spy/"..terminal)
+
 
 awful.spawn.with_shell("picom")
 awful.spawn.with_shell("wal -R -a 75")
+awful.spawn.with_shell("mpd")
+awful.spawn.with_shell("mpDris2")
+awful.spawn.with_shell("nitrogen --restore")
+awful.spawn.with_shell("emacs --daemon")
+awful.spawn.with_shell("./.screenlayout/main.sh")
