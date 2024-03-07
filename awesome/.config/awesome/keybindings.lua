@@ -195,7 +195,7 @@ function global_keys(gears, awful)
     awful.key({ modkey,"Shift"}, "o",function() require("awful").screen.focused().selected_tag.gap = require("awful").screen.focused().selected_tag.gap-1 end,
               {description="decrease gaps", group="awesome"}),
 
-    awful.key({ modkey,"Shift"}, "c",function() awful.spawn("kitty --class calcer calc ")  end,
+    awful.key({ modkey,"Shift"}, "c",function() awful.spawn(terminal.." -e --class calcer calc ")  end,
               {description="spawn calculatro", group="apps"}),
 
     awful.key({"Control", "Shift"          }, "k",      function() awful.spawn.with_shell("setxkbmap us") end,
@@ -207,13 +207,13 @@ function global_keys(gears, awful)
 
     awful.key({ modkey,           }, "w", function () awful.spawn(browser) end,
               {description = "open broweser", group = "launcher"}),
-    awful.key({ modkey, "Control"}, "w", function () awful.spawn.with_shell("kitty /home/spy/dotfiles2/opener/opener.sh") end,
+    awful.key({ modkey, "Control"}, "w", function () awful.spawn.with_shell(terminal .. " -e /home/spy/dotfiles2/opener/opener.sh") end,
               {description = "open opener which will open browser", group = "launcher"}),
 
-    awful.key({ modkey, ""}, "a", function () awful.spawn.with_shell("kitty --class ncmpcpp ncmpcpp") end,
+    awful.key({ modkey, ""}, "a", function () awful.spawn.with_shell(terminal .. " --class ncmpcpp -e  ncmpcpp") end,
               {description = "oppens ncmpcpp", group = "launcher"}),
 
-    awful.key({ modkey,      "Shift"}, "e", function () awful.spawn("alacritty -e oec") end,
+    awful.key({ modkey,      "Shift"}, "e", function () awful.spawn.with_shell(terminal .. " -e oec") end,
               {description = "open emacs client fzf", group = "launcher"}),
     awful.key({ modkey,           }, "e", function () awful.spawn(fm) end,
               {description = "open fm", group = "launcher"}),

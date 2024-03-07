@@ -14,7 +14,7 @@ local function parse_password(host)
 end
 
 function mpc.new(host, port, password, error_handler, ...)
-	host = host or os.getenv("MPD_HOST") or "localhost"
+	host = host or os.getenv("MPD_HOST") or "127.0.0.1"
 	port = port or os.getenv("MPD_PORT") or 6600
 	if not password then
 		host, password = parse_password(host)
