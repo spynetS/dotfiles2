@@ -1,7 +1,6 @@
 {
     "wallpaper": "/home/spy/dotfiles2/wallpaper/nordic-wallpapers/ign_unsplash7.png",
-    "alpha": "75",
-
+    "alpha": "80",
     "special": {
         "background": "#08090b",
         "foreground": "#c1c1c2",
