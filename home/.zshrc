@@ -51,6 +51,7 @@ alias rc="$EDITOR ~/.zshrc"
 alias pacman="sudo pacman"
 alias fresh="clear;fetch"
 alias ec="emacsclient"
+alias extract-album="yt-dlp --extract-audio --audio-format flac "
 
 
 ## pdfs
