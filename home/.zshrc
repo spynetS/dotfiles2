@@ -23,11 +23,15 @@ export PATH="$HOME/.config/emacs/bin:$PATH"
 export EDITOR=nvim
 export MANPAGER="nvim +Man!"
 export FILE_EXPLORER=dolphin
+export XDG_CONFIG_HOME="$HOME/.config"
 
 HISTFILE=~/.cashe/zsh/history
-TERM="alacritty"
+alias mechvibes="mechvibes --in-process-gpu"
+alias ls="exa --icons "
+alias neofetch="neofetch --source ~/Pictures/ove.jpg"
+alias screenshot="scrot -s -e 'xclip -selection clipboard -t image/png -i $f"
 alias lgrep="ll | grep"
-alias shut="shutdown -h now"
+alias shut="sudo shutdown -h now"
 alias vps="ssh spy@193.181.23.24"
 alias mnt='sudo mount /dev/nvme0n1p1 /media/drive1'
 alias dj="python manage.py"
@@ -37,18 +41,24 @@ alias getdb="scp -i ./.ssh/authorized_keys/Sm4rtcsh_bp.pem ubuntu@ec2-16-171-138
 alias tab="$TERM &"
 alias code="vscodium"
 alias fetch="neofetch"
-alias home="cd ~" 
-alias ll="ls -alch"
+alias ll="ls -alh"
 alias i3reload="i3-msg reload"
 alias i3="vim ~/.config/i3/config"
 alias poly="vim ~/.config/polybar/forest/"
-alias dot="cd ~/.dotfiles/"
+alias dot="cd ~/dotfiles2/"
 alias ..="cd .."
-alias zsc="vim ~/.zshrc"
+alias rc="$EDITOR ~/.zshrc"
 alias pacman="sudo pacman"
 alias fresh="clear;fetch"
-alias tor="ranger /mnt/nvme/Torrents"
-alias mnt="sudo mount /dev/nvme0n1p1 /mnt/nvme/"
+alias ec="emacsclient"
+
+
+## pdfs
+alias inl="cd ~/Documents/linjär/in$1"
+alias vf='cd $(find $($HOME) -type d | fzf) && tmux'
+
+eval "$(zoxide init zsh)"
+alias cd="z"
 
 fetch
 # fix bad keybiding
@@ -80,6 +90,6 @@ fi
 alias python3="python"
 #source ~/.zsh/zsh-vim.zsh
 source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
-source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+#source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+# source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
