@@ -4,7 +4,7 @@ import sys
 import os
 
 folder = "~/dotfiles2"
-editor = "$EDITOR"
+editor = "emacsclient"
 
 a = sys.argv[1]
 path = f"{folder}/{a}/.config/{a}"

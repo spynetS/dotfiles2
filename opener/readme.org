@@ -1,0 +1,23 @@
+#+title: Readm
+
+This is a program that will read the `bookmark.md` file and export it to fzf where you can choose what link to open with firefox.
+
+* Dependencies
+- awk
+- fzf
+- python
+
+** changeble
+- firefox `browser to open with`
+- devour `used so the terminal opening the fzf will close after firefox is opened`
+
+* To get more links just go to
+1. Manage bookmarks
+2. import/export
+2. export all bookmakrs as html to this bookmarks.html file
+
+* Run
+I have set it up as a keybinding where it runs `kitty opener` so it opens as a new termial window
+
+* TODO
+** [ ] Change so we dont have to extract the bookmarks from firefox. Just read the config bookmarks sqlite file
