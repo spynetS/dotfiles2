@@ -203,7 +203,12 @@ awful.screen.connect_for_each_screen(function(s)
     -- })
     -- Create the wibox
     s.mywibox = awful.wibox({ position = "top", screen = s, height=28, width=1920, opacity=0.8})
-
+    local sep = wibox.widget{
+        markup = ' ',
+        align  = 'center',
+        valign = 'center',
+        widget = wibox.widget.textbox
+    }
     -- Add widgets to the wibox
     s.mywibox:setup {
         layout = wibox.layout.align.horizontal,
@@ -212,9 +217,11 @@ awful.screen.connect_for_each_screen(function(s)
             s.mytaglist,
             s.mypromptbox,
             mpc_widget(),
+        sep,
         },
         s.mytasklist,
         { -- Right widgets
+        sep,
             layout = wibox.layout.fixed.horizontal,
             -- pacman_widget(),
             audioController(),
