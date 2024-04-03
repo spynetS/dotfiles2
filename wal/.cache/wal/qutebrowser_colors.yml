@@ -1,118 +1,118 @@
 colors:
     statusbar:
         caret:
-            bg: "#9C9AA3"
-            fg: "#c1c1c2"
+            bg: "#BDC3CF"
+            fg: "#bfc0c0"
         command:
-            bg: "#CDB2A9"
-            fg: "#08090b"
+            bg: "#C7CDD9"
+            fg: "#020305"
             private:
                 bg: "black"
         insert:
-            bg: "#7A9BC3"
-            fg: "#c1c1c2"
+            bg: "#7C828E"
+            fg: "#bfc0c0"
         normal:
-            bg: "#08090b"
-            fg: "#c1c1c2"
+            bg: "#020305"
+            fg: "#bfc0c0"
         private:
-            bg: "#08090b"
-            fg: "#c1c1c2"
+            bg: "#020305"
+            fg: "#bfc0c0"
         progress:
-            bg: "#c1c1c2"
+            bg: "#bfc0c0"
         url:
-            fg: "#c1c1c2"
+            fg: "#bfc0c0"
             error:
-                fg: "#7699B1"
+                fg: "#737985"
             hover:
-                fg: "#859AAA"
+                fg: "#B4BAC6"
             success:
                 http:
-                    fg: "#c1c1c2"
+                    fg: "#bfc0c0"
                 https:
-                    fg: "#7A9BC3"
+                    fg: "#7C828E"
             warn:
-                fg: "#A18480"
+                fg: "#9AA0AC"
     tabs:
         bar:
-            bg: "#08090b"
+            bg: "#020305"
         even:
-            fg: "#c1c1c2"
-            bg: "#08090b"
+            fg: "#bfc0c0"
+            bg: "#020305"
         odd:
-            fg: "#c1c1c2"
-            bg: "#08090b"
+            fg: "#bfc0c0"
+            bg: "#020305"
         selected:
             even:
-                fg: "#08090b"
-                bg: "#c1c1c2"
+                fg: "#020305"
+                bg: "#bfc0c0"
             odd:
-                fg: "#08090b"
-                bg: "#c1c1c2"
+                fg: "#020305"
+                bg: "#bfc0c0"
     completion:
         category:
-            bg: "#CDB2A9"
-            fg: "#08090b"
+            bg: "#C7CDD9"
+            fg: "#020305"
             border:
-                bottom: "#08090b"
-                top: "#CDB2A9"
+                bottom: "#020305"
+                top: "#C7CDD9"
         even:
-            bg: "#08090b"
+            bg: "#020305"
         odd:
-            bg: "#08090b"
+            bg: "#020305"
         item:
             selected:
-                bg: "#859AAA"
-                fg: "#c1c1c2"
+                bg: "#B4BAC6"
+                fg: "#bfc0c0"
                 border:
-                    bottom: "#859AAA"
-                    top: "#859AAA"
+                    bottom: "#B4BAC6"
+                    top: "#B4BAC6"
         match:
-            fg: "#7A9BC3"
+            fg: "#7C828E"
         scrollbar:
-            bg: "#c1c1c2"
-            fg: "#08090b"
+            bg: "#bfc0c0"
+            fg: "#020305"
     downloads:
         bar:
-            bg: "#08090b"
+            bg: "#020305"
         error:
-            fg: "#c1c1c2"
-            bg: "#7699B1"
+            fg: "#bfc0c0"
+            bg: "#737985"
         start:
-            fg: "#c1c1c2"
-            bg: "#9C9AA3"
+            fg: "#bfc0c0"
+            bg: "#BDC3CF"
         stop:
-            fg: "#c1c1c2"
-            bg: "#7A9BC3"
+            fg: "#bfc0c0"
+            bg: "#7C828E"
     hints:
-        fg: "#c1c1c2"
-        bg: "#08090b"
+        fg: "#bfc0c0"
+        bg: "#020305"
         match:
-            fg: "#A18480"
+            fg: "#9AA0AC"
     keyhint:
-        fg: "#c1c1c2"
-        bg: "#08090b"
+        fg: "#bfc0c0"
+        bg: "#020305"
         suffix:
-            fg: "#A18480"
+            fg: "#9AA0AC"
     messages:
         error:
-            fg: "#c1c1c2"
-            bg: "#7699B1"
-            border: "#7699B1"
+            fg: "#bfc0c0"
+            bg: "#737985"
+            border: "#737985"
         info:
-            fg: "#c1c1c2"
-            bg: "#7A9BC3"
-            border: "#7A9BC3"
+            fg: "#bfc0c0"
+            bg: "#7C828E"
+            border: "#7C828E"
         warning:
-            fg: "#c1c1c2"
-            bg: "#A18480"
-            border: "#A18480"
+            fg: "#bfc0c0"
+            bg: "#9AA0AC"
+            border: "#9AA0AC"
     prompts:
-        fg: "#c1c1c2"
-        bg: "#08090b"
-        border: "#08090b"
+        fg: "#bfc0c0"
+        bg: "#020305"
+        border: "#020305"
         selected:
-            bg: "#A18480"
+            bg: "#9AA0AC"
     webpage:
-        bg: "#c1c1c2"
+        bg: "#bfc0c0"
 hints:
-    border: "1px solid #c1c1c2"
+    border: "1px solid #bfc0c0"
