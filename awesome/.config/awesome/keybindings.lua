@@ -104,7 +104,7 @@ function global_keys(gears, awful)
     awful.key({ modkey,           }, "Escape", awful.tag.history.restore,
               {description = "go back", group = "tag"}),
 
-    awful.key({ modkey,"Shift"}, "s",function() Awful.spawn.with_shell("maim -s --format=png /dev/stdout | xclip -selection clipboard -t image/png -i")  end ,
+    awful.key({ modkey,"Shift"}, "s",function() awful.spawn.with_shell("maim -s --format=png /dev/stdout | xclip -selection clipboard -t image/png -i")  end ,
     {description = "go back", group = "tag"}),
 
     awful.key({ modkey,"Control"}, "s",function() awful.spawn.with_shell("maim -s ~/Pictures/Screenshots/$(date +%s).png")  end ,
