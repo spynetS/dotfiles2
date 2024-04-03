@@ -1,7 +1,6 @@
 {
     "wallpaper": "/usr/share/backgrounds/nordic-wallpapers/mountain_jaws.jpg",
     "alpha": "75",
-
     "special": {
         "background": "#020305",
         "foreground": "#bfc0c0",
