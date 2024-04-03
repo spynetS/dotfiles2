@@ -52,7 +52,7 @@ alias pacman="sudo pacman"
 alias fresh="clear;fetch"
 alias ec="emacsclient"
 alias extract-album="yt-dlp --extract-audio --audio-format flac "
-
+alias r2="r2modman --in-process-gpu"
 
 ## pdfs
 alias inl="cd ~/Documents/linjär/in$1"

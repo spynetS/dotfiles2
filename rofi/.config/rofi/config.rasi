@@ -180,4 +180,6 @@ configuration {
 */
 }
 //@theme "/usr/share/rofi/themes/ArcoLinux-Nord.rasi"
-@theme "/usr/share/rofi/themes/dmenu.rasi"
+//@theme "/usr/share/rofi/themes/dmenu.rasi"
+//@theme "/usr/share/rofi/themes/sidebar.rasi"
+@theme "/usr/share/rofi/themes/docu.rasi"
