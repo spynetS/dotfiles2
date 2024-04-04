@@ -32,7 +32,7 @@
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
-(setq doom-theme 'doom-ir-black)
+(setq doom-theme 'doom-nord-aurora)
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
@@ -67,9 +67,9 @@
 ;; - `map!' for binding new keys
 
 
+(doom/set-frame-opacity 75)
 
-
-:(set-frame-parameter (selected-frame) 'alpha '( 88 80))
+(set-frame-parameter (selected-frame) 'alpha '( 88 80))
 
 (add-to-list 'default-frame-alist '(alpha 88 80))
 ;(add-to-list 'load-path "~/develop/emacs/emacs-libvterm")
@@ -81,7 +81,7 @@
 ;; (require 'eaf-music-player)
 
 (remove-hook 'doom-first-input-hook #'evil-snipe-mode)
-(setq fancy-splash-image "~/Pictures/ove.jpg")
+;;(setq fancy-splash-image "~/Pictures/ove.jpg")
 
 
 ;; move windows with vim key

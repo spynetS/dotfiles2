@@ -10,6 +10,8 @@
   "modules-left": ["hyprland/workspaces", "hyprland/window"],
   "modules-center": ["custom/spotify"],
   "modules-right": [
+    "battery",
+    "backlight",
     "cpu",
     "memory",
     "pulseaudio",
