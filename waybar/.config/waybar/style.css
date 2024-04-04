@@ -50,6 +50,8 @@ window#waybar.hidden {
 }
 
 #clock,
+#battery,
+#backlight,
 #pulseaudio,
 #custom-logo,
 #custom-power,
@@ -122,6 +124,13 @@ window#waybar.empty #window {
 }
 
 #custom-logo {
+  color: #89b4fa;
+}
+
+#battery {
+  color: #89b4fa;
+}
+#backlight {
   color: #89b4fa;
 }
 
