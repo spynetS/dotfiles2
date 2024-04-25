@@ -433,6 +433,7 @@ awful.spawn.with_shell("touch /home/spy/"..terminal)
 
 
 awful.spawn.with_shell("picom")
+awful.spawn.with_shell("nm-applet")
 awful.spawn.with_shell("wal -R -a 75")
 awful.spawn.with_shell("mpd")
 awful.spawn.with_shell("mpDris2")
