@@ -52,7 +52,7 @@ beautiful.useless_gap = 5
 beautiful.font = "hack 11"
 -- This is used later as the default terminal and editor to run.
 terminal   = "alacritty"
-browser    = "firefox"
+browser    = "brave"
 fm         = 'dolphin'
 editor     = os.getenv("EDITOR") or "vim"
 editor_cmd = terminal .. " -e " .. editor

@@ -67,7 +67,7 @@
 ;; - `map!' for binding new keys
 
 
-(doom/set-frame-opacity 75)
+(doom/set-frame-opacity 90)
 
 (set-frame-parameter (selected-frame) 'alpha '( 88 80))
 
@@ -90,13 +90,33 @@
       "M-k" #'windmove-up
       "M-j" #'windmove-down)
 
+;; move windows with vim key
+(map! "M-H" #'+evil/window-move-left
+      "M-L" #'+evil/window-move-right
+      "M-K" #'+evil/window-move-up
+      "M-J" #'+evil/window-move-down)
+
 ;; move windows size with vim key
-(map! "M-C-h" #'evil-window-decrease-width
-      "M-C-l" #'evil-window-increase-width
-      "M-C-j" #'evil-window-decrease-height
-      "M-C-k" #'evil-window-increase-height)
+(map! "M-C-h" #'(lambda () (interactive) (evil-window-decrease-width  3))
+      "M-C-l" #'(lambda () (interactive) (evil-window-increase-width  3))
+      "M-C-j" #'(lambda () (interactive) (evil-window-decrease-height 2))
+      "M-C-k" #'(lambda () (interactive) (evil-window-increase-height 2)))
 
+(defvar my-maximize-buffer-flag nil
+  "Flag to track whether the buffer is maximized or not.")
 
+(defun my-toggle-maximize-buffer ()
+  "Toggle between maximizing the buffer and undoing the window configuration."
+  (interactive)
+  (if my-maximize-buffer-flag
+      (progn
+        (winner-undo)
+        (setq my-maximize-buffer-flag nil))
+    (progn
+      (maximize-window)
+      (setq my-maximize-buffer-flag t))))
+
+(map! "M-f" #'my-toggle-maximize-buffer)
 ;; spawning shell
 
 (defun spawn-term-down()
