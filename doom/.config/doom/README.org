@@ -12,14 +12,17 @@
   - [[#dired][Dired]]
   - [[#keybindings][Keybindings]]
 - [[#initel][Init.el]]
-- [[#packaesel][Packaes.el]]
+- [[#packagesel][Packages.el]]
 
 * Config.el
 ** Apperance
+Makes the line numbers show how many stops up or down to that line and shows the current line the real number.
 #+begin_src elisp
 (setq display-line-numbers-type 'relative)
-
-(doom/set-frame-opacity 90)
+#+end_src
+Sets the opacity
+#+begin_src elisp
+(doom/set-frame-opacity 96)
 (set-frame-parameter (selected-frame) 'alpha '( 88 80))
 (add-to-list 'default-frame-alist '(alpha 88 80))
 #+end_src
@@ -33,6 +36,7 @@
 (setq doom-theme 'doom-city-lights)
 #+end_src
 ** Org
+Idk
 #+begin_src elisp
 (setq org-hide-emphasis-markers t)
 #+end_src
@@ -359,7 +363,8 @@ Remap dired a bit
        (default +bindings +smartparens))
 #+end_src
 
-* Packaes.el
+* Packages.el
+Packages other then the ones doom recomend, like in [[Init.el]].
 #+begin_src elisp :tangle "packages.el"
 ;; no packages
 #+end_src
