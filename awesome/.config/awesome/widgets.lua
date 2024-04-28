@@ -16,7 +16,7 @@ require("awful.hotkeys_popup.keys")
 function audioController()
     local volume_widget = require('widgets-pack.volume-widget.volume')
     return volume_widget{
-        widget_type = 'arc',
+        widget_type = 'icon_and_text',
     }
 end
 
@@ -53,7 +53,7 @@ function memory_widget()
 end
 
 function text_clock()
-  return wibox.widget.textclock()
+  return wibox.widget.textclock("%h%d(v%V)|%H:%M ")
 end
 
 
