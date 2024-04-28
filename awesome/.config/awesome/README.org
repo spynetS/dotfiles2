@@ -1,4 +1,4 @@
-#+title: Config
+#+title: README
 #+AUTHOR: Alfred Roos
 #+PROPERTY: header-args :tangle rc.lua
 
@@ -87,6 +87,7 @@ end
 #+end_src
 * Variable
 Themes define colours, icons, font and wallpapers.
+Here i have my varalbes and thas so good u kngow
 #+begin_src lua
 
 beautiful.init(gears.filesystem.get_themes_dir() .. "xresources/theme.lua")
