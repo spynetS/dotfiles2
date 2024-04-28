@@ -1,5 +1,3 @@
-;;; init.el -*- lexical-binding: t; -*-
-
 ;; This file controls what Doom modules are enabled and what order they load
 ;; in. Remember to run 'doom sync' after modifying it!
 
@@ -13,7 +11,6 @@
 ;;
 ;;      Alternatively, press 'gd' (or 'C-c c d') on a module to browse its
 ;;      directory (for easy access to its source code).
-
 (doom! :input
        ;;bidi              ; (tfel ot) thgir etirw uoy gnipleh
        ;;chinese
@@ -159,7 +156,7 @@
        (python
         +lsp
         +pyright)           ; beautiful is better than ugly
-       ;;qt                ; the 'cutest' gui framework ever
+       ;; qt                ; the 'cutest' gui framework ever
        ;;racket            ; a DSL for DSLs
        ;;raku              ; the artist formerly known as perl6
        ;;rest              ; Emacs as a REST client
@@ -183,8 +180,8 @@
        ;;(wanderlust +gmail)
 
        :app
-       ;;calendar
-       ;;emms
+       calendar
+       emms
        ;;everywhere        ; *leave* Emacs!? You must be joking
        ;;irc               ; how neckbeards socialize
        ;;(rss +org)        ; emacs as an RSS reader
