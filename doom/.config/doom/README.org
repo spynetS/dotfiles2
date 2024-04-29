@@ -6,7 +6,7 @@
 * Table of contents :toc:
 - [[#configel][Config.el]]
   - [[#apperance][Apperance]]
-  - [[#org][Org]]
+  - [[#org-idk][Org Idk]]
   - [[#evil-mode][Evil mode]]
   - [[#buffer-management][Buffer management]]
   - [[#dired][Dired]]
@@ -18,8 +18,10 @@
 ** Apperance
 Makes the line numbers show how many stops up or down to that line and shows the current line the real number.
 #+begin_src elisp
+;;; $DOOMDIR/config.el -*- lexical-binding: t; -*-
 (setq display-line-numbers-type 'relative)
 #+end_src
+
 Sets the opacity
 #+begin_src elisp
 (doom/set-frame-opacity 96)
@@ -28,15 +30,18 @@ Sets the opacity
 #+end_src
 *** Font
 #+begin_src elisp
-(setq doom-font (font-spec :family "JetBrains Mono" :size 16 :weight 'semi-light)
+(setq doom-font (font-spec :family "Iosevka" :size 16 :weight 'regular)
       doom-variable-pitch-font (font-spec :family "JetBrains Mono" :size 13 :weight 'semi-light))
 #+end_src
 *** Theme
 #+begin_src elisp
 (setq doom-theme 'doom-city-lights)
 #+end_src
-** Org
-Idk
+*** Cursor
+#+begin_src elisp
+  (blink-cursor-mode 1)
+#+end_src
+** Org Idk
 #+begin_src elisp
 (setq org-hide-emphasis-markers t)
 #+end_src
@@ -69,14 +74,20 @@ Idk
    `(org-document-title ((t (,@headline ,@variable-tuple :height 2.0 :underline nil))))))
 #+end_src
 
+#+RESULTS:
+
 *** Org roam
 #+begin_src elisp
 (setq org-directory "~/org/")
+(add-to-list 'load-path ".config/doom/emacs-libvterm")
 #+end_src
+
 ** Evil mode
 
 #+begin_src elisp
 (remove-hook 'doom-first-input-hook #'evil-snipe-mode)
+;; toggle it off
+(evil-snipe-mode)
 #+end_src
 
 Instead of emptying the line `Ctrl-K` it will remove the line
