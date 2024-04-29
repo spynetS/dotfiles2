@@ -24,6 +24,7 @@ export EDITOR=nvim
 export MANPAGER="nvim +Man!"
 export FILE_EXPLORER=dolphin
 export XDG_CONFIG_HOME="$HOME/.config"
+export WEBKIT_DISABLE_DMABUF_RENDERER=1
 
 HISTFILE=~/.cashe/zsh/history
 alias mechvibes="mechvibes --in-process-gpu"
