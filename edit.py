@@ -4,7 +4,7 @@ import sys
 import os
 
 folder = "~/dotfiles2"
-editor = "emacsclient -c -a 'nvim'"
+editor = "emacsclient -c -nw -a 'nvim'"
 
 a = sys.argv[1]
 path = f"{folder}/{a}/.config/{a}"
