@@ -1,3 +1,3 @@
 #!/usr/bin/sh
 
-xinput map-to-output 20 DP-2
+xinput map-to-output $(xinput | fzf | grep -oP 'id=\K\d+') DP-2

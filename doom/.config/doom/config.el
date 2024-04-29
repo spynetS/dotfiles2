@@ -1,13 +1,16 @@
+;;; $DOOMDIR/config.el -*- lexical-binding: t; -*-
 (setq display-line-numbers-type 'relative)
 
-(doom/set-frame-opacity 90)
+(doom/set-frame-opacity 96)
 (set-frame-parameter (selected-frame) 'alpha '( 88 80))
 (add-to-list 'default-frame-alist '(alpha 88 80))
 
-(setq doom-font (font-spec :family "JetBrains Mono" :size 16 :weight 'semi-light)
+(setq doom-font (font-spec :family "Iosevka" :size 16 :weight 'regular)
       doom-variable-pitch-font (font-spec :family "JetBrains Mono" :size 13 :weight 'semi-light))
 
 (setq doom-theme 'doom-city-lights)
+
+  (blink-cursor-mode 1)
 
 (setq org-hide-emphasis-markers t)
 
@@ -37,6 +40,7 @@
    `(org-document-title ((t (,@headline ,@variable-tuple :height 2.0 :underline nil))))))
 
 (setq org-directory "~/org/")
+(add-to-list 'load-path ".config/doom/emacs-libvterm")
 
 (remove-hook 'doom-first-input-hook #'evil-snipe-mode)
 
