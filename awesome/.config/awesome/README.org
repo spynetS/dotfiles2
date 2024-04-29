@@ -6,6 +6,7 @@
 - [[#header][Header]]
 - [[#error-handeling][Error handeling]]
 - [[#variable][Variable]]
+- [[#layouts][Layouts]]
 - [[#menu][Menu]]
 - [[#widgets][Widgets]]
 - [[#wibar][Wibar]]
@@ -87,7 +88,7 @@ end
 #+end_src
 * Variable
 Themes define colours, icons, font and wallpapers.
-Here i have my varalbes and thas so good u kngow
+Here i hale my varalbes and thas so good u kngow
 #+begin_src lua
 
 beautiful.init(gears.filesystem.get_themes_dir() .. "xresources/theme.lua")
@@ -105,6 +106,7 @@ editor_cmd = terminal .. " -e " .. editor
 modkey = "Mod4"
 #+end_src
 
+* Layouts
 Table of layouts to cover with awful.layout.inc, order matters.
 #+begin_src lua
 awful.layout.layouts = {
@@ -112,14 +114,12 @@ awful.layout.layouts = {
     awful.layout.suit.tile.left,
     -- awful.layout.suit.tile.bottom,
     awful.layout.suit.tile.top,
-    -- awful.layout.suit.fair,
-    -- awful.layout.suit.floating,
-    -- awful.layout.suit.fair.horizontal,
-    -- awful.layout.suit.spiral,
-    awful.layout.suit.spiral.dwindle,
+    -- awful.layout.suit.fair, awful.layout.suit.floating,
+    -- awful.layout.suit.fair.horizontal, awful.layout.suit.spiral,
+    -- awful.layout.suit.spiral.dwindle,
+    awful.layout.suit.max.fullscreen,
+    -- awful.layout.suit.magnifier,
     awful.layout.suit.max,
-    -- awful.layout.suit.max.fullscreen,
-    awful.layout.suit.magnifier,
     -- awful.layout.suit.corner.ne,
     -- awful.layout.suit.corner.sw,
     -- awful.layout.suit.corner.se,
