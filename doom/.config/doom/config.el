@@ -11,6 +11,7 @@
 (setq doom-theme 'doom-city-lights)
 
   (blink-cursor-mode 1)
+  (beacon-mode 1)
 
 (setq org-hide-emphasis-markers t)
 

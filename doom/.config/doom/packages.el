@@ -52,3 +52,4 @@
 (package! dired-hide-dotfiles)
 
 (package! fireplace)
+(package! beacon)
