@@ -446,3 +446,7 @@ Package tohide dotfiles with dired
 #+begin_src elisp :tangle "packages.el"
 (package! dired-hide-dotfiles)
 #+end_src
+
+#+begin_src elisp :tangle "packages.el"
+(package! fireplace)
+#+end_src
