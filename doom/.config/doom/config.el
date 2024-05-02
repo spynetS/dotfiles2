@@ -43,6 +43,8 @@
 (add-to-list 'load-path ".config/doom/emacs-libvterm")
 
 (remove-hook 'doom-first-input-hook #'evil-snipe-mode)
+;; toggle it off
+(evil-snipe-mode)
 
 (setq kill-whole-line t)
 
@@ -82,11 +84,16 @@
   (kbd "l") 'dired-find-file
   )
 
+(evil-define-key 'normal dired-mode-map
+  (kbd ".") 'dired-hide-dotfiles-mode
+  )
+
 (map! "M-s RET" #'spawn-term-down)
 (map! "M-t RET" #'spawn-term-tab)
 (map! "M-RET" #'eshell)
 
-(map! "C-c C-c" #'git-com) (map! "C-c t" #'tab-close)
+(map! "C-c C-c" #'git-com)
+(map! "C-c t" #'tab-close)
 (map! "M-f" #'my-toggle-maximize-buffer)
 (map! "M-e" #'dired-jump)
 (map! "M-E" #'dired-jump-other-window)
@@ -105,3 +112,6 @@
       "M-C-l" #'(lambda () (interactive) (evil-window-increase-width  3))
       "M-C-j" #'(lambda () (interactive) (evil-window-decrease-height 2))
       "M-C-k" #'(lambda () (interactive) (evil-window-increase-height 2)))
+
+(map! "M-c" #'calc)
+(map! "M-C" #'full-calc)
