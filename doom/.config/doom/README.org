@@ -13,6 +13,7 @@
   - [[#keybindings][Keybindings]]
 - [[#initel][Init.el]]
 - [[#packagesel][Packages.el]]
+  - [[#fun-packages][fun packages]]
 
 * Config.el
 ** Apperance
@@ -40,6 +41,7 @@ Sets the opacity
 *** Cursor
 #+begin_src elisp
   (blink-cursor-mode 1)
+  (beacon-mode 1)
 #+end_src
 ** Org Idk
 #+begin_src elisp
@@ -447,6 +449,8 @@ Package tohide dotfiles with dired
 (package! dired-hide-dotfiles)
 #+end_src
 
+** fun packages
 #+begin_src elisp :tangle "packages.el"
 (package! fireplace)
+(package! beacon)
 #+end_src
