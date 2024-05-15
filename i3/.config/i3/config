@@ -60,6 +60,9 @@ bindsym $mod+y border pixel 4
 bindsym $mod+n border normal
 
 bindsym $mod+SHIFT+w exec rofi -show window -theme /home/spy/.config/rofi/launchers/type-2/style-3.rasi
+bindsym $mod+d exec rofi -show run -theme /home/spy/.config/rofi/launchers/type-1/style-3.rasi
+
+bindsym $mod+Ctrl+r exec "i3-msg reload"
 
 bindsym $mod+Return exec $TERM
 bindsym $mod+Shift+Return exec $TERM
