@@ -83,3 +83,16 @@ function pacman_widget()
                 polkit_agent_path = '/usr/bin/lxpolkit'
             }
 end
+function spot_widget()
+    local spotify_widget = require('widgets-pack.spotify-widget.spotify')
+    return spotify_widget ({
+        -- font = 'Sans regular',
+        play_icon = '/usr/share/icons/Papirus-Light/24x24/categories/spotify.svg',
+        pause_icon = '/usr/share/icons/Papirus-Dark/24x24/panel/spotify-indicator.svg',
+        dim_when_paused = true,
+        dim_opacity = 0.5,
+        max_length = -1,
+        show_tooltip = false,
+        -- sp_bin = gears.filesystem.get_configuration_dir() .. 'scripts/sp'
+    })
+end

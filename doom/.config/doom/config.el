@@ -13,6 +13,49 @@
   (blink-cursor-mode 1)
   (beacon-mode 1)
 
+(use-package! doom-modeline
+  :config
+  (setq doom-modeline-height 25) ; Adjust height if necessary
+  (setq doom-modeline-format
+        '((:eval
+           (doom-modeline-segment--workspace-name))
+          " "
+          (:eval
+           (doom-modeline-segment--buffer-info))
+          " "
+          (:eval
+           (doom-modeline-segment--major-mode))
+          " "
+          (:eval
+           (doom-modeline-segment--process))
+          " "
+          (:eval
+           (doom-modeline-segment--flycheck))
+          " "
+          (:eval
+           (doom-modeline-segment--media-info))
+          " "
+          (:eval
+           (doom-modeline-segment--misc-info))
+          " "
+          ;; Add clock segment
+          (:eval
+           (propertize (format-time-string "%H:%M") 'face 'doom-modeline-info))
+          " "
+          (:eval
+           (doom-modeline-segment--buffer-position))
+          " "
+          (:eval
+           (doom-modeline-segment--hud))
+          " "
+          (:eval
+           (doom-modeline-segment--debug))
+          " "
+          (:eval
+           (doom-modeline-segment--misc-info))
+          ))
+)
+
 (setq org-hide-emphasis-markers t)
 
 ;; (use-package org-bullets
@@ -43,9 +86,9 @@
 (setq org-directory "~/org/")
 (add-to-list 'load-path ".config/doom/emacs-libvterm")
 
-(remove-hook 'doom-first-input-hook #'evil-snipe-mode)
+;; (remove-hook 'doom-first-input-hook #'evil-snipe-mode)
 ;; toggle it off
-(evil-snipe-mode)
+;; (evil-snipe-mode)
 
 (setq kill-whole-line t)
 

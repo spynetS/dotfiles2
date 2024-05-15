@@ -273,7 +273,7 @@ awful.screen.connect_for_each_screen(function(s)
             layout = wibox.layout.fixed.horizontal,
             s.mytaglist,
             s.mypromptbox,
-            mpc_widget(),
+            spot_widget(),
         sep,
         },
         s.mytasklist,
