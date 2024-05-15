@@ -53,3 +53,13 @@
 
 (package! fireplace)
 (package! beacon)
+(package! powerline-evil)
+(package! lorem-ipsum)
+(package! 2048-game)
+
+(package! uwu-theme)
+(package! atom-one-dark-theme)
+(package! anti-zenburn-theme)
+(package! dream-theme)
+(package! nezburn-theme)
+(package! zenburn-theme)
