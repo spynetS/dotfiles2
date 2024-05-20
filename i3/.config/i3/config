@@ -2,6 +2,7 @@
 exec wal -R -a 75
 exec ~/.config/polybar/launch.sh --cuts
 exec source ~/.profile
+exec emacs --daemon
 
 exec_always --no-startup-id kitti3
 bindsym $mod+Shift+Tab nop kitti3
