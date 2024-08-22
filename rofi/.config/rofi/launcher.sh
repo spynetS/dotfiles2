@@ -1,5 +1,5 @@
-dir="$HOME/.config/rofi/launchers/type-3"
-theme='style-2'
+dir="$HOME/.config/rofi/launchers/type-7"
+theme='style-4'
 
 ## Run
 rofi \
