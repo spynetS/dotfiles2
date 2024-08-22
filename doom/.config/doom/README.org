@@ -3,9 +3,12 @@
 #+PROPERTY: header-args :tangle config.el
 #+OPTIONS: toc:4
 
+
 * Table of contents :toc:
 - [[#configel][Config.el]]
+  - [[#custom-scripts][Custom scripts]]
   - [[#apperance][Apperance]]
+  - [[#format][Format]]
   - [[#org-idk][Org Idk]]
   - [[#evil-mode][Evil mode]]
   - [[#buffer-management][Buffer management]]
@@ -17,6 +20,12 @@
   - [[#themes][themes]]
 
 * Config.el
+** Custom scripts
+#+begin_src elisp
+;; Load the custom C3 mode
+(load (expand-file-name "c3-mode.el" doom-user-dir))
+#+end_src
+
 ** Apperance
 Makes the line numbers show how many stops up or down to that line and shows the current line the real number.
 #+begin_src elisp
@@ -28,16 +37,25 @@ Sets the opacity
 #+begin_src elisp
 (doom/set-frame-opacity 96)
 (set-frame-parameter (selected-frame) 'alpha '( 88 80))
-(add-to-list 'default-frame-alist '(alpha 88 80))
+(add-to-list 'default-frame-alist '(alpha . 80))
 #+end_src
+
+#+begin_src elisp
+(setq-default indent-tabs-mode t)
+(setq-default tab-width 4) ; Assuming you want your tabs to be four spaces wide
+(defvaralias 'c-basic-offset 'tab-width)
+#+end_src
+
 *** Font
 #+begin_src elisp
 (setq doom-font (font-spec :family "Iosevka" :size 16 :weight 'regular)
       doom-variable-pitch-font (font-spec :family "JetBrains Mono" :size 13 :weight 'semi-light))
 #+end_src
+
 *** Theme
 #+begin_src elisp
-(setq doom-theme 'doom-city-lights)
+(setq doom-theme 'doom-ir-black)
+(nyan-mode)
 #+end_src
 *** Cursor
 #+begin_src elisp
@@ -89,6 +107,15 @@ Sets the opacity
           ))
 )
 #+end_src
+** Format
+#+begin_src elisp
+(use-package prettier
+  :hook ((typescript-mode . prettier-mode)
+         (js-mode . prettier-mode)
+         (json-mode . prettier-mode)
+         (yaml-mode . prettier-mode)
+         (ruby-mode . prettier-mode)))
+#+end_src
 ** Org Idk
 #+begin_src elisp
 (setq org-hide-emphasis-markers t)
@@ -133,7 +160,7 @@ Sets the opacity
 ** Evil mode
 
 #+begin_src elisp
-;; (remove-hook 'doom-first-input-hook #'evil-snipe-mode)
+(remove-hook 'doom-first-input-hook #'evil-snipe-mode)
 ;; toggle it off
 ;; (evil-snipe-mode)
 #+end_src
@@ -183,6 +210,22 @@ Instead of emptying the line `Ctrl-K` it will remove the line
   (interactive)
   (shell-command (concat "brave " buffer-file-name)))
 #+end_src
+
+*** Split screen
+#+begin_src elisp
+(defun my/split-window-right-and-locate ()
+  "Create a vertical split and open locate."
+  (interactive)
+  (+evil/window-vsplit-and-follow)
+  (call-interactively 'find-file))
+
+;; Bind the custom function to 'SPC s v'
+(map! :leader
+      :desc "Vertical split and locate"
+      "s v" #'my/split-window-right-and-locate)
+#+end_src
+
+
 ** Dired
 Remap dired a bit
 #+begin_src elisp
@@ -238,6 +281,7 @@ Add hide dotfiles
 (map! "M-c" #'calc)
 (map! "M-C" #'full-calc)
 #+end_src
+
 
 * Init.el
 #+begin_src elisp :tangle "init.el"
@@ -296,7 +340,7 @@ Add hide dotfiles
        (evil +everywhere); come to the dark side, we have cookies
        file-templates    ; auto-snippets for empty files
        fold              ; (nigh) universal code folding
-       (format +onsave)  ; automated prettiness
+       ;; (format +onsave)  ; automated prettiness
        ;;god               ; run Emacs commands without modifier keys
        ;;lispy             ; vim for lisp, for people who don't like vim
        multiple-cursors  ; editing in many places at once
@@ -359,7 +403,7 @@ Add hide dotfiles
        ;;common-lisp       ; if you've seen one lisp, you've seen them all
        ;;coq               ; proofs-as-programs
        ;;crystal           ; ruby at the speed of c
-       csharp            ; unity, .NET, and mono shenanigans
+       (csharp +lsp)            ; unity, .NET, and mono shenanigans
        ;;data              ; config/data formats
        ;;(dart +flutter)   ; paint ui and not much else
        ;;dhall
@@ -494,6 +538,11 @@ Here is the comments
 Package tohide dotfiles with dired
 #+begin_src elisp :tangle "packages.el"
 (package! dired-hide-dotfiles)
+
+(package! prettier)
+;; (package! django-snippets)
+(package! pony-mode)
+(package! lsp-tailwindcss :recipe (:host github :repo "merrickluo/lsp-tailwindcss"))
 #+end_src
 
 ** fun packages
@@ -503,6 +552,9 @@ Package tohide dotfiles with dired
 (package! powerline-evil)
 (package! lorem-ipsum)
 (package! 2048-game)
+(package! wakatime-mode)
+(package! nyan-mode)
+(package! cakecrumbs)
 #+end_src
 
 ** themes
