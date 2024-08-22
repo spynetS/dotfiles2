@@ -1,6 +1,6 @@
 #startup commands
 exec wal -R -a 75
-exec ~/.config/polybar/launch.sh --cuts
+exec ~/.config/polybar/launch.sh --grayblocks
 exec source ~/.profile
 exec emacs --daemon
 
@@ -56,6 +56,8 @@ floating_modifier $mod
 bindsym Ctrl+Shift+l exec setxkbmap se
 bindsym Ctrl+Shift+k exec setxkbmap us
 
+bindsym Ctrl+b exec boomer
+
 bindsym $mod+u border none
 bindsym $mod+y border pixel 4
 bindsym $mod+n border normal
@@ -71,7 +73,7 @@ bindsym $mod+Shift+Return exec $TERM
 bindsym $mod+Shift+e exec emacsclient -c -a ''
 
 bindsym $mod+Ctrl+b exec $TERM -e 'bmenu'
-bindsym $mod+w exec firefox
+bindsym $mod+w exec brave
 bindsym $mod+F3 exec $FILE_EXPLORER
 bindsym $mod+Shift+F3 exec $TERM -e 'ranger'
 
