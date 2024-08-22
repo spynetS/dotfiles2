@@ -15,7 +15,7 @@
 (setq doom-font (font-spec :family "Iosevka" :size 16 :weight 'regular)
       doom-variable-pitch-font (font-spec :family "JetBrains Mono" :size 13 :weight 'semi-light))
 
-(setq doom-theme 'doom-ir-black)
+(setq doom-theme 'doom-nord)
 (nyan-mode)
 
   (blink-cursor-mode 1)
