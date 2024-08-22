@@ -54,7 +54,7 @@ Sets the opacity
 
 *** Theme
 #+begin_src elisp
-(setq doom-theme 'doom-ir-black)
+(setq doom-theme 'doom-nord)
 (nyan-mode)
 #+end_src
 *** Cursor
