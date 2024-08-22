@@ -14,6 +14,7 @@
   - [[#shutdown][Shutdown]]
 - [[#sound][Sound]]
 - [[#window-classes][Window classes]]
+  - [[#assign][Assign]]
 - [[#theming][Theming]]
   - [[#bar][Bar]]
   -  [[#theme-colors][Theme colors]]
@@ -94,6 +95,8 @@ floating_modifier $mod
 bindsym Ctrl+Shift+l exec setxkbmap se
 bindsym Ctrl+Shift+k exec setxkbmap us
 
+bindsym Ctrl+b exec boomer
+
 #+end_src
 ** change borders
 #+begin_src bash
@@ -115,7 +118,7 @@ bindsym $mod+Shift+Return exec $TERM
 bindsym $mod+Shift+e exec emacsclient -c -a ''
 
 bindsym $mod+Ctrl+b exec $TERM -e 'bmenu'
-bindsym $mod+w exec firefox
+bindsym $mod+w exec brave
 bindsym $mod+F3 exec $FILE_EXPLORER
 bindsym $mod+Shift+F3 exec $TERM -e 'ranger'
 
@@ -310,6 +313,12 @@ for_window [class="Xfburn"] floating enable
 for_window [title="Picture-in-Picture"] sticky enable
 
 for_window [urgent=latest] focus
+#+end_src
+** Assign
+#+begin_src
+assign [class="Discord"] 4
+assign [class="spotify"] 5
+assign [class="Spotify"] 5
 #+end_src
 * Theming
 #+begin_src bash
