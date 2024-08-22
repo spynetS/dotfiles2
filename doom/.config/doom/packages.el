@@ -51,11 +51,19 @@
 
 (package! dired-hide-dotfiles)
 
+(package! prettier)
+;; (package! django-snippets)
+(package! pony-mode)
+(package! lsp-tailwindcss :recipe (:host github :repo "merrickluo/lsp-tailwindcss"))
+
 (package! fireplace)
 (package! beacon)
 (package! powerline-evil)
 (package! lorem-ipsum)
 (package! 2048-game)
+(package! wakatime-mode)
+(package! nyan-mode)
+(package! cakecrumbs)
 
 (package! uwu-theme)
 (package! atom-one-dark-theme)

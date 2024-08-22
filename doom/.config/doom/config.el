@@ -1,14 +1,22 @@
+;; Load the custom C3 mode
+(load (expand-file-name "c3-mode.el" doom-user-dir))
+
 ;;; $DOOMDIR/config.el -*- lexical-binding: t; -*-
 (setq display-line-numbers-type 'relative)
 
 (doom/set-frame-opacity 96)
 (set-frame-parameter (selected-frame) 'alpha '( 88 80))
-(add-to-list 'default-frame-alist '(alpha 88 80))
+(add-to-list 'default-frame-alist '(alpha . 80))
+
+(setq-default indent-tabs-mode t)
+(setq-default tab-width 4) ; Assuming you want your tabs to be four spaces wide
+(defvaralias 'c-basic-offset 'tab-width)
 
 (setq doom-font (font-spec :family "Iosevka" :size 16 :weight 'regular)
       doom-variable-pitch-font (font-spec :family "JetBrains Mono" :size 13 :weight 'semi-light))
 
-(setq doom-theme 'doom-city-lights)
+(setq doom-theme 'doom-ir-black)
+(nyan-mode)
 
   (blink-cursor-mode 1)
   (beacon-mode 1)
@@ -56,6 +64,13 @@
           ))
 )
 
+(use-package prettier
+  :hook ((typescript-mode . prettier-mode)
+         (js-mode . prettier-mode)
+         (json-mode . prettier-mode)
+         (yaml-mode . prettier-mode)
+         (ruby-mode . prettier-mode)))
+
 (setq org-hide-emphasis-markers t)
 
 ;; (use-package org-bullets
@@ -86,7 +101,7 @@
 (setq org-directory "~/org/")
 (add-to-list 'load-path ".config/doom/emacs-libvterm")
 
-;; (remove-hook 'doom-first-input-hook #'evil-snipe-mode)
+(remove-hook 'doom-first-input-hook #'evil-snipe-mode)
 ;; toggle it off
 ;; (evil-snipe-mode)
 
@@ -122,6 +137,17 @@
 (defun open-in-browser()
   (interactive)
   (shell-command (concat "brave " buffer-file-name)))
+
+(defun my/split-window-right-and-locate ()
+  "Create a vertical split and open locate."
+  (interactive)
+  (+evil/window-vsplit-and-follow)
+  (call-interactively 'find-file))
+
+;; Bind the custom function to 'SPC s v'
+(map! :leader
+      :desc "Vertical split and locate"
+      "s v" #'my/split-window-right-and-locate)
 
 (evil-define-key 'normal dired-mode-map
   (kbd "h") 'dired-up-directory
