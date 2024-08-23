@@ -50,6 +50,7 @@ window#waybar.hidden {
 }
 
 #clock,
+#network,
 #battery,
 #backlight,
 #pulseaudio,
