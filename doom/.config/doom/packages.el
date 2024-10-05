@@ -71,3 +71,4 @@
 (package! dream-theme)
 (package! nezburn-theme)
 (package! zenburn-theme)
+(package! gruber-darker-theme)
