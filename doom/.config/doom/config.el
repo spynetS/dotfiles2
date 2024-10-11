@@ -99,6 +99,7 @@
 
 (setq org-directory "~/org/")
 (add-to-list 'load-path ".config/doom/emacs-libvterm")
+(require 'vterm)
 
 (remove-hook 'doom-first-input-hook #'evil-snipe-mode)
 ;; toggle it off
@@ -168,7 +169,6 @@
 (map! "M-f" #'my-toggle-maximize-buffer)
 (map! "M-e" #'dired-jump)
 (map! "M-E" #'dired-jump-other-window)
-(map! "SPC->" (lambda () (interactive) (dired "~/")))
 
 (map! "M-h" #'windmove-left
       "M-k" #'windmove-up
@@ -177,7 +177,7 @@
 
 (with-eval-after-load 'treemacs
   (define-key treemacs-mode-map (kbd "M-h") nil)
-  (def  ine-key treemacs-mode-map (kbd "M-l") nil)
+  (define-key treemacs-mode-map (kbd "M-l") nil)
   (define-key treemacs-mode-map (kbd "M-k") nil)
   (define-key treemacs-mode-map (kbd "M-j") nil))
 
