@@ -12,8 +12,8 @@
 (setq-default tab-width 4) ; Assuming you want your tabs to be four spaces wide
 (defvaralias 'c-basic-offset 'tab-width)
 
-(setq doom-font (font-spec :family "Iosevka" :size 16 :weight 'regular)
-      doom-variable-pitch-font (font-spec :family "JetBrains Mono" :size 13 :weight 'semi-light))
+(setq doom-font (font-spec :family "Iosevka" :size 22 :weight 'regular)
+      doom-variable-pitch-font (font-spec :family "JetBrains Mono" :size 16 :weight 'semi-light))
 
 (setq doom-theme 'gruber-darker)
 (nyan-mode)
@@ -98,7 +98,17 @@
 ;;   `(org-document-title ((t (,@headline ,@variable-tuple :height 2.0 :underline nil))))))
 
 (setq org-directory "~/org/")
+(setq org-agenda-files (directory-files-recursively "~/org" "\\.org$"))
+
 (add-to-list 'load-path ".config/doom/emacs-libvterm")
+
+
+
+;; Somewhere in your .emacs file
+(setq elfeed-feeds
+      '("http://nullprogram.com/feed/"
+	    "https://itsfoss.com/rss/"
+        "https://planet.emacslife.com/atom.xml"))
 
 (remove-hook 'doom-first-input-hook #'evil-snipe-mode)
 ;; toggle it off
@@ -157,7 +167,7 @@
   (kbd ".") 'dired-hide-dotfiles-mode
   )
 
-        (map! "S-<iso-lefttab>" #'+vertico/switch-workspace-buffer)
+        ;; (map! "S-<iso-lefttab>" #'+vertico/switch-workspace-buffer)
 
 (map! "M-s RET" #'spawn-term-down)
 (map! "M-t RET" #'spawn-term-tab)
@@ -168,7 +178,7 @@
 (map! "M-f" #'my-toggle-maximize-buffer)
 (map! "M-e" #'dired-jump)
 (map! "M-E" #'dired-jump-other-window)
-(map! "SPC->" (lambda () (interactive) (dired "~/")))
+;; (map! "SPC->" (lambda () (interactive) (dired "~/")))
 
 (map! "M-h" #'windmove-left
       "M-k" #'windmove-up
