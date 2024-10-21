@@ -10,6 +10,7 @@
   - [[#apperance][Apperance]]
   - [[#format][Format]]
   - [[#org-idk][Org Idk]]
+  - [[#elfeed][Elfeed]]
   - [[#evil-mode][Evil mode]]
   - [[#buffer-management][Buffer management]]
   - [[#dired][Dired]]
@@ -48,8 +49,8 @@ Sets the opacity
 
 *** Font
 #+begin_src elisp
-(setq doom-font (font-spec :family "Iosevka" :size 16 :weight 'regular)
-      doom-variable-pitch-font (font-spec :family "JetBrains Mono" :size 13 :weight 'semi-light))
+(setq doom-font (font-spec :family "Iosevka" :size 22 :weight 'regular)
+      doom-variable-pitch-font (font-spec :family "JetBrains Mono" :size 16 :weight 'semi-light))
 #+end_src
 
 *** Theme
@@ -153,9 +154,25 @@ Sets the opacity
 *** Org roam
 #+begin_src elisp
 (setq org-directory "~/org/")
+(setq org-agenda-files (directory-files-recursively "~/org" "\\.org$"))
+
 (add-to-list 'load-path ".config/doom/emacs-libvterm")
 #+end_src
 
+*** Scripting
+#+begin_src elsip
+
+
+#+end_src
+** Elfeed
+#+begin_src elisp
+;; Somewhere in your .emacs file
+(setq elfeed-feeds
+      '("http://nullprogram.com/feed/"
+	    "https://itsfoss.com/rss/"
+        "https://planet.emacslife.com/atom.xml"))
+
+#+end_src
 ** Evil mode
 
 #+begin_src elisp
@@ -242,7 +259,7 @@ Add hide dotfiles
 
 ** Keybindings
 #+begin_src elisp
-        (map! "S-<iso-lefttab>" #'+vertico/switch-workspace-buffer)
+        ;; (map! "S-<iso-lefttab>" #'+vertico/switch-workspace-buffer)
 
 (map! "M-s RET" #'spawn-term-down)
 (map! "M-t RET" #'spawn-term-tab)
@@ -253,7 +270,7 @@ Add hide dotfiles
 (map! "M-f" #'my-toggle-maximize-buffer)
 (map! "M-e" #'dired-jump)
 (map! "M-E" #'dired-jump-other-window)
-(map! "SPC->" (lambda () (interactive) (dired "~/")))
+;; (map! "SPC->" (lambda () (interactive) (dired "~/")))
 
 #+end_src
 *** move windows with vim key
@@ -430,7 +447,7 @@ so it works in treemacs
        ;;gdscript          ; the language you waited for
        ;;(go +lsp)         ; the hipster dialect
        ;;(graphql +lsp)    ; Give queries a REST
-       ;;(haskell +lsp)    ; a language that's lazier than I am
+       (haskell +lsp)    ; a language that's lazier than I am
        ;;hy                ; readability of scheme w/ speed of python
        ;;idris             ; a language you can depend on
        json              ; At least it ain't XML
@@ -481,7 +498,7 @@ so it works in treemacs
        emms
        ;;everywhere        ; *leave* Emacs!? You must be joking
        ;irc               ; how neckbeards socialize
-       ;;(rss +org)        ; emacs as an RSS reader
+       (rss +org)        ; emacs as an RSS reader
        ;;twitter           ; twitter client https://twitter.com/vnought
 
        :config
@@ -565,6 +582,7 @@ Package tohide dotfiles with dired
 (package! wakatime-mode)
 (package! nyan-mode)
 (package! cakecrumbs)
+
 #+end_src
 
 ** themes
