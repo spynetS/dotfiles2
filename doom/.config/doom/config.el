@@ -193,3 +193,16 @@
 
 (map! "M-c" #'calc)
 (map! "M-C" #'full-calc)
+
+(load "posframe.el")
+(require 'posframe)
+
+;; Load the org-latex-impatient package
+(load "org-latex-impatient.el")
+
+(use-package org-latex-impatient
+  :defer t
+  :hook (org-mode . org-latex-impatient-mode)
+  :config
+  ;; Set the location of the tex2svg executable (your shell script)
+  (setq org-latex-impatient-tex2svg-bin "/home/spy/.config/doom/node_modules/mathjax-node-cli/bin/tex2svg"))  ;; Correctly specify the path here
