@@ -157,6 +157,7 @@ Sets the opacity
 (setq org-agenda-files (directory-files-recursively "~/org" "\\.org$"))
 
 (add-to-list 'load-path ".config/doom/emacs-libvterm")
+(require 'vterm)
 #+end_src
 
 *** Scripting
@@ -283,7 +284,7 @@ Add hide dotfiles
 #+begin_src elisp
 (with-eval-after-load 'treemacs
   (define-key treemacs-mode-map (kbd "M-h") nil)
-  (def  ine-key treemacs-mode-map (kbd "M-l") nil)
+  (define-key treemacs-mode-map (kbd "M-l") nil)
   (define-key treemacs-mode-map (kbd "M-k") nil)
   (define-key treemacs-mode-map (kbd "M-j") nil))
 #+end_src
@@ -476,7 +477,7 @@ so it works in treemacs
        ;;rest              ; Emacs as a REST client
        ;;rst               ; ReST in peace
        ;;(ruby +rails)     ; 1.step {|i| p "Ruby is #{i.even? ? 'love' : 'life'}"}
-       ;;(rust +lsp)       ; Fe2O3.unwrap().unwrap().unwrap().unwrap()
+       (rust +lsp)       ; Fe2O3.unwrap().unwrap().unwrap().unwrap()
        ;;scala             ; java, but good
        ;;(scheme +guile)   ; a fully conniving family of lisps
        sh                ; she sells {ba,z,fi}sh shells on the C xor
