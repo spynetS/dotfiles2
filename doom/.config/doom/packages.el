@@ -64,6 +64,7 @@
 (package! wakatime-mode)
 (package! nyan-mode)
 (package! cakecrumbs)
+(package! org-roam-ui)
 
 (package! uwu-theme)
 (package! atom-one-dark-theme)

@@ -120,6 +120,7 @@ Sets the opacity
 ** Org Idk
 #+begin_src elisp
 (setq org-hide-emphasis-markers t)
+
 #+end_src
 
 *** Headlines
@@ -160,6 +161,11 @@ Sets the opacity
 (require 'vterm)
 #+end_src
 
+*** Org latex-preview
+;; sets the scale of the latex preview
+#+begin_src elisp
+(setq org-format-latex-options '(:scale 2.25))
+#+end_src
 *** Scripting
 #+begin_src elsip
 
@@ -583,7 +589,7 @@ Package tohide dotfiles with dired
 (package! wakatime-mode)
 (package! nyan-mode)
 (package! cakecrumbs)
-
+(package! org-roam-ui)
 #+end_src
 
 ** themes
@@ -596,5 +602,4 @@ Package tohide dotfiles with dired
 (package! nezburn-theme)
 (package! zenburn-theme)
 (package! gruber-darker-theme)
-
 #+end_src
