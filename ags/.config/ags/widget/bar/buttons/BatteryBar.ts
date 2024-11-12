@@ -13,8 +13,7 @@ const Indicator = () => Widget.Icon({
     }),
 })
 
-const PercentLabel = () => Widget.Revealer({
-    transition: "slide_right",
+const PercentLabel = () => Widget.Revealer({transition: "slide_right",
     click_through: true,
     reveal_child: percentage.bind(),
     child: Widget.Label({

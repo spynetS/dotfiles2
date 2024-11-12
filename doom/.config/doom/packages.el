@@ -66,6 +66,10 @@
 (package! cakecrumbs)
 (package! org-roam-ui)
 
+(package! org-modern)
+(package! olivetti)
+(package! elegant-agenda-mode)
+
 (package! uwu-theme)
 (package! atom-one-dark-theme)
 (package! anti-zenburn-theme)
