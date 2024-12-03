@@ -1,7 +1,34 @@
-;; Load the custom C3 mode
 (load (expand-file-name "c3-mode.el" doom-user-dir))
 
-;;; $DOOMDIR/config.el -*- lexical-binding: t; -*-
+
+(defun find-home-file()
+  (interactive)
+  (consult-fd "~/")
+  )
+
+(defun insert-screenshot-path ()
+  "Run the 'hyprshot -m region -o ~/Nextcloud/Photos/ScreenShots/ -f [date].png command asynchronously. and pastes the path as org link"
+  (interactive)
+  (let ((filename (format "%s.png" (format-time-string "%Y-%m-%d-%H-%M-%S"))))
+    (let ((dir (expand-file-name "~/Nextcloud/Photos/ScreenShots/")))
+	(start-process "hyprshot" "*hyprshot-process*" "hyprshot" "-m" "region" "-o" dir "-f" filename)
+	(insert (format "[[file:%s%s]]" dir filename)))))
+
+(defun edit-file-region ()
+  "Print the content of the selected region to the minibuffer."
+  (interactive)
+  (if (use-region-p)
+      (let ((region-content (buffer-substring-no-properties (region-beginning) (region-end))))
+        (find-file region-content))
+    (message "No region selected")))
+
+(defun bold ()
+  (interactive)
+  (backward-word)
+  (insert "*")
+  (forward-word)
+  (insert "*"))
+
 (setq display-line-numbers-type 'relative)
 
 (doom/set-frame-opacity 96)
@@ -12,10 +39,10 @@
 (setq-default tab-width 4) ; Assuming you want your tabs to be four spaces wide
 (defvaralias 'c-basic-offset 'tab-width)
 
-(setq doom-font (font-spec :family "Iosevka" :size 16 :weight 'regular)
-      doom-variable-pitch-font (font-spec :family "JetBrains Mono" :size 16 :weight 'semi-light))
+(setq doom-font (font-spec :family "Iosevka" :size 14 :weight 'regular)
+      doom-variable-pitch-font (font-spec :family "JetBrains Mono" :size 11 :weight 'semi-light))
 
-(setq doom-theme 'gruber-darker)
+(setq doom-theme 'ewal-doom-one)
 (nyan-mode)
 
   (blink-cursor-mode 1)
@@ -71,29 +98,9 @@
          (yaml-mode . prettier-mode)
          (ruby-mode . prettier-mode)))
 
-;; (use-package org-bullets
-;;   :config
-;;   (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
-;; let* ((variable-tuple
-;;       (cond ((x-list-fonts "Source Sans Pro") '(:font "Source Sans Pro"))
-;;             ((x-list-fonts "Lucida Grande")   '(:font "Lucida Grande"))
-;;             ((x-list-fonts "Verdana")         '(:font "Verdana"))
-;;             ((x-family-fonts "Sans Serif")    '(:family "Sans Serif"))
-;;             (nil (warn "Cannot find a suitable Sans Serif Font. Please install Source Sans Pro or another listed font."))))
-;;      (base-font-color     (face-foreground 'default nil 'default))
-;;      (headline           `(:inherit default :weight bold :foreground ,base-font-color)))
-;;
-;;  (custom-theme-set-faces
-;;   'user
-;;   `(org-level-8 ((t (,@headline ,@variable-tuple))))
-;;   `(org-level-7 ((t (,@headline ,@variable-tuple))))
-;;   `(org-level-6 ((t (,@headline ,@variable-tuple))))
-;;   `(org-level-5 ((t (,@headline ,@variable-tuple))))
-;;   `(org-level-4 ((t (,@headline ,@variable-tuple :height 1.1))))
-;;   `(org-level-3 ((t (,@headline ,@variable-tuple :height 1.25))))
-;;   `(org-level-2 ((t (,@headline ,@variable-tuple :height 1.5))))
-;;   `(org-level-1 ((t (,@headline ,@variable-tuple :height 1.75))))
-;;   `(org-document-title ((t (,@headline ,@variable-tuple :height 2.0 :underline nil))))))
+(setq org-hide-emphasis-markers t)
+
+(setq org-agenda-files (directory-files-recursively "~/org/roam" "\\.org$"))
 
 (setq org-directory "~/org/")
 (setq org-agenda-files (directory-files-recursively "~/org" "\\.org$"))
@@ -101,22 +108,18 @@
 (add-to-list 'load-path ".config/doom/emacs-libvterm")
 (require 'vterm)
 
-(load "posframe.el")
-(require 'posframe)
-
-;; Load the org-latex-impatient package
-(load "org-latex-impatient.el")
-
-(use-package org-latex-impatient
-  :defer t
-  :hook (org-mode . org-latex-impatient-mode)
-  :config
-  ;; Set the location of the tex2svg executable (your shell script)
-  (setq org-latex-impatient-tex2svg-bin "/home/spy/.config/doom/node_modules/mathjax-node-cli/bin/tex2svg"))  ;; Correctly specify the path here
+(setq org-publish-project-alist
+      '(("org roam"
+         :base-directory "~/org/roam"
+         :publishing-function org-html-publish-to-html
+         :publishing-directory "~/Nextcloud/roam"
+         :section-numbers nil
+         :with-toc nil
+         :html-head "<link rel=\"stylesheet\"
+                    href=\"./mystyle.css\"
+                    type=\"text/css\"/>")))
 
 (setq org-format-latex-options '(:scale 2.25))
-
-
 
 ;; Somewhere in your .emacs file
 (setq elfeed-feeds
@@ -172,6 +175,39 @@
       :desc "Vertical split and locate"
       "s v" #'my/split-window-right-and-locate)
 
+(load-file "~/.config/mu4e/mu4e-config.el")
+
+(add-to-list 'load-path "~/.config/mu4e")
+(require 'mu4e-config)
+
+(use-package mu4e-config
+  :after mu4e
+  :load-path "~/.config/mu4e")
+
+(setq +mu4e-compose-org-msg-toggle-next t)
+
+ (require 'org-msg)
+ (setq  org-msg-greeting-fmt "\nHej%s,\n\n"
+	org-msg-recipient-names '(("alfred@stensatter.se" . "Alfred"))
+	org-msg-greeting-name-limit 3
+	org-msg-convert-citation t
+	org-msg-signature "
+
+ Med vänliga hälsningar,
+
+ #+begin_signature
+ --
+ *Alfred Roos*
+ #+end_signature")
+ (org-msg-mode)
+
+(setq org-msg-style
+      '((default . (:foreground "black" :background "#f9f9f9" :font-family "Arial"))
+        (quote . (:foreground "gray" :slant italic))
+        (bold . (:weight bold :foreground "darkgray"))
+        (italic . (:slant italic :foreground "gray"))
+        (underline . (:underline t))))
+
 (evil-define-key 'normal dired-mode-map
   (kbd "h") 'dired-up-directory
   (kbd "l") 'dired-find-file
@@ -182,6 +218,9 @@
   )
 
         ;; (map! "S-<iso-lefttab>" #'+vertico/switch-workspace-buffer)
+
+(map! :n "C-SPC" #'consult-fd)
+
 
 (map! "M-s RET" #'spawn-term-down)
 (map! "M-t RET" #'spawn-term-tab)
