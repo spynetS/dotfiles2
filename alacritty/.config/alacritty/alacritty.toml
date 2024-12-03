@@ -6,54 +6,54 @@ animation = "EaseOutExpo"
 color = "#ffffff"
 duration = 0
 
-[colors]
-draw_bold_text_with_bright_colors = false
-
-[colors.bright]
-black = "#36393d"
-blue = "#2e4bea"
-cyan = "#54d9ff"
-green = "#47c930"
-magenta = "#cc15ed"
-red = "#ce2727"
-white = "#dbdbdb"
-yellow = "#fff138"
-
-[colors.cursor]
-cursor = "#d8dee9"
-text = "#191919"
-
-[colors.dim]
-black = "#676f78"
-blue = "#707fd0"
-cyan = "#8adaf1"
-green = "#78a670"
-magenta = "#c583d0"
-red = "#000000"
-white = "#e0e3e7"
-yellow = "#faf380"
-
-[colors.normal]
-black = "#191919"
-blue = "#314ad0"
-cyan = "#32d0fc"
-green = "#40a62f"
-magenta = "#b30ad0"
-red = "#b02626"
-white = "#acadb1"
-yellow = "#f2e635"
-
-[colors.primary]
-background = "#191919"
-foreground = "#d8dee9"
-
-[colors.selection]
-background = "#d8dee9"
-text = "#191919"
-
-[colors.vi_mode_cursor]
-cursor = "CellForeground"
-text = "CellBackground"
+#[colors]
+#draw_bold_text_with_bright_colors = false
+#
+#[colors.bright]
+#black = "#36393d"
+#blue = "#2e4bea"
+#cyan = "#54d9ff"
+#green = "#47c930"
+#magenta = "#cc15ed"
+#red = "#ce2727"
+#white = "#dbdbdb"
+#yellow = "#fff138"
+#
+#[colors.cursor]
+#cursor = "#d8dee9"
+#text = "#191919"
+#
+#[colors.dim]
+#black = "#676f78"
+#blue = "#707fd0"
+#cyan = "#8adaf1"
+#green = "#78a670"
+#magenta = "#c583d0"
+#red = "#000000"
+#white = "#e0e3e7"
+#yellow = "#faf380"
+#
+#[colors.normal]
+#black = "#191919"
+#blue = "#314ad0"
+#cyan = "#32d0fc"
+#green = "#40a62f"
+#magenta = "#b30ad0"
+#red = "#b02626"
+#white = "#acadb1"
+#yellow = "#f2e635"
+#
+#[colors.primary]
+#background = "#191919"
+#foreground = "#d8dee9"
+#
+#[colors.selection]
+#background = "#d8dee9"
+#text = "#191919"
+#
+#[colors.vi_mode_cursor]
+#cursor = "CellForeground"
+#text = "CellBackground"
 
 [cursor]
 style = "Underline"
@@ -420,3 +420,56 @@ live_config_reload = true
 working_directory = "None"
 
 [terminal]
+# BEGIN WAL
+[colors.primary]
+background = '#100e0a'
+foreground = '#c2c5c3'
+
+[colors.cursor]
+text   = '#100e0a' # Apply background color to color of text inside cursor
+cursor = '#c2c5c3' # Apply foreground color to color of cursor
+
+[colors.vi_mode_cursor]
+text    = '#100e0a' # Same as above
+cursor  = '#c2c5c3'
+
+[colors.search.matches]
+foreground = '#100e0a' # Same as above
+background = '#c2c5c3' # Apply bright/white color to bg color of matching search
+
+[colors.search.focused_match]
+foreground = 'CellBackground'
+background = 'CellForeground'
+
+[colors.line_indicator]
+foreground = 'None'
+background = 'None'
+
+[colors.footer_bar]
+foreground = '#878988'
+background = '#c2c5c3'
+
+[colors.selection]
+text       = 'CellBackground'
+background = 'CellForeground'
+
+[colors.normal]
+black   = '#100e0a'
+red     = '#66655B'
+green   = '#8D6F4B'
+yellow  = '#A28E6B'
+blue    = '#6F7E82'
+magenta = '#758E98'
+cyan    = '#78A9C5'
+white   = '#c2c5c3'
+
+[colors.bright]
+black   = '#878988'
+red     = '#66655B'
+green   = '#8D6F4B'
+yellow  = '#A28E6B'
+blue    = '#6F7E82'
+magenta = '#758E98'
+cyan    = '#78A9C5'
+white   = '#c2c5c3'
+# END WAL

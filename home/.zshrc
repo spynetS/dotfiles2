@@ -50,6 +50,7 @@ alias rc="$EDITOR ~/.zshrc"
 alias pacman="sudo pacman"
 alias fresh="clear;fetch"
 alias ec="emacsclient -c -a ''"
+alias et="emacsclient -nw"
 alias extract-album="yt-dlp --extract-audio --audio-format flac "
 alias r2="r2modman --in-process-gpu"
 
@@ -59,6 +60,7 @@ alias vf='cd $(find $($HOME) -type d | fzf) && tmux'
 
 eval "$(zoxide init zsh)"
 alias cd="z"
+export PASH_KEYID=alfred@stensatter.se
 
 fetch
 # fix bad keybiding
