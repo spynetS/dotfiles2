@@ -30,6 +30,8 @@
   (insert "*"))
 
 (setq display-line-numbers-type 'relative)
+(display-time)
+(display-battery-mode)
 
 (doom/set-frame-opacity 96)
 (set-frame-parameter (selected-frame) 'alpha '( 88 90))
@@ -39,14 +41,14 @@
 (setq-default tab-width 4) ; Assuming you want your tabs to be four spaces wide
 (defvaralias 'c-basic-offset 'tab-width)
 
-(setq doom-font (font-spec :family "Iosevka" :size 14 :weight 'regular)
-      doom-variable-pitch-font (font-spec :family "JetBrains Mono" :size 11 :weight 'semi-light))
+(setq doom-font (font-spec :family "Iosevka" :weight 'semibold :size 13 :width 'expanded)
+      doom-variable-pitch-font (font-spec :family "Iosevka" :size 18))
 
 (setq doom-theme 'ewal-doom-one)
 (nyan-mode)
 
   (blink-cursor-mode 1)
-  (beacon-mode 1)
+  (beacon-mode 0)
 
 (use-package! doom-modeline
   :config
@@ -118,6 +120,14 @@
          :html-head "<link rel=\"stylesheet\"
                     href=\"./mystyle.css\"
                     type=\"text/css\"/>")))
+
+(setq org-publish-project-alist
+      '(("org roam pdf"
+         :base-directory "~/org/roam"
+         :publishing-function org-latex-publish-to-pdf
+         :publishing-directory "~/Nextcloud/roam-pdf"
+         :section-numbers nil
+         :with-toc nil)))
 
 (setq org-format-latex-options '(:scale 2.25))
 
