@@ -1,5 +1,4 @@
-
-+title: Readme
+#+title: Readme
 #+AUTHOR: Alfred Roos
 #+PROPERTY: header-args :tangle config.el
 #+OPTIONS: toc:4
@@ -63,6 +62,8 @@
 Makes the line numbers show how many stops up or down to that line and shows the current line the real number.
 #+begin_src elisp
 (setq display-line-numbers-type 'relative)
+(display-time)
+(display-battery-mode)
 #+end_src
 
 Sets the opacity
@@ -80,8 +81,8 @@ Sets the opacity
 
 *** Font
 #+begin_src elisp
-(setq doom-font (font-spec :family "Iosevka" :size 14 :weight 'regular)
-      doom-variable-pitch-font (font-spec :family "JetBrains Mono" :size 11 :weight 'semi-light))
+(setq doom-font (font-spec :family "Iosevka" :weight 'semibold :size 13 :width 'expanded)
+      doom-variable-pitch-font (font-spec :family "Iosevka" :size 18))
 #+end_src
 
 *** Theme
@@ -92,7 +93,7 @@ Sets the opacity
 *** Cursor
 #+begin_src elisp
   (blink-cursor-mode 1)
-  (beacon-mode 1)
+  (beacon-mode 0)
 #+end_src
 *** Modeline
 #+begin_src elisp
@@ -179,6 +180,13 @@ Sets the opacity
                     href=\"./mystyle.css\"
                     type=\"text/css\"/>")))
 
+(setq org-publish-project-alist
+      '(("org roam pdf"
+         :base-directory "~/org/roam"
+         :publishing-function org-latex-publish-to-pdf
+         :publishing-directory "~/Nextcloud/roam-pdf"
+         :section-numbers nil
+         :with-toc nil)))
 
 #+end_src
 
@@ -455,8 +463,8 @@ NOTE Move your cursor over a module's name (or its flags) and press 'K' (or
 
        :checkers
        syntax              ; tasing you for every semicolon you forget
-       ;; (spell +aspell) ; tasing you for misspelling mispelling
-       ;; grammar           ; tasing grammar mistake every you make
+       (spell +aspell) ; tasing you for misspelling mispelling
+       grammar           ; tasing grammar mistake every you make
 
        :tools
        ;;ansible
