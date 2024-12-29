@@ -70,15 +70,15 @@ render_timer = false
 TERM = "xterm-256color"
 
 [font]
-size = 10
+size = 14
 
 [font.glyph_offset]
 x = 0
 y = 0
 
 [font.normal]
-family = "JetBrains Mono"
-style = "Medium"
+family = "Iosevka"
+style = "semibold"
 
 [font.offset]
 x = -1
@@ -422,20 +422,20 @@ working_directory = "None"
 [terminal]
 # BEGIN WAL
 [colors.primary]
-background = '#100e0a'
-foreground = '#c2c5c3'
+background = '#0C0F13'
+foreground = '#c2c3c4'
 
 [colors.cursor]
-text   = '#100e0a' # Apply background color to color of text inside cursor
-cursor = '#c2c5c3' # Apply foreground color to color of cursor
+text   = '#0C0F13' # Apply background color to color of text inside cursor
+cursor = '#c2c3c4' # Apply foreground color to color of cursor
 
 [colors.vi_mode_cursor]
-text    = '#100e0a' # Same as above
-cursor  = '#c2c5c3'
+text    = '#0C0F13' # Same as above
+cursor  = '#c2c3c4'
 
 [colors.search.matches]
-foreground = '#100e0a' # Same as above
-background = '#c2c5c3' # Apply bright/white color to bg color of matching search
+foreground = '#0C0F13' # Same as above
+background = '#c2c3c4' # Apply bright/white color to bg color of matching search
 
 [colors.search.focused_match]
 foreground = 'CellBackground'
@@ -446,30 +446,30 @@ foreground = 'None'
 background = 'None'
 
 [colors.footer_bar]
-foreground = '#878988'
-background = '#c2c5c3'
+foreground = '#59636c'
+background = '#c2c3c4'
 
 [colors.selection]
 text       = 'CellBackground'
 background = 'CellForeground'
 
 [colors.normal]
-black   = '#100e0a'
-red     = '#66655B'
-green   = '#8D6F4B'
-yellow  = '#A28E6B'
-blue    = '#6F7E82'
-magenta = '#758E98'
-cyan    = '#78A9C5'
-white   = '#c2c5c3'
+black   = '#0C0F13'
+red     = '#567293'
+green   = '#6484A3'
+yellow  = '#6E90B1'
+blue    = '#7BA0C3'
+magenta = '#9CACC0'
+cyan    = '#90AFCF'
+white   = '#c2c3c4'
 
 [colors.bright]
-black   = '#878988'
-red     = '#66655B'
-green   = '#8D6F4B'
-yellow  = '#A28E6B'
-blue    = '#6F7E82'
-magenta = '#758E98'
-cyan    = '#78A9C5'
-white   = '#c2c5c3'
+black   = '#59636c'
+red     = '#567293'
+green   = '#6484A3'
+yellow  = '#6E90B1'
+blue    = '#7BA0C3'
+magenta = '#9CACC0'
+cyan    = '#90AFCF'
+white   = '#c2c3c4'
 # END WAL

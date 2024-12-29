@@ -27,6 +27,9 @@ export XDG_CONFIG_HOME="$HOME/.config"
 export WEBKIT_DISABLE_DMABUF_RENDERER=1
 
 HISTFILE=~/.cashe/zsh/history
+alias wttr="curl v2.wttr.in"
+alias wttrj="curl v2.wttr.in/jonkoping"
+alias chromewal="generate-theme"
 alias mechvibes="mechvibes --in-process-gpu"
 alias ls="exa --icons "
 alias screenshot="scrot -s -e 'xclip -selection clipboard -t image/png -i $f"

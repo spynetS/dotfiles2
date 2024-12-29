@@ -1,5 +1,8 @@
 (load (expand-file-name "c3-mode.el" doom-user-dir))
 
+(setq treesit-language-source-alist
+  '((c3 "https://github.com/c3lang/tree-sitter-c3")))
+
 
 (defun find-home-file()
   (interactive)
@@ -44,7 +47,7 @@
 (setq doom-font (font-spec :family "Iosevka" :weight 'semibold :size 13 :width 'expanded)
       doom-variable-pitch-font (font-spec :family "Iosevka" :size 18))
 
-(setq doom-theme 'ewal-doom-one)
+(setq doom-theme 'gruber-darker)
 (nyan-mode)
 
   (blink-cursor-mode 1)
