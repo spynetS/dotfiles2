@@ -1,6 +1,6 @@
 #startup commands
 exec wal -R -a 75
-exec ~/.config/polybar/launch.sh --grayblocks
+exec ~/.config/polybar/launch.sh --cuts
 exec source ~/.profile
 exec emacs --daemon
 
@@ -45,8 +45,8 @@ set $ws6 6
 set $ws7 7
 set $ws8 8
 
-gaps inner 5
-gaps outer 2
+gaps inner 10
+gaps outer 20
 smart_borders on
 
 font xft:URWGothic-Book 11
@@ -282,44 +282,35 @@ set_from_resource $color14    color14
 set_from_resource $color15    color15
 
 # Start i3bar to display a workspace bar (plus the system information i3status if available)
+# Set the mode for the i3bar
 bar {
-	i3bar_command i3bar
-	status_command i3status
-	position bottom
-	# mode dock
-	mode hide
-     	modifier none
- ## please set your primary output first. Example: 'xrandr --output eDP1 --primary'
- #	tray_output primary
- #	tray_output eDP1
+    status_command i3status
+    position top
+    colors {
+        background #000000
+        statusline #ffffff
+        separator  #666666
+        focused_workspace  #4c7899 #285577 #ffffff
+        active_workspace   #333333 #5f676a #ffffff
+        inactive_workspace #333333 #222222 #888888
+        urgent_workspace   #2f343a #900000 #ffffff
+    }
+    font pango:monospace 10
+    tray_output primary
+}
 
- 	bindsym button4 nop
- 	bindsym button5 nop
- #   font xft:URWGothic-Book 11
- 	strip_workspace_numbers yes
-
-	colors {
-		background $bg
-		statusline $color0
-		separator  $fg
-
-	 #                          border  backgr. text
-		focused_workspace  #222D31 #010101 #ffffff
-		active_workspace   #595B5B #353836 #FDF6E3
-		inactive_workspace #595B5B #222D31 #EEE8D5
-		binding_mode       #16a085 #2C2C2C #F9FAF9
-		urgent_workspace   #16a085 #FDF6E3 #E5201D
-	}
- }
+# Use i3status to provide information about system status
+# You'll want to install the 'i3status' package to use this (if it's not installed already)
+status_command i3status
 
 # class                   border  backgr. text    indic.   child_border
- client.focused          #000 $color6     $color0 #FDF6E3
- client.focused_inactive #2F3D44 $background #89b6e2 #454948
- client.unfocused        #2F3D44 $background $color4 #454948
- client.urgent           #CB4B16 $background #1ABC9C #268BD2
- client.placeholder      #000000 $background #ffffff #000000
-#
-#  client.background       #ffffff
+#  client.focused          #000 $color6     $color0 #FDF6E3
+#  client.focused_inactive #2F3D44 $background #89b6e2 #454948
+#  client.unfocused        #2F3D44 $background $color4 #454948
+#  client.urgent           #CB4B16 $background #1ABC9C #268BD2
+#  client.placeholder      #000000 $background #ffffff #000000
+# #
+# #  client.background       #ffffff
 
-set_from_resource $fg i3wm.color7 #f0f0f0
-set_from_resource $bg i3wm.color2 #f0f0f0
+# set_from_resource $fg i3wm.color7 #f0f0f0
+# set_from_resource $bg i3wm.color2 #f0f0f0

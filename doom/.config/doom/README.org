@@ -6,7 +6,6 @@
 
 * Table of contents :toc:
 - [[#configel][Config.el]]
-  - [[#custom-scripts][Custom scripts]]
   - [[#apperance][Apperance]]
   - [[#format][Format]]
   - [[#org-idk][Org Idk]]
@@ -23,9 +22,12 @@
   - [[#themes][themes]]
 
 * Config.el
-** Custom scripts
+j** Custom scripts
 #+begin_src elisp
 (load (expand-file-name "c3-mode.el" doom-user-dir))
+
+(setq treesit-language-source-alist
+  '((c3 "https://github.com/c3lang/tree-sitter-c3")))
 
 
 (defun find-home-file()
@@ -87,7 +89,7 @@ Sets the opacity
 
 *** Theme
 #+begin_src elisp
-(setq doom-theme 'ewal-doom-one)
+(setq doom-theme 'gruber-darker)
 (nyan-mode)
 #+end_src
 *** Cursor
