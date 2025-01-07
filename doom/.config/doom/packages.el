@@ -14,6 +14,7 @@
 (package! nyan-mode)
 (package! cakecrumbs)
 (package! org-roam-ui)
+(package! ido-completing-read+)
 
 (package! org-modern)
 (package! olivetti)

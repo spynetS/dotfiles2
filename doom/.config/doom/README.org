@@ -15,6 +15,7 @@
   - [[#email][Email]]
   - [[#dired][Dired]]
   - [[#keybindings][Keybindings]]
+  - [[#lsp][LSP]]
 - [[#initel][Init.el]]
 - [[#packagesel][Packages.el]]
   - [[#fun-packages][fun packages]]
@@ -24,10 +25,10 @@
 * Config.el
 j** Custom scripts
 #+begin_src elisp
-(load (expand-file-name "c3-mode.el" doom-user-dir))
+;; (load (expand-file-name "c3-mode.el" doom-user-dir))
 
-(setq treesit-language-source-alist
-  '((c3 "https://github.com/c3lang/tree-sitter-c3")))
+;; (setq treesit-language-source-alist
+;;   '((c3 "https://github.com/c3lang/tree-sitter-c3")))
 
 
 (defun find-home-file()
@@ -66,6 +67,15 @@ Makes the line numbers show how many stops up or down to that line and shows the
 (setq display-line-numbers-type 'relative)
 (display-time)
 (display-battery-mode)
+
+(setq fancy-splash-image "~/.config/doom/dashboard.jpg")
+
+(setq treesit-language-source-alist
+  '((c3 "https://github.com/c3lang/tree-sitter-c3")))
+
+(add-to-list 'load-path "~/.config/doom/c3-ts-mode")
+(require 'c3-ts-mode)
+
 #+end_src
 
 Sets the opacity
@@ -383,6 +393,23 @@ so it works in treemacs
 (map! "M-C" #'full-calc)
 #+end_src
 
+** LSP
+
+#+begin_src elisp
+(use-package lsp-mode
+  :ensure t
+  :hook ((c3-ts-mode . lsp))  ;; Ensure the LSP server starts in `c3-ts-mode`
+  :config
+  ;; Register your LSP server for c3-ts-mode
+  (lsp-register-client
+   (make-lsp-client :new-connection (lsp-stdio-connection '("c3lsp"))
+                    :major-modes '(c3-ts-mode)
+                    :server-id 'c3-ts-lsp))
+)
+
+#+end_src
+
+
 
 * Init.el
 This file controls what Doom modules are enabled and what order they load
@@ -399,7 +426,7 @@ NOTE Move your cursor over a module's name (or its flags) and press 'K' (or
      Alternatively, press 'gd' (or 'C-c c d') on a module to browse its
      directory (for easy access to its source code).
 
-#+begin_src elisp :tangle "init.el"
+#+begin_src elisp :tangle ""
 (doom! :input
        ;;bidi              ; (tfel ot) thgir etirw uoy gnipleh
        ;;chinese
@@ -409,9 +436,9 @@ NOTE Move your cursor over a module's name (or its flags) and press 'K' (or
        :completion
        (company)           ; the ultimate code completion backend
        ;; helm              ; the *other* search engine for love and life
-       ;;ido               ; the other *other* search engine...
+       ido               ; the other *other* search engine...
        ;;ivy               ; a search engine for love and life
-       vertico           ; the search engine of the future
+       ;;vertico           ; the search engine of the future
 
        :ui
        ;;deft              ; notational velocity for Emacs
@@ -658,6 +685,7 @@ Package tohide dotfiles with dired
 (package! nyan-mode)
 (package! cakecrumbs)
 (package! org-roam-ui)
+(package! ido-completing-read+)
 
 #+end_src
 ** agenda packages
