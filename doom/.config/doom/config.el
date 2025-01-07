@@ -1,7 +1,7 @@
-(load (expand-file-name "c3-mode.el" doom-user-dir))
+;; (load (expand-file-name "c3-mode.el" doom-user-dir))
 
-(setq treesit-language-source-alist
-  '((c3 "https://github.com/c3lang/tree-sitter-c3")))
+;; (setq treesit-language-source-alist
+;;   '((c3 "https://github.com/c3lang/tree-sitter-c3")))
 
 
 (defun find-home-file()
@@ -35,6 +35,14 @@
 (setq display-line-numbers-type 'relative)
 (display-time)
 (display-battery-mode)
+
+(setq fancy-splash-image "~/.config/doom/dashboard.jpg")
+
+(setq treesit-language-source-alist
+  '((c3 "https://github.com/c3lang/tree-sitter-c3")))
+
+(add-to-list 'load-path "~/.config/doom/c3-ts-mode")
+(require 'c3-ts-mode)
 
 (doom/set-frame-opacity 96)
 (set-frame-parameter (selected-frame) 'alpha '( 88 90))
@@ -269,3 +277,14 @@
 
 (map! "M-c" #'calc)
 (map! "M-C" #'full-calc)
+
+(use-package lsp-mode
+  :ensure t
+  :hook ((c3-ts-mode . lsp))  ;; Ensure the LSP server starts in `c3-ts-mode`
+  :config
+  ;; Register your LSP server for c3-ts-mode
+  (lsp-register-client
+   (make-lsp-client :new-connection (lsp-stdio-connection '("c3lsp"))
+                    :major-modes '(c3-ts-mode)
+                    :server-id 'c3-ts-lsp))
+)
