@@ -53,7 +53,6 @@
 (nyan-mode)
 
   (blink-cursor-mode 1)
-  (beacon-mode 0)
 
 (use-package! doom-modeline
   :config
@@ -106,6 +105,7 @@
          (ruby-mode . prettier-mode)))
 
 (setq org-hide-emphasis-markers t)
+(with-eval-after-load 'org (global-org-modern-mode))
 
 (setq org-directory "~/org/")
 (setq org-agenda-files
@@ -135,20 +135,6 @@
 ))
 
 (setq org-format-latex-options '(:scale 2.25))
-
-;; Somewhere in your .emacs file
-(setq elfeed-feeds
-      '("http://nullprogram.com/feed/"
-	    "https://itsfoss.com/rss/"
-        "https://planet.emacslife.com/atom.xml"))
-
-(remove-hook 'doom-first-input-hook #'evil-snipe-mode)
-;; toggle it off
-;; (evil-snipe-mode)
-
-Instead of emptying the line `Ctrl-K` it will remove the line
-#+begin_src elisp
-(setq kill-whole-line t)
 
 (defvar my-maximize-buffer-flag nil
   "Flag to track whether the buffer is maximized or not.")
@@ -198,84 +184,16 @@ Instead of emptying the line `Ctrl-K` it will remove the line
 (global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
 (global-set-key (kbd "C-c n w") 'mc/mark-next-like-this-word)
 
-;; (load-file "~/.config/mu4e/mu4e-config.el")
-
-;; (add-to-list 'load-path "~/.config/mu4e")
-;; (require 'mu4e-config)
-
-;; (use-package mu4e-config
-;;   :after mu4e
-;;   :load-path "~/.config/mu4e")
-
-;; (setq +mu4e-compose-org-msg-toggle-next t)
-
-;;  (require 'org-msg)
-;;  (setq  org-msg-greeting-fmt "\nHej%s,\n\n"
-;; 	org-msg-recipient-names '(("alfred@stensatter.se" . "Alfred"))
-;; 	org-msg-greeting-name-limit 3
-;; 	org-msg-convert-citation t
-;; 	org-msg-signature "
-
-;;  Med vänliga hälsningar,
-
-;;  #+begin_signature
-;;  --
-;;  *Alfred Roos*
-;;  #+end_signature")
-;;  (org-msg-mode)
-
-;; (setq org-msg-style
-;;       '((default . (:foreground "black" :background "#f9f9f9" :font-family "Arial"))
-;;         (quote . (:foreground "gray" :slant italic))
-;;         (bold . (:weight bold :foreground "darkgray"))
-;;         (italic . (:slant italic :foreground "gray"))
-;;         (underline . (:underline t))))
-
-;; (evil-define-key 'normal dired-mode-map
-;;   (kbd "h") 'dired-up-directory
-;;   (kbd "l") 'dired-find-file
-;;   )
-
-;;(evil-define-key 'normal dired-mode-map
-  ;;(kbd ".") 'dired-hide-dotfiles-mode
-;;  )
-
 (map! "C-<tab>" #'+vertico/switch-workspace-buffer)
-
-;;(map! :n "C-SPC" #'consult-fd)
-
-
 (map! "M-s RET" #'spawn-term-down)
 (map! "M-t RET" #'spawn-term-tab)
 
-;;(map! "C-c C-c" #'git-com)
 (map! "C-c t" #'tab-close)
-;;(map! "M-f" #'my-toggle-maximize-buffer)
-;;(map! "M-e" #'dired-jump)
-;(map! "M-E" #'dired-jump-other-window)
-;; (map! "SPC->" (lambda () (interactive) (dired "~/")))
 
-;; (map! "M-h" #'windmove-left
-;;       "M-k" #'windmove-up
-;;       "M-l" #'windmove-right
-;;       "M-j" #'windmove-down)
-
-;; (with-eval-after-load 'treemacs
-;;   (define-key treemacs-mode-map (kbd "M-h") nil)
-
-;;   (define-key treemacs-mode-map (kbd "M-l") nil)
-;;   (define-key treemacs-mode-map (kbd "M-k") nil)
-;;   (define-key treemacs-mode-map (kbd "M-j") nil))
-
-(map! "M-H" #'windmove-left
-      "M-L" #'windmove-right
-      "M-K" #'windmove-up
-      "M-J" #'windmove-down)
-
-(map! "M-C-h" #'(lambda () (interactive) (evil-window-decrease-width  3))
-      "M-C-l" #'(lambda () (interactive) (evil-window-increase-width  3))
-      "M-C-j" #'(lambda () (interactive) (evil-window-decrease-height 2))
-      "M-C-k" #'(lambda () (interactive) (evil-window-increase-height 2)))
+;; (map! "M-H" #'windmove-left
+;;       "M-L" #'windmove-right
+;;       "M-K" #'windmove-up
+;;       "M-J" #'windmove-down)
 
 (map! "M-c" #'calc)
 (map! "M-C" #'full-calc)
