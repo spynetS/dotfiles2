@@ -3,10 +3,11 @@
 #+PROPERTY: header-args :tangle config.el
 #+OPTIONS: toc:4
 
-
+ 
 * Table of contents :toc:
 - [[#configel][Config.el]]
-  - [[#apperance][Apperance]]
+  - [[#custom-scripts][Custom scripts]]
+  - [[#appearance][Appearance]]
   - [[#format][Format]]
   - [[#org-idk][Org Idk]]
   - [[#elfeed][Elfeed]]
@@ -15,7 +16,6 @@
   - [[#email][Email]]
   - [[#dired][Dired]]
   - [[#keybindings][Keybindings]]
-  - [[#lsp][LSP]]
 - [[#initel][Init.el]]
 - [[#packagesel][Packages.el]]
   - [[#fun-packages][fun packages]]
@@ -23,14 +23,8 @@
   - [[#themes][themes]]
 
 * Config.el
-j** Custom scripts
+** Custom scripts
 #+begin_src elisp
-;; (load (expand-file-name "c3-mode.el" doom-user-dir))
-
-;; (setq treesit-language-source-alist
-;;   '((c3 "https://github.com/c3lang/tree-sitter-c3")))
-
-
 (defun find-home-file()
   (interactive)
   (consult-fd "~/")
@@ -58,10 +52,9 @@ j** Custom scripts
   (insert "*")
   (forward-word)
   (insert "*"))
-
 #+end_src
 
-** Apperance
+** Appearance
 Makes the line numbers show how many stops up or down to that line and shows the current line the real number.
 #+begin_src elisp
 (setq display-line-numbers-type 'relative)
@@ -164,33 +157,18 @@ Sets the opacity
 ** Org Idk
 #+begin_src elisp
 (setq org-hide-emphasis-markers t)
-
-#+end_src
-
-*** Agenda
-#+begin_src elisp
-(setq org-agenda-files (directory-files-recursively "~/org/roam" "\\.org$"))
-
 #+end_src
 
 *** Org roam
 #+begin_src elisp
 (setq org-directory "~/org/")
-(setq org-agenda-files (directory-files-recursively "~/org" "\\.org$"))
+(setq org-agenda-files
+      (append (directory-files-recursively "~/org" "\\.org$")
+              (directory-files-recursively "~/Nextcloud/skola" "\\.org$")))
+
 
 (add-to-list 'load-path ".config/doom/emacs-libvterm")
 (require 'vterm)
-
-(setq org-publish-project-alist
-      '(("org roam"
-         :base-directory "~/org/roam"
-         :publishing-function org-html-publish-to-html
-         :publishing-directory "~/Nextcloud/roam"
-         :section-numbers nil
-         :with-toc nil
-         :html-head "<link rel=\"stylesheet\"
-                    href=\"./mystyle.css\"
-                    type=\"text/css\"/>")))
 
 (setq org-publish-project-alist
       '(("org roam pdf"
@@ -198,8 +176,17 @@ Sets the opacity
          :publishing-function org-latex-publish-to-pdf
          :publishing-directory "~/Nextcloud/roam-pdf"
          :section-numbers nil
-         :with-toc nil)))
+         :with-toc nil)
 
+	("digitalteknik"
+	 :base-directory "~/Nextcloud/skola/digitalteknik"
+         :publishing-function org-html-publish-to-html
+         :publishing-directory "~/Nextcloud/skola/published/digitalteknik"
+         :section-numbers nil
+         :html-head "<link rel=\"stylesheet\" type=\"text/css\" href=\"https://gongzhitaao.org/orgcss/org.css\"/>"
+
+	 )
+))
 #+end_src
 
 *** Org latex-preview
@@ -222,7 +209,6 @@ Sets the opacity
 (remove-hook 'doom-first-input-hook #'evil-snipe-mode)
 ;; toggle it off
 ;; (evil-snipe-mode)
-#+end_src
 
 Instead of emptying the line `Ctrl-K` it will remove the line
 #+begin_src elisp
@@ -284,100 +270,108 @@ Instead of emptying the line `Ctrl-K` it will remove the line
       "s v" #'my/split-window-right-and-locate)
 #+end_src
 
+**** Multiple cursor
+#+begin_src elisp
+(global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
+(global-set-key (kbd "C->") 'mc/mark-next-like-this)
+(global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
+(global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
+(global-set-key (kbd "C-c n w") 'mc/mark-next-like-this-word)
+#+end_src
 
 ** Email
 #+begin_src elisp
-(load-file "~/.config/mu4e/mu4e-config.el")
+;; (load-file "~/.config/mu4e/mu4e-config.el")
 
-(add-to-list 'load-path "~/.config/mu4e")
-(require 'mu4e-config)
+;; (add-to-list 'load-path "~/.config/mu4e")
+;; (require 'mu4e-config)
 
-(use-package mu4e-config
-  :after mu4e
-  :load-path "~/.config/mu4e")
+;; (use-package mu4e-config
+;;   :after mu4e
+;;   :load-path "~/.config/mu4e")
 
-(setq +mu4e-compose-org-msg-toggle-next t)
+;; (setq +mu4e-compose-org-msg-toggle-next t)
 
- (require 'org-msg)
- (setq  org-msg-greeting-fmt "\nHej%s,\n\n"
-	org-msg-recipient-names '(("alfred@stensatter.se" . "Alfred"))
-	org-msg-greeting-name-limit 3
-	org-msg-convert-citation t
-	org-msg-signature "
+;;  (require 'org-msg)
+;;  (setq  org-msg-greeting-fmt "\nHej%s,\n\n"
+;; 	org-msg-recipient-names '(("alfred@stensatter.se" . "Alfred"))
+;; 	org-msg-greeting-name-limit 3
+;; 	org-msg-convert-citation t
+;; 	org-msg-signature "
 
- Med vänliga hälsningar,
+;;  Med vänliga hälsningar,
 
- ,#+begin_signature
- --
- ,*Alfred Roos*
- ,#+end_signature")
- (org-msg-mode)
+;;  #+begin_signature
+;;  --
+;;  *Alfred Roos*
+;;  #+end_signature")
+;;  (org-msg-mode)
 
-(setq org-msg-style
-      '((default . (:foreground "black" :background "#f9f9f9" :font-family "Arial"))
-        (quote . (:foreground "gray" :slant italic))
-        (bold . (:weight bold :foreground "darkgray"))
-        (italic . (:slant italic :foreground "gray"))
-        (underline . (:underline t))))
+;; (setq org-msg-style
+;;       '((default . (:foreground "black" :background "#f9f9f9" :font-family "Arial"))
+;;         (quote . (:foreground "gray" :slant italic))
+;;         (bold . (:weight bold :foreground "darkgray"))
+;;         (italic . (:slant italic :foreground "gray"))
+;;         (underline . (:underline t))))
 
 #+end_src
 
 ** Dired
 Remap dired a bit
 #+begin_src elisp
-(evil-define-key 'normal dired-mode-map
-  (kbd "h") 'dired-up-directory
-  (kbd "l") 'dired-find-file
-  )
+;; (evil-define-key 'normal dired-mode-map
+;;   (kbd "h") 'dired-up-directory
+;;   (kbd "l") 'dired-find-file
+;;   )
 #+end_src
 Add hide dotfiles
 #+begin_src elisp
-(evil-define-key 'normal dired-mode-map
-  (kbd ".") 'dired-hide-dotfiles-mode
-  )
+;;(evil-define-key 'normal dired-mode-map
+  ;;(kbd ".") 'dired-hide-dotfiles-mode
+;;  )
 #+end_src
 
 ** Keybindings
 #+begin_src elisp
-        ;; (map! "S-<iso-lefttab>" #'+vertico/switch-workspace-buffer)
+(map! "C-<tab>" #'+vertico/switch-workspace-buffer)
 
-(map! :n "C-SPC" #'consult-fd)
+;;(map! :n "C-SPC" #'consult-fd)
 
 
 (map! "M-s RET" #'spawn-term-down)
 (map! "M-t RET" #'spawn-term-tab)
-(map! "M-RET" #'eshell)
 
-(map! "C-c C-c" #'git-com)
+;;(map! "C-c C-c" #'git-com)
 (map! "C-c t" #'tab-close)
-(map! "M-f" #'my-toggle-maximize-buffer)
-(map! "M-e" #'dired-jump)
-(map! "M-E" #'dired-jump-other-window)
+;;(map! "M-f" #'my-toggle-maximize-buffer)
+;;(map! "M-e" #'dired-jump)
+;(map! "M-E" #'dired-jump-other-window)
 ;; (map! "SPC->" (lambda () (interactive) (dired "~/")))
 
 #+end_src
 *** move windows with vim key
 #+begin_src elisp
-(map! "M-h" #'windmove-left
-      "M-k" #'windmove-up
-      "M-l" #'windmove-right
-      "M-j" #'windmove-down)
+;; (map! "M-h" #'windmove-left
+;;       "M-k" #'windmove-up
+;;       "M-l" #'windmove-right
+;;       "M-j" #'windmove-down)
 #+end_src
 
 #+begin_src elisp
-(with-eval-after-load 'treemacs
-  (define-key treemacs-mode-map (kbd "M-h") nil)
-  (define-key treemacs-mode-map (kbd "M-l") nil)
-  (define-key treemacs-mode-map (kbd "M-k") nil)
-  (define-key treemacs-mode-map (kbd "M-j") nil))
+;; (with-eval-after-load 'treemacs
+;;   (define-key treemacs-mode-map (kbd "M-h") nil)
+
+;;   (define-key treemacs-mode-map (kbd "M-l") nil)
+;;   (define-key treemacs-mode-map (kbd "M-k") nil)
+;;   (define-key treemacs-mode-map (kbd "M-j") nil))
 #+end_src
 so it works in treemacs
 **** move windows with vim key
 #+begin_src elisp
-(map! "M-H" #'+evil/window-move-left
-      "M-L" #'+evil/window-move-right
-      "M-K" #'+evil/window-move-up
-      "M-J" #'+evil/window-move-down)
+(map! "M-H" #'windmove-left
+      "M-L" #'windmove-right
+      "M-K" #'windmove-up
+      "M-J" #'windmove-down)
 #+end_src
 *** move windows size with vim key
 #+begin_src elisp
@@ -392,24 +386,6 @@ so it works in treemacs
 (map! "M-c" #'calc)
 (map! "M-C" #'full-calc)
 #+end_src
-
-** LSP
-
-#+begin_src elisp
-(use-package lsp-mode
-  :ensure t
-  :hook ((c3-ts-mode . lsp))  ;; Ensure the LSP server starts in `c3-ts-mode`
-  :config
-  ;; Register your LSP server for c3-ts-mode
-  (lsp-register-client
-   (make-lsp-client :new-connection (lsp-stdio-connection '("c3lsp"))
-                    :major-modes '(c3-ts-mode)
-                    :server-id 'c3-ts-lsp))
-)
-
-#+end_src
-
-
 
 * Init.el
 This file controls what Doom modules are enabled and what order they load
@@ -426,7 +402,7 @@ NOTE Move your cursor over a module's name (or its flags) and press 'K' (or
      Alternatively, press 'gd' (or 'C-c c d') on a module to browse its
      directory (for easy access to its source code).
 
-#+begin_src elisp :tangle ""
+#+begin_src elisp :tangle "init.el"
 (doom! :input
        ;;bidi              ; (tfel ot) thgir etirw uoy gnipleh
        ;;chinese
@@ -436,9 +412,9 @@ NOTE Move your cursor over a module's name (or its flags) and press 'K' (or
        :completion
        (company)           ; the ultimate code completion backend
        ;; helm              ; the *other* search engine for love and life
-       ido               ; the other *other* search engine...
+       ;;ido               ; the other *other* search engine...
        ;;ivy               ; a search engine for love and life
-       ;;vertico           ; the search engine of the future
+       vertico           ; the search engine of the future
 
        :ui
        ;;deft              ; notational velocity for Emacs
@@ -466,7 +442,7 @@ NOTE Move your cursor over a module's name (or its flags) and press 'K' (or
        zen               ; distraction-free coding or writing
 
        :editor
-       (evil +everywhere); come to the dark side, we have cookies
+       ;;(evil +everywhere); come to the dark side, we have cookies
        file-templates    ; auto-snippets for empty files
        fold              ; (nigh) universal code folding
        ;; (format +onsave)  ; automated prettiness
@@ -611,60 +587,6 @@ NOTE Move your cursor over a module's name (or its flags) and press 'K' (or
 #+RESULTS:
 
 * Packages.el
-Packages other then the ones doom recomend, like in [[Init.el]].
-Here is the comments
-;; -*- no-byte-compile: t; -*-
-;;; $DOOMDIR/packages.el
-
-;; To install a package with Doom you must declare them here and run 'doom sync'
-;; on the command line, then restart Emacs for the changes to take effect -- or
-;; use 'M-x doom/reload'.
-
-
-;; To install SOME-PACKAGE from MELPA, ELPA or emacsmirror:
-;(package! some-package)
-
-;; To install a package directly from a remote git repo, you must specify a
-;; `:recipe'. You'll find documentation on what `:recipe' accepts here:
-;; https://github.com/radian-software/straight.el#the-recipe-format
-;(package! another-package
-;  :recipe (:host github :repo "username/repo"))
-
-;; If the package you are trying to install does not contain a PACKAGENAME.el
-;; file, or is located in a subdirectory of the repo, you'll need to specify
-;; `:files' in the `:recipe':
-;(package! this-package
-;  :recipe (:host github :repo "username/repo"
-;           :files ("some-file.el" "src/lisp/*.el")))
-
-;; If you'd like to disable a package included with Doom, you can do so here
-;; with the `:disable' property:
-;(package! builtin-package :disable t)
-
-;; You can override the recipe of a built in package without having to specify
-;; all the properties for `:recipe'. These will inherit the rest of its recipe
-;; from Doom or MELPA/ELPA/Emacsmirror:
-;(package! builtin-package :recipe (:nonrecursive t))
-;(package! builtin-package-2 :recipe (:repo "myfork/package"))
-
-;; Specify a `:branch' to install a package from a particular branch or tag.
-;; This is required for some packages whose default branch isn't 'master' (which
-;; our package manager can't deal with; see radian-software/straight.el#279)
-;(package! builtin-package :recipe (:branch "develop"))
-
-;; Use `:pin' to specify a particular commit to install.
-;(package! builtin-package :pin "1a2b3c4d5e")
-
-
-;; Doom's packages are pinned to a specific commit and updated from release to
-;; release. The `unpin!' macro allows you to unpin single packages...
-;(unpin! pinned-package)
-;; ...or multiple packages
-;(unpin! pinned-package another-pinned-package)
-;; ...Or *all* packages (NOT RECOMMENDED; will likely break things)
-;(unpin! t)
-
-Package tohide dotfiles with dired
 #+begin_src elisp :tangle "packages.el"
 (package! dired-hide-dotfiles)
 
