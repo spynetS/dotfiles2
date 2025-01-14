@@ -1,9 +1,3 @@
-;; (load (expand-file-name "c3-mode.el" doom-user-dir))
-
-;; (setq treesit-language-source-alist
-;;   '((c3 "https://github.com/c3lang/tree-sitter-c3")))
-
-
 (defun find-home-file()
   (interactive)
   (consult-fd "~/")
@@ -113,24 +107,14 @@
 
 (setq org-hide-emphasis-markers t)
 
-(setq org-agenda-files (directory-files-recursively "~/org/roam" "\\.org$"))
-
 (setq org-directory "~/org/")
-(setq org-agenda-files (directory-files-recursively "~/org" "\\.org$"))
+(setq org-agenda-files
+      (append (directory-files-recursively "~/org" "\\.org$")
+              (directory-files-recursively "~/Nextcloud/skola" "\\.org$")))
+
 
 (add-to-list 'load-path ".config/doom/emacs-libvterm")
 (require 'vterm)
-
-(setq org-publish-project-alist
-      '(("org roam"
-         :base-directory "~/org/roam"
-         :publishing-function org-html-publish-to-html
-         :publishing-directory "~/Nextcloud/roam"
-         :section-numbers nil
-         :with-toc nil
-         :html-head "<link rel=\"stylesheet\"
-                    href=\"./mystyle.css\"
-                    type=\"text/css\"/>")))
 
 (setq org-publish-project-alist
       '(("org roam pdf"
@@ -138,7 +122,17 @@
          :publishing-function org-latex-publish-to-pdf
          :publishing-directory "~/Nextcloud/roam-pdf"
          :section-numbers nil
-         :with-toc nil)))
+         :with-toc nil)
+
+	("digitalteknik"
+	 :base-directory "~/Nextcloud/skola/digitalteknik"
+         :publishing-function org-html-publish-to-html
+         :publishing-directory "~/Nextcloud/skola/published/digitalteknik"
+         :section-numbers nil
+         :html-head "<link rel=\"stylesheet\" type=\"text/css\" href=\"https://gongzhitaao.org/orgcss/org.css\"/>"
+
+	 )
+))
 
 (setq org-format-latex-options '(:scale 2.25))
 
@@ -152,6 +146,8 @@
 ;; toggle it off
 ;; (evil-snipe-mode)
 
+Instead of emptying the line `Ctrl-K` it will remove the line
+#+begin_src elisp
 (setq kill-whole-line t)
 
 (defvar my-maximize-buffer-flag nil
@@ -196,79 +192,85 @@
       :desc "Vertical split and locate"
       "s v" #'my/split-window-right-and-locate)
 
-(load-file "~/.config/mu4e/mu4e-config.el")
+(global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
+(global-set-key (kbd "C->") 'mc/mark-next-like-this)
+(global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
+(global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
+(global-set-key (kbd "C-c n w") 'mc/mark-next-like-this-word)
 
-(add-to-list 'load-path "~/.config/mu4e")
-(require 'mu4e-config)
+;; (load-file "~/.config/mu4e/mu4e-config.el")
 
-(use-package mu4e-config
-  :after mu4e
-  :load-path "~/.config/mu4e")
+;; (add-to-list 'load-path "~/.config/mu4e")
+;; (require 'mu4e-config)
 
-(setq +mu4e-compose-org-msg-toggle-next t)
+;; (use-package mu4e-config
+;;   :after mu4e
+;;   :load-path "~/.config/mu4e")
 
- (require 'org-msg)
- (setq  org-msg-greeting-fmt "\nHej%s,\n\n"
-	org-msg-recipient-names '(("alfred@stensatter.se" . "Alfred"))
-	org-msg-greeting-name-limit 3
-	org-msg-convert-citation t
-	org-msg-signature "
+;; (setq +mu4e-compose-org-msg-toggle-next t)
 
- Med vänliga hälsningar,
+;;  (require 'org-msg)
+;;  (setq  org-msg-greeting-fmt "\nHej%s,\n\n"
+;; 	org-msg-recipient-names '(("alfred@stensatter.se" . "Alfred"))
+;; 	org-msg-greeting-name-limit 3
+;; 	org-msg-convert-citation t
+;; 	org-msg-signature "
 
- #+begin_signature
- --
- *Alfred Roos*
- #+end_signature")
- (org-msg-mode)
+;;  Med vänliga hälsningar,
 
-(setq org-msg-style
-      '((default . (:foreground "black" :background "#f9f9f9" :font-family "Arial"))
-        (quote . (:foreground "gray" :slant italic))
-        (bold . (:weight bold :foreground "darkgray"))
-        (italic . (:slant italic :foreground "gray"))
-        (underline . (:underline t))))
+;;  #+begin_signature
+;;  --
+;;  *Alfred Roos*
+;;  #+end_signature")
+;;  (org-msg-mode)
 
-(evil-define-key 'normal dired-mode-map
-  (kbd "h") 'dired-up-directory
-  (kbd "l") 'dired-find-file
-  )
+;; (setq org-msg-style
+;;       '((default . (:foreground "black" :background "#f9f9f9" :font-family "Arial"))
+;;         (quote . (:foreground "gray" :slant italic))
+;;         (bold . (:weight bold :foreground "darkgray"))
+;;         (italic . (:slant italic :foreground "gray"))
+;;         (underline . (:underline t))))
 
-(evil-define-key 'normal dired-mode-map
-  (kbd ".") 'dired-hide-dotfiles-mode
-  )
+;; (evil-define-key 'normal dired-mode-map
+;;   (kbd "h") 'dired-up-directory
+;;   (kbd "l") 'dired-find-file
+;;   )
 
-        ;; (map! "S-<iso-lefttab>" #'+vertico/switch-workspace-buffer)
+;;(evil-define-key 'normal dired-mode-map
+  ;;(kbd ".") 'dired-hide-dotfiles-mode
+;;  )
 
-(map! :n "C-SPC" #'consult-fd)
+(map! "C-<tab>" #'+vertico/switch-workspace-buffer)
+
+;;(map! :n "C-SPC" #'consult-fd)
 
 
 (map! "M-s RET" #'spawn-term-down)
 (map! "M-t RET" #'spawn-term-tab)
-(map! "M-RET" #'eshell)
 
-(map! "C-c C-c" #'git-com)
+;;(map! "C-c C-c" #'git-com)
 (map! "C-c t" #'tab-close)
-(map! "M-f" #'my-toggle-maximize-buffer)
-(map! "M-e" #'dired-jump)
-(map! "M-E" #'dired-jump-other-window)
+;;(map! "M-f" #'my-toggle-maximize-buffer)
+;;(map! "M-e" #'dired-jump)
+;(map! "M-E" #'dired-jump-other-window)
 ;; (map! "SPC->" (lambda () (interactive) (dired "~/")))
 
-(map! "M-h" #'windmove-left
-      "M-k" #'windmove-up
-      "M-l" #'windmove-right
-      "M-j" #'windmove-down)
+;; (map! "M-h" #'windmove-left
+;;       "M-k" #'windmove-up
+;;       "M-l" #'windmove-right
+;;       "M-j" #'windmove-down)
 
-(with-eval-after-load 'treemacs
-  (define-key treemacs-mode-map (kbd "M-h") nil)
-  (define-key treemacs-mode-map (kbd "M-l") nil)
-  (define-key treemacs-mode-map (kbd "M-k") nil)
-  (define-key treemacs-mode-map (kbd "M-j") nil))
+;; (with-eval-after-load 'treemacs
+;;   (define-key treemacs-mode-map (kbd "M-h") nil)
 
-(map! "M-H" #'+evil/window-move-left
-      "M-L" #'+evil/window-move-right
-      "M-K" #'+evil/window-move-up
-      "M-J" #'+evil/window-move-down)
+;;   (define-key treemacs-mode-map (kbd "M-l") nil)
+;;   (define-key treemacs-mode-map (kbd "M-k") nil)
+;;   (define-key treemacs-mode-map (kbd "M-j") nil))
+
+(map! "M-H" #'windmove-left
+      "M-L" #'windmove-right
+      "M-K" #'windmove-up
+      "M-J" #'windmove-down)
 
 (map! "M-C-h" #'(lambda () (interactive) (evil-window-decrease-width  3))
       "M-C-l" #'(lambda () (interactive) (evil-window-increase-width  3))
@@ -277,14 +279,3 @@
 
 (map! "M-c" #'calc)
 (map! "M-C" #'full-calc)
-
-(use-package lsp-mode
-  :ensure t
-  :hook ((c3-ts-mode . lsp))  ;; Ensure the LSP server starts in `c3-ts-mode`
-  :config
-  ;; Register your LSP server for c3-ts-mode
-  (lsp-register-client
-   (make-lsp-client :new-connection (lsp-stdio-connection '("c3lsp"))
-                    :major-modes '(c3-ts-mode)
-                    :server-id 'c3-ts-lsp))
-)
