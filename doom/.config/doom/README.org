@@ -180,7 +180,13 @@ Sets the opacity
          :publishing-directory "~/Nextcloud/skola/published/digitalteknik"
          :section-numbers nil
          :html-head "<link rel=\"stylesheet\" type=\"text/css\" href=\"https://gongzhitaao.org/orgcss/org.css\"/>"
-
+	 )
+	("matematisk statestik"
+	 :base-directory "~/Nextcloud/skola/matematisk-statestik"
+         :publishing-function org-html-publish-to-html
+         :publishing-directory "~/Nextcloud/skola/published/matematisk-statestik"
+         :section-numbers nil
+         :html-head "<link rel=\"stylesheet\" type=\"text/css\" href=\"https://gongzhitaao.org/orgcss/org.css\"/>"
 	 )
 ))
 #+end_src
@@ -207,6 +213,9 @@ Sets the opacity
     (progn
       (maximize-window)
       (setq my-maximize-buffer-flag t))))
+
+
+
 #+end_src
 
 *** Spawn term
@@ -269,6 +278,8 @@ Sets the opacity
 ;;       "M-L" #'windmove-right
 ;;       "M-K" #'windmove-up
 ;;       "M-J" #'windmove-down)
+
+
 #+end_src
 *** Open calc
 #+begin_src elisp
@@ -287,7 +298,7 @@ Sets the opacity
        ;;layout            ; auie,ctsrnm is the superior home row
 
        :completion
-       ;;(company)           ; the ultimate code completion backend
+       (company)           ; the ultimate code completion backend
        ;; helm              ; the *other* search engine for love and life
        ;;ido               ; the other *other* search engine...
        ;;ivy               ; a search engine for love and life
@@ -440,7 +451,7 @@ Sets the opacity
        ;;swift             ; who asked for emoji variables?
        ;;terra             ; Earth and Moon in alignment for performance.
        web               ; the tubes
-       ;;yaml              ; JSON, but readable
+       yaml              ; JSON, but readable
        ;;zig               ; C, but simpler
 
        :email
@@ -471,8 +482,6 @@ Sets the opacity
 ;; (package! django-snippets)
 (package! pony-mode)
 (package! lsp-tailwindcss :recipe (:host github :repo "merrickluo/lsp-tailwindcss"))
-(package! cape)
-(package! corfu)
 #+end_src
 
 ** fun packages

@@ -130,7 +130,13 @@
          :publishing-directory "~/Nextcloud/skola/published/digitalteknik"
          :section-numbers nil
          :html-head "<link rel=\"stylesheet\" type=\"text/css\" href=\"https://gongzhitaao.org/orgcss/org.css\"/>"
-
+	 )
+	("matematisk statestik"
+	 :base-directory "~/Nextcloud/skola/matematisk-statestik"
+         :publishing-function org-html-publish-to-html
+         :publishing-directory "~/Nextcloud/skola/published/matematisk-statestik"
+         :section-numbers nil
+         :html-head "<link rel=\"stylesheet\" type=\"text/css\" href=\"https://gongzhitaao.org/orgcss/org.css\"/>"
 	 )
 ))
 
