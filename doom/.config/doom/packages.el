@@ -4,8 +4,6 @@
 ;; (package! django-snippets)
 (package! pony-mode)
 (package! lsp-tailwindcss :recipe (:host github :repo "merrickluo/lsp-tailwindcss"))
-(package! cape)
-(package! corfu)
 
 ;;(package! beacon)
 ;;(package! powerline-evil)
