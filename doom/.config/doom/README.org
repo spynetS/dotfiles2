@@ -21,6 +21,19 @@
 * Config.el
 ** Custom scripts
 #+begin_src elisp
+
+;;(good-scroll-mode 1)
+;;(require 'sublimity-map) ;; experimental
+
+
+;; (require 'sublimity-attractive)
+
+(setq lsp-java-vmargs '("-XX:+UseParallelGC" "-XX:GCTimeRatio=4" "-XX:AdaptiveSizePolicyWeight=90" "-Dsun.zip.disableMemoryMapping=true" "-Xmx2G" "-Xms100m"))
+
+(after! lsp-java
+  (setq lsp-java-enable-codelens nil))
+
+
 (defun find-home-file()
   (interactive)
   (consult-fd "~/")
@@ -33,6 +46,7 @@
     (let ((dir (expand-file-name "~/Nextcloud/Photos/ScreenShots/")))
 	(start-process "hyprshot" "*hyprshot-process*" "hyprshot" "-m" "region" "-o" dir "-f" filename)
 	(insert (format "[[file:%s%s]]" dir filename)))))
+
 
 (defun edit-file-region ()
   "Print the content of the selected region to the minibuffer."
@@ -57,6 +71,7 @@ Makes the line numbers show how many stops up or down to that line and shows the
 (display-time)
 (display-battery-mode)
 
+(setq-default cursor-type 'bar)  ; Slim vertical bar cursor
 (setq fancy-splash-image "~/.config/doom/dashboard.jpg")
 
 (setq treesit-language-source-alist
@@ -69,26 +84,26 @@ Makes the line numbers show how many stops up or down to that line and shows the
 
 Sets the opacity
 #+begin_src elisp
-(doom/set-frame-opacity 96)
-(set-frame-parameter (selected-frame) 'alpha '( 88 90))
-(add-to-list 'default-frame-alist '(alpha . 90))
+(doom/set-frame-opacity 99)
+(set-frame-parameter (selected-frame) 'alpha '( 95 95))
+(add-to-list 'default-frame-alist '(alpha . 100))
 #+end_src
 
 #+begin_src elisp
 (setq-default indent-tabs-mode t)
 (setq-default tab-width 4) ; Assuming you want your tabs to be four spaces wide
-(defvaralias 'c-basic-offset 'tab-width)
+;(defvaralias 'c-basic-offset 'tab-width)
 #+end_src
 
 *** Font
 #+begin_src elisp
-(setq doom-font (font-spec :family "Iosevka" :weight 'semibold :size 13 :width 'expanded)
-      doom-variable-pitch-font (font-spec :family "Iosevka" :size 18))
+(setq doom-font (font-spec :family "SourceCodeVF" :weight 'semibold :size 14 :width 'expanded)
+      doom-variable-pitch-font (font-spec :family "SourceCodeVF" :size 18))
 #+end_src
 
 *** Theme
 #+begin_src elisp
-(setq doom-theme 'gruber-darker)
+(setq doom-theme 'doom-molokai)
 (nyan-mode)
 #+end_src
 *** Cursor
@@ -97,48 +112,48 @@ Sets the opacity
 #+end_src
 *** Modeline
 #+begin_src elisp
-(use-package! doom-modeline
-  :config
-  (setq doom-modeline-height 25) ; Adjust height if necessary
-  (setq doom-modeline-format
-        '((:eval
-           (doom-modeline-segment--workspace-name))
-          " "
-          (:eval
-           (doom-modeline-segment--buffer-info))
-          " "
-          (:eval
-           (doom-modeline-segment--major-mode))
-          " "
-          (:eval
-           (doom-modeline-segment--process))
-          " "
-          (:eval
-           (doom-modeline-segment--flycheck))
-          " "
-          (:eval
-           (doom-modeline-segment--media-info))
-          " "
-          (:eval
-           (doom-modeline-segment--misc-info))
-          " "
-          ;; Add clock segment
-          (:eval
-           (propertize (format-time-string "%H:%M") 'face 'doom-modeline-info))
-          " "
-          (:eval
-           (doom-modeline-segment--buffer-position))
-          " "
-          (:eval
-           (doom-modeline-segment--hud))
-          " "
-          (:eval
-           (doom-modeline-segment--debug))
-          " "
-          (:eval
-           (doom-modeline-segment--misc-info))
-          ))
-)
+;;(use-package! doom-modeline
+  ;;:config
+  ;;(setq doom-modeline-height 25) ; Adjust height if necessary
+  ;; (setq doom-modeline-format
+  ;;       '((:eval
+  ;;          (doom-modeline-segment--workspace-name))
+  ;;         " "
+  ;;         (:eval
+  ;;          (doom-modeline-segment--buffer-info))
+  ;;         " "
+  ;;         (:eval
+  ;;          (doom-modeline-segment--major-mode))
+  ;;         " "
+  ;;         (:eval
+  ;;          (doom-modeline-segment--process))
+  ;;         " "
+
+  ;;          (doom-modeline-segment--flycheck))
+  ;;         " "
+  ;;         (:eval
+  ;;          (doom-modeline-segment--media-info))
+  ;;         " "
+  ;;         (:eval
+  ;;          (doom-modeline-segment--misc-info))
+  ;;         " "
+  ;;         ;; Add clock segment
+  ;;         (:eval
+  ;;          (propertize (format-time-string "%H:%M") 'face 'doom-modeline-info))
+  ;;         " "
+  ;;         (:eval
+  ;;          (doom-modeline-segment--buffer-position))
+  ;;         " "
+  ;;         (:eval
+  ;;          (doom-modeline-segment--hud))
+  ;;         " "
+  ;;         (:eval
+  ;;          (doom-modeline-segment--debug))
+  ;;         " "
+  ;;         (:eval
+  ;;          (doom-modeline-segment--misc-info))
+  ;;         ))
+
 #+end_src
 ** Format
 #+begin_src elisp
@@ -174,10 +189,10 @@ Sets the opacity
          :section-numbers nil
          :with-toc nil)
 
-	("digitalteknik"
-	 :base-directory "~/Nextcloud/skola/digitalteknik"
+	("elektronik"
+	 :base-directory "~/Nextcloud/skola/elektronik"
          :publishing-function org-html-publish-to-html
-         :publishing-directory "~/Nextcloud/skola/published/digitalteknik"
+         :publishing-directory "~/Nextcloud/skola/published/elektronik"
          :section-numbers nil
          :html-head "<link rel=\"stylesheet\" type=\"text/css\" href=\"https://gongzhitaao.org/orgcss/org.css\"/>"
 	 )
@@ -194,7 +209,8 @@ Sets the opacity
 *** Org latex-preview
 ;; sets the scale of the latex preview
 #+begin_src elisp
-(setq org-format-latex-options '(:scale 2.25))
+;;(setq org-format-latex-options '(:scale 2.25))
+
 #+end_src
 
 ** Buffer management
@@ -258,10 +274,12 @@ Sets the opacity
 **** Multiple cursor
 #+begin_src elisp
 (global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
-(global-set-key (kbd "C->") 'mc/mark-next-like-this)
-(global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
+(global-set-key (kbd "C-<") 'mc/mark-next-like-this)
+(global-set-key (kbd "C->") 'mc/mark-previous-like-this)
 (global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
-(global-set-key (kbd "C-c n w") 'mc/mark-next-like-this-word)
+(define-key key-translation-map (kbd "M-S-d") (kbd "M-D"))
+(global-set-key (kbd "M-D") 'mc/mark-next-like-this-word)
+
 #+end_src
 
 ** Keybindings
@@ -417,7 +435,7 @@ Sets the opacity
        ;;hy                ; readability of scheme w/ speed of python
        ;;idris             ; a language you can depend on
        json              ; At least it ain't XML
-       (java +lsp +eclim)       ; the poster child for carpal tunnel syndrome
+       (java)       ; the poster child for carpal tunnel syndrome
        javascript        ; all(hope(abandon(ye(who(enter(here))))))
        ;;julia             ; a better, faster MATLAB
        ;;kotlin            ; a better, slicker Java(Script)
@@ -482,6 +500,32 @@ Sets the opacity
 ;; (package! django-snippets)
 (package! pony-mode)
 (package! lsp-tailwindcss :recipe (:host github :repo "merrickluo/lsp-tailwindcss"))
+
+(package! org :recipe
+  (:host nil :repo "https://git.tecosaur.net/mirrors/org-mode.git" :remote "mirror" :fork
+         (:host nil :repo "https://git.tecosaur.net/tec/org-mode.git" :branch "dev" :remote "tecosaur")
+         :files
+         (:defaults "etc")
+         :build t :pre-build
+         (with-temp-file "org-version.el"
+           (require 'lisp-mnt)
+           (let
+               ((version
+                 (with-temp-buffer
+                   (insert-file-contents "lisp/org.el")
+                   (lm-header "version")))
+                (git-version
+                 (string-trim
+                  (with-temp-buffer
+                    (call-process "git" nil t nil "rev-parse" "--short" "HEAD")
+                    (buffer-string)))))
+             (insert
+              (format "(defun org-release () \"The release version of Org.\" %S)\n" version)
+              (format "(defun org-git-version () \"The truncate git commit hash of Org mode.\" %S)\n" git-version)
+              "(provide 'org-version)\n"))))
+  :pin nil)
+
+(unpin! org)
 #+end_src
 
 ** fun packages
@@ -493,7 +537,9 @@ Sets the opacity
 ;;(package! cakecrumbs)
 (package! org-roam-ui)
 (package! ido-completing-read+)
-
+;;(package! good-scroll)
+;;(package! good-scroll)
+(package! picpocket)
 #+end_src
 ** agenda packages
 #+begin_src elisp :tangle "packages.el"
