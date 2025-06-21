@@ -27,6 +27,7 @@ export XDG_CONFIG_HOME="$HOME/.config"
 export WEBKIT_DISABLE_DMABUF_RENDERER=1
 
 HISTFILE=~/.cashe/zsh/history
+alias killer="hyprctl kill"
 alias wttr="curl v2.wttr.in"
 alias wttrj="curl v2.wttr.in/jonkoping"
 alias chromewal="generate-theme"
@@ -41,7 +42,13 @@ alias dj="python manage.py"
 alias clip="xclip -sel c "
 alias sshswed="ssh -i ./.ssh/authorized_keys/Sm4rtcsh_bp.pem ubuntu@ec2-16-171-138-156.eu-north-1.compute.amazonaws.com"
 alias getdb="scp -i ./.ssh/authorized_keys/Sm4rtcsh_bp.pem ubuntu@ec2-16-171-138-156.eu-north-1.compute.amazonaws.com:servers/Brinto_pay_backend/db.sqlite3 ./dev/Brinto_pay_2022/backend"
-alias tab="$TERM &"
+alias tab="$TERM &"export PATH="$HOME/.local/bin:$PATH"
+
+#export JAVA_HOME=/usr/lib/jvm/java-16-openjdk
+#export PATH=$JAVA_HOME/bin:$PATH
+
+export PATH="$HOME/.local/bin:$PATH"
+
 alias fetch="fastfetch"
 alias ll="ls -alh"
 alias i3reload="i3-msg reload"
@@ -55,6 +62,7 @@ alias fresh="clear;fetch"
 alias ec="emacsclient -c -a ''"
 alias et="emacsclient -nw"
 alias extract-album="yt-dlp --extract-audio --audio-format flac "
+alias ea="yt-dlp --extract-audio"
 alias r2="r2modman --in-process-gpu"
 
 ## pdfs
@@ -72,8 +80,8 @@ bindkey  "^[[F"   end-of-line
 bindkey  "^[[3~"  delete-char
 
 #exit line in vim
-autoload edit-command-line; zle -N edit-command-line
-bindkey '^e' edit-command-line
+#autoload edit-command-line; zle -N edit-command-line
+#bindkey '^e' edit-command-line
 #
 ##source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 #function _update_ps1()
@@ -99,4 +107,4 @@ source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 
-export QSYS_ROOTDIR="/home/spy/.cache/yay/quartus-free/pkg/quartus-free-quartus/opt/intelFPGA/23.1/quartus/sopc_builder/bin"
+#export QSYS_ROOTDIR="/home/spy/.cache/yay/quartus-free/pkg/quartus-free-quartus/opt/intelFPGA/23.1/quartus/sopc_builder/bin"
