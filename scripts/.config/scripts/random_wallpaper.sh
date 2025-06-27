@@ -1,14 +1,14 @@
 #!/bin/bash
 
 # Directory to save wallpapers
-WALL_DIR="$HOME/Pictures/wallpaper"
+WALL_DIR="$HOME/Pictures/Noctax-Wallpapers/Anime"
 mkdir -p "$WALL_DIR"
 
 IMAGE=$(find $WALL_DIR -type f | shuf -n 1)
-
+echo $IMAGE
 #feh --bg-scale $IMAGE
-swaybg --image $IMAGE
+swaybg --image "$IMAGE"
 
 # Set it as wallpaper using feh
 wal -i $IMAGE
-feh --bg-scale $IMAGE
+#feh --bg-scale $IMAGE

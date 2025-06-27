@@ -1,0 +1,24 @@
+(defwidget clock []
+  (box
+    :class "clock-box"
+    :orientation "vertical"
+    :halign "end"
+    :valign "start"
+    :spacing 4
+    (label :class "clock-time" :text (time "%H:%M"))
+    (label :class "clock-date" :text (time "%A, %d %B %Y"))
+  )
+)
+
+(window
+  :name "clock"
+  :monitor 0
+  :anchor "top right"
+  :margin "20 20"
+  :layer "overlay"
+  :exclusive false
+  :stacking "fg"
+  :windowtype "dock"
+  :visible true
+  (clock)
+)
