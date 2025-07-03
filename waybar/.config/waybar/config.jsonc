@@ -8,15 +8,15 @@
   "passthrough": false,
   "fixed-center": true,
   "modules-left": ["niri/workspaces", "niri/window"],
-  "modules-center": [],
+  "modules-center": [
+    "clock",
+  ],
   "modules-right": [
   "network",
     "battery",
     "backlight",
     "cpu",
     "memory",
-    "clock",
-    "clock#simpleclock",
     "pulseaudio",
     "tray",
     "custom/power",
@@ -45,7 +45,7 @@
     "format": "  {:%H:%M}",
   },
   "clock": {
-    "format": "  {:L%a %d %b (%V v)}",
+    "format": "  {:L%a %d %b (%V v) | %H:%M}",
     "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
   },
   "cpu": {
@@ -95,12 +95,4 @@
       "tooltip-format-disconnected": "Disconnected",
       "max-length": 50
   },
-"pulseaudio": {
-  "format": "{volume}% ",
-  "format-muted": "{volume}% ",
-  "on-click": "pavucontrol", // Opens PulseAudio Volume Control on click
-  "scroll-step": 5,           // Adjusts volume by 5% on scroll
-  "tooltip": true
-}
-
 }

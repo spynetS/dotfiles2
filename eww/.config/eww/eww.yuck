@@ -1,24 +1,53 @@
-(defwidget clock []
-  (box
-    :class "clock-box"
-    :orientation "vertical"
-    :halign "end"
-    :valign "start"
-    :spacing 4
-    (label :class "clock-time" :text (time "%H:%M"))
-    (label :class "clock-date" :text (time "%A, %d %B %Y"))
+(defvar day "Monday")
+(defvar time "15:44")
+(defvar date "Monday")
+
+(defwidget date-wallpaper []
+ (box :orientation "vertical" :spacing 0 :class "date-box"
+  (label :text day :class "day-name")
+    (box :orientation "vertical" :spacing 0 :class "date-box"
+    (label :text date :class "date-time")
+    (label :text time :class "date-time")))
+)
+
+(defwidget playerctl []
+  (box :orientation "vertical" :gemoetry (geometry :width "300px" ) :class "test"
+       (label :text "WHAT")
   )
 )
 
-(window
-  :name "clock"
-  :monitor 0
-  :anchor "top right"
-  :margin "20 20"
-  :layer "overlay"
-  :exclusive false
-  :stacking "fg"
-  :windowtype "dock"
-  :visible true
-  (clock)
+(defwindow desktop
+  :monitor 1
+  :stacking "bg"
+  :geometry (geometry :x "0px" :y "32px" :width "1920px"  :anchor "top center")
+  (date-wallpaper)
+)
+
+(defvar windows "[{\"id\":116,\"title\":\"Alacritty\",\"app_id\":\"Alacritty\",\"pid\":80817,\"workspace_id\":4,\"is_focused\":true,\"is_floating\":false,\"is_urgent\":false},{\"id\":118,\"title\":\"Best JSON Formatter and JSON Validator: Online JSON Formatter — Zen Browser\",\"app_id\":\"zen\",\"pid\":73985,\"workspace_id\":13,\"is_focused\":false,\"is_floating\":false,\"is_urgent\":false},{\"id\":36,\"title\":\"#318 - Livet efter framtiden (Gäst: Torbjörn Elensky)\",\"app_id\":\"Spotify\",\"pid\":980,\"workspace_id\":1,\"is_focused\":false,\"is_floating\":false,\"is_urgent\":false},{\"id\":50,\"title\":\"Steam\",\"app_id\":\"steam\",\"pid\":980,\"workspace_id\":4,\"is_focused\":false,\"is_floating\":false,\"is_urgent\":false},{\"id\":120,\"title\":\"@Sharku - Discord\",\"app_id\":\"discord\",\"pid\":980,\"workspace_id\":14,\"is_focused\":false,\"is_floating\":false,\"is_urgent\":false},{\"id\":107,\"title\":\"Niri Taskbar Widget — Zen Browser\",\"app_id\":\"zen\",\"pid\":73985,\"workspace_id\":4,\"is_focused\":false,\"is_floating\":false,\"is_urgent\":false},{\"id\":108,\"title\":\"eww.yuck – Doom Emacs\",\"app_id\":\"emacs\",\"pid\":75159,\"workspace_id\":4,\"is_focused\":false,\"is_floating\":false,\"is_urgent\":false},{\"id\":112,\"title\":\"Alacritty\",\"app_id\":\"Alacritty\",\"pid\":77463,\"workspace_id\":4,\"is_focused\":false,\"is_floating\":false,\"is_urgent\":false}]")
+
+(defwidget window-button [id title is_focused]
+  (button
+    :onclick (format "eww scripts/focus-window.sh %d" id)
+    :class (if is_focused "focused" "")
+    (label :ellipsize "end" :max-width "150px" :text "T")
+  )
+)
+
+(defwidget dock []
+  (box
+    :orientation "h"
+    :class "window-list"
+    (for window in windows
+      (window-button :id (window "id" ) :title (window "title") :is_focused (window "is_focused"))
+    )
+  )
+)
+
+(defwindow dock-window []
+  :width "1920px"
+  :height "500px"
+  :anchor "bottom"
+  :layer "panel"
+  :monitor 1
+  (dock)
 )
