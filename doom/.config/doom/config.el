@@ -63,7 +63,7 @@
 (setq doom-font (font-spec :family "SourceCodeVF" :weight 'semibold :size 14 :width 'expanded)
       doom-variable-pitch-font (font-spec :family "SourceCodeVF" :size 18))
 
-(setq doom-theme 'doom-molokai)
+(setq doom-theme 'doom-one)
 (nyan-mode)
 
   (blink-cursor-mode 1)
@@ -153,7 +153,7 @@
 	 )
 ))
 
-(setq org-format-latex-options '(:scale 2.25))
+;;(setq org-format-latex-options '(:scale 2.25))
 
 (defvar my-maximize-buffer-flag nil
   "Flag to track whether the buffer is maximized or not.")

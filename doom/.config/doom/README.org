@@ -103,7 +103,7 @@ Sets the opacity
 
 *** Theme
 #+begin_src elisp
-(setq doom-theme 'doom-molokai)
+(setq doom-theme 'doom-one)
 (nyan-mode)
 #+end_src
 *** Cursor
@@ -540,6 +540,7 @@ Sets the opacity
 ;;(package! good-scroll)
 ;;(package! good-scroll)
 (package! picpocket)
+(package! yuck-mode)
 #+end_src
 ** agenda packages
 #+begin_src elisp :tangle "packages.el"
