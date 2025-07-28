@@ -21,7 +21,7 @@ compinit
 
 export PATH="$HOME/.config/emacs/bin:$PATH"
 export EDITOR=nvim
-export MANPAGER="nvim +Man!"
+export MANPAGER="less"
 export FILE_EXPLORER=dolphin
 export XDG_CONFIG_HOME="$HOME/.config"
 export WEBKIT_DISABLE_DMABUF_RENDERER=1
