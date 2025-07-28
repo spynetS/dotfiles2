@@ -10,7 +10,7 @@
 ;; Disable auto-save and backup files
 (setq auto-save-default nil)
 (setq make-backup-files nil)
-n(setq create-lockfiles nil)
+(setq create-lockfiles nil)
 
 ;; Use UTF-8 encoding
 (prefer-coding-system 'utf-8)
