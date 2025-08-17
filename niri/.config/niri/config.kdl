@@ -5,10 +5,11 @@
 
 
 environment {
-    DISPLAY ":1"
+    DISPLAY ":0"
+    _JAVA_AWT_WM_NONREPARENTING "1"
 }
 
-//prefer-no-csd
+prefer-no-csd
 
 // Input device configuration.
 // Find the full list of options on the wiki:
@@ -568,7 +569,8 @@ binds {
     Mod+Shift+V { switch-focus-between-floating-and-tiling; }
 
 
-    Mod+W { spawn "zen-browser"; }
+    Mod+W { spawn "firefox"; }
+    Mod+Shift+W { spawn "rofi" "-show" "window"; }
 
     // Actions to switch layouts.
     // Note: if you uncomment these, make sure you do NOT have
