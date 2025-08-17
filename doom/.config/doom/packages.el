@@ -42,6 +42,7 @@
 ;;(package! good-scroll)
 (package! picpocket)
 (package! yuck-mode)
+(package! kdl-mode)
 
 (package! org-modern)
 (package! olivetti)

@@ -18,11 +18,9 @@ zmodload zsh/complist
 compinit
 
 
-source $HOME/.profile
+source $HOME/.xinitrc
 
 HISTFILE=~/.cashe/zsh/history
-alias docker-exec='sudo -v; sudo docker exec -it $(sudo docker ps | fzf | awk '\''{print $1}'\'') bash'
-
 alias killer="hyprctl kill"
 alias wttr="curl v2.wttr.in"
 alias wttrj="curl v2.wttr.in/jonkoping"
@@ -36,7 +34,7 @@ alias sshswed="ssh -i ./.ssh/authorized_keys/Sm4rtcsh_bp.pem ubuntu@ec2-16-171-1
 alias getdb="scp -i ./.ssh/authorized_keys/Sm4rtcsh_bp.pem ubuntu@ec2-16-171-138-156.eu-north-1.compute.amazonaws.com:servers/Brinto_pay_backend/db.sqlite3 ./dev/Brinto_pay_2022/backend"
 
 #export JAVA_HOME=/usr/lib/jvm/java-16-openjdk
-export PATH=/home/spy/.config/emacs/bin:$PATH
+#export PATH=$JAVA_HOME/bin:$PATH
 
 
 alias fetch="fastfetch"
@@ -46,7 +44,6 @@ alias ..="cd .."
 alias pacman="sudo pacman"
 alias fresh="clear;fetch"
 alias ec="emacsclient -c -a ''"
-alias dired="emacsclient -nw --eval '(dired \"~\")'"
 alias et="emacsclient -nw"
 alias extract-album="yt-dlp --extract-audio --audio-format flac "
 alias ea="yt-dlp --extract-audio"
@@ -79,19 +76,18 @@ bindkey  "^[[3~"  delete-char
 #    _update_ps1
 #}
 
-
-alias python3="python"
-#source ~/.zsh/zsh-vim.zsh
-source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
-source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-q!
-syntax-highlighting.zsh
-
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+
+alias python3="python"
+#source ~/.zsh/zsh-vim.zsh
+source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
+source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 
 #export QSYS_ROOTDIR="/home/spy/.cache/yay/quartus-free/pkg/quartus-free-quartus/opt/intelFPGA/23.1/quartus/sopc_builder/bin"
