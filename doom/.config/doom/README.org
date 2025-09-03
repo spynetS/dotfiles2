@@ -104,6 +104,8 @@ Sets the opacity
 *** Theme
 #+begin_src elisp
 (setq doom-theme 'doom-one)
+(add-to-list 'custom-theme-load-path "~/.config/doom/themes/")
+(load-theme 'material t)
 (nyan-mode)
 #+end_src
 *** Cursor

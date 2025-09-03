@@ -18,7 +18,7 @@ zmodload zsh/complist
 compinit
 
 
-source $HOME/.profile
+#source $HOME/.profile
 
 HISTFILE=~/.cashe/zsh/history
 alias docker-exec='sudo -v; sudo docker exec -it $(sudo docker ps | fzf | awk '\''{print $1}'\'') bash'
@@ -39,7 +39,7 @@ alias getdb="scp -i ./.ssh/authorized_keys/Sm4rtcsh_bp.pem ubuntu@ec2-16-171-138
 export PATH=/home/spy/.config/emacs/bin:$PATH
 
 
-alias fetch="fastfetch"
+alias fetch="nerdfetch"
 alias ll="ls -alh"
 alias dot="cd ~/dotfiles2/"
 alias ..="cd .."
@@ -60,6 +60,7 @@ alias cd="z"
 export PASH_KEYID=alfred@stensatter.se
 
 fetch
+aurora
 # fix bad keybiding
 bindkey  "^[[H"   beginning-of-line
 bindkey  "^[[F"   end-of-line
@@ -84,8 +85,8 @@ alias python3="python"
 #source ~/.zsh/zsh-vim.zsh
 source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-q!
-syntax-highlighting.zsh
+#source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-q!
+#syntax-highlighting.zsh
 
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"

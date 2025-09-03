@@ -64,6 +64,7 @@
       doom-variable-pitch-font (font-spec :family "SourceCodeVF" :size 18))
 
 (setq doom-theme 'doom-one)
+(load-theme 'material-theme t)
 (nyan-mode)
 
   (blink-cursor-mode 1)
