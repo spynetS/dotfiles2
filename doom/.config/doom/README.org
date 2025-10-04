@@ -22,12 +22,6 @@
 ** Custom scripts
 #+begin_src elisp
 
-;;(good-scroll-mode 1)
-;;(require 'sublimity-map) ;; experimental
-
-
-;; (require 'sublimity-attractive)
-
 (setq lsp-java-vmargs '("-XX:+UseParallelGC" "-XX:GCTimeRatio=4" "-XX:AdaptiveSizePolicyWeight=90" "-Dsun.zip.disableMemoryMapping=true" "-Xmx2G" "-Xms100m"))
 
 (after! lsp-java
@@ -64,6 +58,15 @@
   (insert "*"))
 #+end_src
 
+*** Scroll
+#+begin_src elisp
+(pixel-scroll-precision-mode 0)
+
+(setq mouse-wheel-scroll-amount '(1 ((shift) . 1) ((control) . nil)))
+(setq mouse-wheel-progressive-speed nil)
+(setq mouse-wheel-follow-mouse 'f)
+#+end_src
+
 ** Appearance
 Makes the line numbers show how many stops up or down to that line and shows the current line the real number.
 #+begin_src elisp
@@ -82,6 +85,7 @@ Makes the line numbers show how many stops up or down to that line and shows the
 
 #+end_src
 
+
 Sets the opacity
 #+begin_src elisp
 (doom/set-frame-opacity 99)
@@ -97,15 +101,13 @@ Sets the opacity
 
 *** Font
 #+begin_src elisp
-(setq doom-font (font-spec :family "SourceCodeVF" :weight 'semibold :size 14 :width 'expanded)
-      doom-variable-pitch-font (font-spec :family "SourceCodeVF" :size 18))
+;; Set default font
+(setq doom-font (font-spec :family "Fira Code" :size 16 :weight 'regular))
 #+end_src
 
 *** Theme
 #+begin_src elisp
-(setq doom-theme 'doom-one)
-(add-to-list 'custom-theme-load-path "~/.config/doom/themes/")
-(load-theme 'material t)
+(setq doom-theme 'modus-vivendi-deuteranopia)
 (nyan-mode)
 #+end_src
 *** Cursor
@@ -233,7 +235,6 @@ Sets the opacity
       (setq my-maximize-buffer-flag t))))
 
 
-
 #+end_src
 
 *** Spawn term
@@ -292,12 +293,19 @@ Sets the opacity
 
 (map! "C-c t" #'tab-close)
 #+end_src
-*** move windows with vim key
+*** move windows with keys
 #+begin_src elisp
-;; (map! "M-H" #'windmove-left
-;;       "M-L" #'windmove-right
-;;       "M-K" #'windmove-up
-;;       "M-J" #'windmove-down)
+;; Window movement
+(global-set-key (kbd "C-M-N") 'windmove-down)
+(global-set-key (kbd "C-M-p") 'windmove-up)
+(global-set-key (kbd "C-M-f") 'windmove-right)
+(global-set-key (kbd "C-M-b") 'windmove-left)
+
+;; Window resizing
+(global-set-key (kbd "C-M-S-n") 'enlarge-window)
+(global-set-key (kbd "C-M-S-p") 'shrink-window)
+(global-set-key (kbd "C-M-S-f") 'enlarge-window-horizontally)
+(global-set-key (kbd "C-M-S-b") 'shrink-window-horizontally)
 
 
 #+end_src
@@ -438,7 +446,7 @@ Sets the opacity
        ;;idris             ; a language you can depend on
        json              ; At least it ain't XML
        (java)       ; the poster child for carpal tunnel syndrome
-       javascript        ; all(hope(abandon(ye(who(enter(here))))))
+       (javascript +lsp)        ; all(hope(abandon(ye(who(enter(here))))))
        ;;julia             ; a better, faster MATLAB
        ;;kotlin            ; a better, slicker Java(Script)
        (latex +latexmk +lsp +fold +cdlatex)             ; writing papers in Emacs has never been so fun
@@ -532,15 +540,10 @@ Sets the opacity
 
 ** fun packages
 #+begin_src elisp :tangle "packages.el"
-;;(package! beacon)
-;;(package! powerline-evil)
-;;(package! lorem-ipsum)
+(package! lorem-ipsum)
 (package! nyan-mode)
-;;(package! cakecrumbs)
 (package! org-roam-ui)
 (package! ido-completing-read+)
-;;(package! good-scroll)
-;;(package! good-scroll)
 (package! picpocket)
 (package! yuck-mode)
 (package! kdl-mode)
@@ -559,4 +562,8 @@ Sets the opacity
 (package! atom-one-dark-theme)
 (package! gruber-darker-theme)
 (package! ewal-doom-themes)
+(package! all-the-icons)
+(package! zenburn-theme)
+(package! adwaita-dark-theme)
+(package! forest-blue-theme)
 #+end_src
