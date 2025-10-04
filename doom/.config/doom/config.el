@@ -1,9 +1,3 @@
-;;(good-scroll-mode 1)
-;;(require 'sublimity-map) ;; experimental
-
-
-;; (require 'sublimity-attractive)
-
 (setq lsp-java-vmargs '("-XX:+UseParallelGC" "-XX:GCTimeRatio=4" "-XX:AdaptiveSizePolicyWeight=90" "-Dsun.zip.disableMemoryMapping=true" "-Xmx2G" "-Xms100m"))
 
 (after! lsp-java
@@ -39,6 +33,12 @@
   (forward-word)
   (insert "*"))
 
+(pixel-scroll-precision-mode 0)
+
+(setq mouse-wheel-scroll-amount '(1 ((shift) . 1) ((control) . nil)))
+(setq mouse-wheel-progressive-speed nil)
+(setq mouse-wheel-follow-mouse 'f)
+
 (setq display-line-numbers-type 'relative)
 (display-time)
 (display-battery-mode)
@@ -60,11 +60,10 @@
 (setq-default tab-width 4) ; Assuming you want your tabs to be four spaces wide
 ;(defvaralias 'c-basic-offset 'tab-width)
 
-(setq doom-font (font-spec :family "SourceCodeVF" :weight 'semibold :size 14 :width 'expanded)
-      doom-variable-pitch-font (font-spec :family "SourceCodeVF" :size 18))
+;; Set default font
+(setq doom-font (font-spec :family "Fira Code" :size 16 :weight 'regular))
 
-(setq doom-theme 'doom-one)
-(load-theme 'material-theme t)
+(setq doom-theme 'modus-vivendi-deuteranopia)
 (nyan-mode)
 
   (blink-cursor-mode 1)
@@ -211,10 +210,17 @@
 
 (map! "C-c t" #'tab-close)
 
-;; (map! "M-H" #'windmove-left
-;;       "M-L" #'windmove-right
-;;       "M-K" #'windmove-up
-;;       "M-J" #'windmove-down)
+;; Window movement
+(global-set-key (kbd "C-M-N") 'windmove-down)
+(global-set-key (kbd "C-M-p") 'windmove-up)
+(global-set-key (kbd "C-M-f") 'windmove-right)
+(global-set-key (kbd "C-M-b") 'windmove-left)
+
+;; Window resizing
+(global-set-key (kbd "C-M-S-n") 'enlarge-window)
+(global-set-key (kbd "C-M-S-p") 'shrink-window)
+(global-set-key (kbd "C-M-S-f") 'enlarge-window-horizontally)
+(global-set-key (kbd "C-M-S-b") 'shrink-window-horizontally)
 
 (map! "M-c" #'calc)
 (map! "M-C" #'full-calc)

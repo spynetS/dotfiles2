@@ -53,7 +53,7 @@ alias ea="yt-dlp --extract-audio"
 alias r2="r2modman --in-process-gpu"
 
 ## pdfs
-alias vf='cd $(find $($HOME) -type d | fzf) && tmux'
+alias vf='cd $(find $($HOME/dev) -type d | fzf) && tmux'
 
 eval "$(zoxide init zsh)"
 alias cd="z"
