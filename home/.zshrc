@@ -22,6 +22,7 @@ compinit
 
 HISTFILE=~/.cashe/zsh/history
 alias docker-exec='sudo -v; sudo docker exec -it $(sudo docker ps | fzf | awk '\''{print $1}'\'') bash'
+#source /opt/esp-idf/export.sh
 
 alias killer="hyprctl kill"
 alias wttr="curl v2.wttr.in"
@@ -60,7 +61,7 @@ alias cd="z"
 export PASH_KEYID=alfred@stensatter.se
 
 fetch
-aurora
+aurora --no-update
 # fix bad keybiding
 bindkey  "^[[H"   beginning-of-line
 bindkey  "^[[F"   end-of-line
@@ -95,4 +96,4 @@ fi
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 
-#export QSYS_ROOTDIR="/home/spy/.cache/yay/quartus-free/pkg/quartus-free-quartus/opt/intelFPGA/23.1/quartus/sopc_builder/bin"
+#export QSYS_ROOTDIR="/home/spy/.cache/yay/quartus-free/pkg/quartus-free-quartus/opt/intelFPGA/24.1/quartus/sopc_builder/bin"
