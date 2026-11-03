@@ -21,8 +21,11 @@ compinit
 #source $HOME/.profile
 
 HISTFILE=~/.cashe/zsh/history
+alias emacs="WEBKIT_DISABLE_COMPOSITING_MODE=1 emacs"
+alias docker-exec='sudo -v; sudo docker exec -it $(sudo docker ps | fzf | awk '\''{print $1}'\'') sh'
+alias mech="wayvibes ~/wayvibes/akko_lavender_purples/ -v 3"
+
 alias docker-exec='sudo -v; sudo docker exec -it $(sudo docker ps | fzf | awk '\''{print $1}'\'') bash'
-#source /opt/esp-idf/export.sh
 
 alias killer="hyprctl kill"
 alias wttr="curl v2.wttr.in"
@@ -40,7 +43,9 @@ alias getdb="scp -i ./.ssh/authorized_keys/Sm4rtcsh_bp.pem ubuntu@ec2-16-171-138
 export PATH=/home/spy/.config/emacs/bin:$PATH
 
 
-alias fetch="nerdfetch"
+
+alias fetch="noorfetch"
+
 alias ll="ls -alh"
 alias dot="cd ~/dotfiles2/"
 alias ..="cd .."
@@ -49,6 +54,10 @@ alias fresh="clear;fetch"
 alias ec="emacsclient -c -a ''"
 alias dired="emacsclient -nw --eval '(dired \"~\")'"
 alias et="emacsclient -nw"
+woman() {
+		emacsclient -nw --eval "(woman \"$1\")"
+}
+
 alias extract-album="yt-dlp --extract-audio --audio-format flac "
 alias ea="yt-dlp --extract-audio"
 alias r2="r2modman --in-process-gpu"
@@ -63,9 +72,11 @@ export PASH_KEYID=alfred@stensatter.se
 fetch
 aurora --no-update
 # fix bad keybiding
-bindkey  "^[[H"   beginning-of-line
-bindkey  "^[[F"   end-of-line
-bindkey  "^[[3~"  delete-char
+#bindkey  "^[[H"   beginning-of-line
+#bindkey  "^[[F"   end-of-line
+#bindkey  "^[[3~"  delete-char
+
+bindkey -e
 
 #exit line in vim
 #autoload edit-command-line; zle -N edit-command-line
