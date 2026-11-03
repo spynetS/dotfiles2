@@ -9,7 +9,7 @@ exec --no-startup-id waybar
 #exec --no-startup-id = ~/.config/scripts/random_wallpaper.sh &
 #exec_always "setxkbmap -layout us,se -variant ,qwerty -option 'grp:alt_caps_toggle'"
 exec_always "dms run"
-
+exec_always "swaybg -i ./Pictures/wallpaper/images/minimal_gradient.png"
 #exec_always --no-startup-id fix_xcursor
 
 # defining movement keys
