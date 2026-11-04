@@ -214,6 +214,7 @@ follows_mouse = true
 "Mod+K" = "window-focus-up"
 "Mod+L" = "window-focus-right"
 "Mod+F1" = "window-focus-next"
+
 "Mod+Shift+Left" = "column-move-left"
 "Mod+Shift+Down" = "window-move-down"
 "Mod+Shift+Up" = "window-move-up"
@@ -223,6 +224,12 @@ follows_mouse = true
 "Mod+Shift+J" = "window-move-down"
 "Mod+Shift+K" = "window-move-up"
 "Mod+Shift+L" = "column-move-right"
+
+"Mod+Ctrl+Shift+H" = "column-move-to-output-left"
+"Mod+Ctrl+Shift+J" = "window-move-to-output-down"
+"Mod+Ctrl+Shift+K" = "window-move-to-output-up"
+"Mod+Ctrl+Shift+L" = "column-move-to-output-right"
+
 
 "Mod+Ctrl+H" = "output-focus-left"
 "Mod+Ctrl+J" = "output-focus-down"
