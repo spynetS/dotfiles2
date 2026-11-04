@@ -404,11 +404,7 @@ dynamic_padding = false
 dynamic_title = true
 # gtk_theme_variant = "None"
 title = "Alacritty"
-<<<<<<< HEAD
-opacity = 0.9
-=======
 opacity = 0.8
->>>>>>> 11b792555f68204d5f78d4e789f7fdc32cfc6357
 
 [window.class]
 general = "Alacritty"
@@ -424,60 +420,6 @@ working_directory = "None"
 
 [terminal]
 # BEGIN WAL
-<<<<<<< HEAD
-# [colors.primary]
-# background = '#0d171f'
-# foreground = '#c2c5c7'
-
-# [colors.cursor]
-# text   = '#0d171f' # Apply background color to color of text inside cursor
-# cursor = '#c2c5c7' # Apply foreground color to color of cursor
-
-# [colors.vi_mode_cursor]
-# text    = '#0d171f' # Same as above
-# cursor  = '#c2c5c7'
-
-# [colors.search.matches]
-# foreground = '#0d171f' # Same as above
-# background = '#c2c5c7' # Apply bright/white color to bg color of matching search
-
-# [colors.search.focused_match]
-# foreground = 'CellBackground'
-# background = 'CellForeground'
-
-# [colors.line_indicator]
-# foreground = 'None'
-# background = 'None'
-
-# [colors.footer_bar]
-# foreground = '#5c6871'
-# background = '#c2c5c7'
-
-# [colors.selection]
-# text       = 'CellBackground'
-# background = 'CellForeground'
-
-# [colors.normal]
-# black   = '#0d171f'
-# red     = '#778575'
-# green   = '#3A6084'
-# yellow  = '#63748C'
-# blue    = '#76889D'
-# magenta = '#7BA3C4'
-# cyan    = '#939FAD'
-# white   = '#c2c5c7'
-
-# [colors.bright]
-# black   = '#5c6871'
-# red     = '#778575'
-# green   = '#3A6084'
-# yellow  = '#63748C'
-# blue    = '#76889D'
-# magenta = '#7BA3C4'
-# cyan    = '#939FAD'
-# white   = '#c2c5c7'
-# # END WAL
-=======
 [colors.primary]
 background = '#0d171f'
 foreground = '#c2c5c7'
@@ -530,4 +472,3 @@ magenta = '#7BA3C4'
 cyan    = '#939FAD'
 white   = '#c2c5c7'
 # END WAL
->>>>>>> 11b792555f68204d5f78d4e789f7fdc32cfc6357
