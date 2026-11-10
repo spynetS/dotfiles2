@@ -24,7 +24,7 @@ files = []
 # https://docs.noctalia.dev/umbriel/configuration/#general
 #
 [general]
-autostart = ["noctalia"]
+autostart = ["noctalia", "syncthing"]
 # xwayland = false
 # Sharp X11 apps and games on scaled outputs; they see physical resolutions.
 # xwayland_native_resolution = true
@@ -163,11 +163,24 @@ numlock_toggle = true
 layout = "us,se"
 options = "grp:alt_caps_toggle"
 
+# [input.drag_edge_scroll]
+# enabled = true
+# trigger_zone = 30
+# delay_ms = 100
+# max_speed = 1500.0
+
+# [input.cursor]
+# theme = ""
+# size = 24
+# hardware_cursor = true
+# follows_focus = false
+# hide_when_typing = false
+# hide_timeout_ms = 0
 
 # Focus can follow the pointer across tiled, floating, and pinned windows.
 #
 [input.focus]
-follows_mouse = true
+#follows_mouse = true
 # hover_raises = false # Hover focuses only; clicks and keybinds raise.
 
 # Confine touch input to one display.
@@ -185,10 +198,11 @@ follows_mouse = true
 [keybinds]
 
 # Applications and session
-"Mod+Return" = { action = "spawn kitty", repeat = false }
+"Mod+Return" = { action = "spawn alacritty", repeat = false }
 "Mod+W" = { action = "spawn firefox", repeat = false }
 "Mod" = "spawn noctalia msg panel-toggle launcher"
 "Mod+C" = { action = "window-close", repeat = false }
+"Mod+D" = { action = "spawn rofi -show run", repeat = false }
 "Mod+Escape" = "session-quit"
 "Mod+Shift+Escape" = { action = "shortcuts-inhibit-toggle", allow_when_inhibited = true, repeat = false }
 
@@ -236,10 +250,8 @@ follows_mouse = true
 "Mod+Ctrl+K" = "output-focus-up"
 "Mod+Ctrl+L" = "output-focus-right"
 
-"Mod+I" = "workspace-next "
-"Mod+U" = "workspace-previous"
-
-
+"Mod+U" = "workspace-next "
+"Mod+I" = "workspace-previous"
 
 # Window state and layout
 "Mod+V" = { action = "window-toggle-floating", repeat = false }
@@ -293,7 +305,9 @@ follows_mouse = true
 "Mod+Shift+Space" = { action = "window-move-to-scratchpad", repeat = false }
 "Mod+Space" = "scratchpad-toggle"
 "Mod+Ctrl+Space" = { action = "window-restore-from-scratchpad", repeat = false }
-"Mod+Tab" = "scratchpad-focus-next"
+#"Mod+Tab" = "scratchpad-focus-next"
+"Alt+Tab" = "window-focus-next"
+"Alt+Shift+Tab" = "window-focus-previous  "
 
 # ==============================================================================
 # Layout
@@ -302,8 +316,8 @@ follows_mouse = true
 # their most recently focused row when focus leaves and later returns.
 # https://docs.noctalia.dev/umbriel/layout/
 [layout]
-#mode =  "scrolling"
-mode = "dwindle"#, "master"#, or "stacking".
+mode =  "scrolling"
+#mode = "dwindle"#, "master"#, or "stacking".
 extent_presets = [0.333, 0.5, 0.667]
 
 # What a tiled window's own maximize button does: "column" fills the column,
