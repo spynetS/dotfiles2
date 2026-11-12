@@ -206,6 +206,8 @@ options = "grp:alt_caps_toggle"
 "Mod+Escape" = "session-quit"
 "Mod+Shift+Escape" = { action = "shortcuts-inhibit-toggle", allow_when_inhibited = true, repeat = false }
 
+"Mod+Shift+S" = { action = "spawn grim -g \"$(slurp)\" - | wl-copy" }
+
 # Media, volume and brightness keys from any input device, routed through the
 # Noctalia shell so its OSDs show. Safe while the session is locked.
 # https://docs.noctalia.dev/noctalia/compositor-settings/umbriel
