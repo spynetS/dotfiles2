@@ -254,6 +254,7 @@ options = "grp:alt_caps_toggle"
 "Mod+I" = "workspace-previous"
 
 # Window state and layout
+"Mod+Ctrl+T" = { action = "workspace-set-layout toggle", repeat = false }
 "Mod+V" = { action = "window-toggle-floating", repeat = false }
 "Mod+Shift+V" = { action = "window-focus-switch-floating", repeat = false }
 "Mod+P" = { action = "window-toggle-pinned", repeat = false }
